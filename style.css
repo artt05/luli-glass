@@ -1,9 +1,91 @@
 body {
+  height: 100vh;
   margin: 0;
+  font-family: "Gotham", bold;
+  background-color: #e0ffff;
+}
+.container {
+  width: 100%;
+}
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.box {
+  width: 270px;
+  height: 300px;
+  margin: 0px 20px;
+  margin-top: 100px;
+}
+.image {
+  display: flex;
+  height: 150px;
+  width: 270px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-image: url("images/Hero.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 770px;
+  overflow: hidden; /* Ensures overlay stays within the border radius */
+}
+
+/* Overlay using the ::after pseudo-element */
+.image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0); /* Initially transparent */
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+.image a {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  color: white;
+  text-decoration: none;
+}
+/* Hover Effect */
+.image:hover::after {
+  background-color: rgba(0, 0, 0, 0.5); /* Dark semi-transparent overlay */
+}
+.hero {
+  width: 100%;
+  height: 100%;
+  background: url("images/Hero.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.hero img {
+  width: 100%;
+  height: 100%;
+}
+.normal {
+  font-weight: 400;
+}
+
+.bold,
+strong {
+  font-weight: 700;
+}
+
+.light {
+  font-weight: 300;
 }
 .header {
   display: flex;
-  background-color: #333;
+  background-color: #e0ffff;
   width: 100%;
   height: 100px;
   flex-direction: row;
@@ -19,4 +101,112 @@ body {
 .header-logo a img {
   width: 50px;
   height: 50px;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-right: 100px;
+}
+.nav-list {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-between;
+
+  padding: 0;
+}
+.nav-list a {
+  text-decoration: none;
+  color: #003e4f;
+  font-size: 20px;
+  padding: 0 40px;
+  position: relative;
+}
+
+.nav-list a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -20px; /* Adjust this value to control how low the underline is */
+  width: 0;
+  height: 2px; /* Thickness of the underline */
+  background-color: #007b8a;
+  transition: transform 0.3s ease;
+}
+
+.nav-list a:hover::after {
+  width: 100%;
+  transform: scaleX(1);
+}
+.footer {
+  background-color: #00ced1; /* Turquoise */
+  color: white;
+  padding: 20px 0;
+  position: static;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-logo img {
+  width: 60px;
+  height: 60px;
+}
+
+.footer-nav {
+  display: flex;
+  margin-left: 177px;
+}
+
+.footer-nav-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.footer-nav-list li {
+  display: inline-block;
+}
+
+.footer-nav-list a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.footer-nav-list a:hover {
+  color: #007b8a; /* Dark Blue */
+}
+
+.footer-social {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-social a img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s;
+}
+
+.footer-social a:hover img {
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
 }
