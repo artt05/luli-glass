@@ -138,6 +138,7 @@ strong {
   padding-left: 20px;
   width: 100px;
   justify-content: center;
+  z-index: 1001;
 }
 .header-logo a img {
   width: 50px;
