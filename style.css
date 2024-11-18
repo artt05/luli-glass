@@ -18,6 +18,9 @@ body {
   margin: 0px 20px;
   margin-top: 100px;
 }
+.service-details {
+  color: #555555c5;
+}
 .image {
   display: flex;
   height: 150px;
@@ -29,8 +32,8 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   position: absolute;
-  top: 770px;
-  overflow: hidden; /* Ensures overlay stays within the border radius */
+  top: 750px;
+  /* Ensures overlay stays within the border radius */
 }
 
 /* Overlay using the ::after pseudo-element */
@@ -41,7 +44,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0); /* Initially transparent */
+  background-color: rgba(0, 0, 0, 0.2); /* Initially transparent */
   border-radius: 10px;
   transition: background-color 0.3s ease;
 }
@@ -55,9 +58,11 @@ body {
   color: white;
   text-decoration: none;
 }
+
 /* Hover Effect */
 .image:hover::after {
-  background-color: rgba(0, 0, 0, 0.5); /* Dark semi-transparent overlay */
+  background-color: rgba(0, 0, 0, 0);
+  overflow: hidden; /* Dark semi-transparent overlay */
 }
 .hero {
   display: flex;
@@ -71,15 +76,17 @@ body {
   background-position: center;
   background-size: cover;
   overflow: hidden;
+  margin-top: 80px;
 }
 .hero::after {
   content: "";
   position: absolute;
-  top: 100px;
+  top: 80px;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  content: "";
 }
 .hero h1,
 h2,
@@ -103,12 +110,28 @@ strong {
 }
 .header {
   display: flex;
-  background-color: #e0ffff;
+  position: fixed;
   width: 100%;
   height: 100px;
+  top: 0;
   flex-direction: row;
   justify-content: space-between;
+  background-size: cover;
+  background-image: url("images/Hero.jpg");
+  z-index: 1001;
+  background-position: center top;
 }
+.header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  content: "";
+}
+
 .header-logo {
   display: flex;
   align-items: center;
@@ -136,10 +159,11 @@ strong {
 }
 .nav-list a {
   text-decoration: none;
-  color: #003e4f;
+  color: #ffffff;
   font-size: 20px;
   padding: 0 40px;
   position: relative;
+  z-index: 100;
 }
 
 .nav-list a::after {
@@ -157,7 +181,7 @@ strong {
   width: 100%;
   transform: scaleX(1);
 }
-.footer {
+.footerr {
   background-color: #00ced1; /* Turquoise */
   color: white;
   padding: 20px 0;
@@ -166,7 +190,7 @@ strong {
   width: 100%;
 }
 
-.footer-container {
+.footer-containerr {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
