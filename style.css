@@ -1,22 +1,358 @@
 body {
+  height: 100vh;
   margin: 0;
+  font-family: "Gotham", bold;
+  background-color: #e0ffff;
+}
+.container {
+  width: 100%;
+}
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.box {
+  width: 270px;
+  height: 300px;
+  margin: 0px 20px;
+  margin-top: 100px;
+}
+.service-details {
+  color: #555555c5;
+}
+.image {
+  display: flex;
+  height: 150px;
+  width: 270px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-image: url("images/Hero.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 750px;
+  /* Ensures overlay stays within the border radius */
+}
+
+/* Overlay using the ::after pseudo-element */
+.image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2); /* Initially transparent */
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+.image a {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  color: white;
+  text-decoration: none;
+}
+
+/* Hover Effect */
+.image:hover::after {
+  background-color: rgba(0, 0, 0, 0);
+  overflow: hidden; /* Dark semi-transparent overlay */
+}
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: url("images/Hero.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+  margin-top: 80px;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  content: "";
+}
+.hero h1,
+h2,
+p {
+  margin: 0;
+  color: white;
+  font-weight: bold;
+  z-index: 1000;
+}
+.normal {
+  font-weight: 400;
+}
+
+.bold,
+strong {
+  font-weight: 700;
+}
+
+.light {
+  font-weight: 300;
 }
 .header {
   display: flex;
-  background-color: #333;
+  position: fixed;
   width: 100%;
   height: 100px;
+  top: 0;
   flex-direction: row;
   justify-content: space-between;
+  background-size: cover;
+  background-image: url("images/Hero.jpg");
+  z-index: 1001;
+  background-position: center top;
 }
+.header::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  content: "";
+}
+
 .header-logo {
   display: flex;
   align-items: center;
   padding-left: 20px;
   width: 100px;
   justify-content: center;
+  z-index: 1001;
 }
 .header-logo a img {
   width: 50px;
   height: 50px;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-right: 100px;
+}
+.nav-list {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-between;
+
+  padding: 0;
+}
+.nav-list a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 0 40px;
+  position: relative;
+  z-index: 100;
+}
+
+.nav-list a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -20px; /* Adjust this value to control how low the underline is */
+  width: 0;
+  height: 2px; /* Thickness of the underline */
+  background-color: #007b8a;
+  transition: transform 0.3s ease;
+}
+
+.nav-list a:hover::after {
+  width: 100%;
+  transform: scaleX(1);
+}
+.footerr {
+  background-color: #00ced1; /* Turquoise */
+  color: white;
+  padding: 20px 0;
+  position: static;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-containerr {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-logo img {
+  width: 60px;
+  height: 60px;
+}
+
+.footer-nav {
+  display: flex;
+  margin-left: 177px;
+}
+
+.footer-nav-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.footer-nav-list li {
+  display: inline-block;
+}
+
+.footer-nav-list a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.footer-nav-list a:hover {
+  color: #007b8a; /* Dark Blue */
+}
+
+.footer-social {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-social a img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s;
+}
+
+.footer-social a:hover img {
+  transform: scale(1.1);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+/*Swiper CSS*/
+
+/* Trending Products Section */
+.best-sellers {
+  text-align: center;
+  font-size: 35px;
+  padding: 50px;
+  background-color: #e0ffff;
+  height: 100%;
+}
+
+.best-sellers h2 {
+  padding-top: 30px;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 50px;
+}
+
+/* Swiper Container */
+.container.swiper {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card and Slider Styles */
+.card-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.card.swiper-slide {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  width: 300px;
+  height: auto !important;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 0px 0px 20px 0px;
+  border: 2px solid #00ced1;
+}
+
+.card .image-box {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Prevents overflow */
+  position: relative;
+}
+
+.card .image-box img {
+  min-width: 100%;
+  max-height: 100%; /* Ensures the image does not exceed the container height */
+  object-fit: cover; /* Ensures the image fills the container without distorting aspect ratio */
+  position: absolute;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.card .image-box .default-image {
+  opacity: 1;
+}
+
+.card .image-box .hover-image {
+  opacity: 0;
+}
+
+.card .image-box:hover .default-image {
+  opacity: 0;
+}
+
+.card .image-box:hover .hover-image {
+  opacity: 1;
+}
+
+.info {
+  padding-top: 20px;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.info .name {
+  font-size: 19px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.info .view-button {
+  text-align: center;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: black;
+  border-color: black;
 }
