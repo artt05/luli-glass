@@ -356,3 +356,110 @@ strong {
   color: black;
   border-color: black;
 }
+
+/*About css*/
+.main-container-about {
+  display: flex;
+  margin-top: 130px;
+  width: 90%;
+  align-content: center;
+  justify-content: center;
+  gap: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 80vh;
+}
+
+.container1-about {
+  background-color: #ffffff; /* Clean white for contrast */
+  width: 50%;
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.container2-about {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.container2-1,
+.container2 {
+  border-radius: 20px;
+  height: 50%;
+  overflow: hidden;
+}
+
+.container2 {
+  background-image: url(/images/Hero.jpg);
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid #5ac9e5; /* Accent border color */
+}
+
+.container2-1 {
+  background-color: #d4f1f9; /* Light bluish tone for cohesion */
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  border: 2px solid #5ac9e5;
+}
+
+.content {
+  padding-top: 20px;
+}
+
+.about-box {
+  width: calc(50% - 10px); /* Two boxes per row */
+  height: calc(50% - 10px);
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #5ac9e5; /* Vibrant blue */
+  color: #ffffff; /* White text for contrast */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.about-box h1 {
+  font-size: 2rem; /* Larger font size for numbers */
+  margin: 0;
+}
+
+.about-box p {
+  font-size: 1rem;
+  margin: 5px 0 0; /* Small spacing between text */
+  color: #f0f8ff; /* Slightly lighter text for description */
+}
+
+.box-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+h1,
+h2 {
+  color: #333; /* Dark text */
+}
+
+.about-image {
+  width: 100%;
+}
+
+.about-box-title {
+  color: white;
+}
