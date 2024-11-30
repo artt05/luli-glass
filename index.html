@@ -11,7 +11,11 @@
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
     crossorigin="anonymous"
   />
-
+ <!-- Bootstrap Icons: This link imports a collection of SVG-based icons from the Bootstrap Icons library -->
+ <link
+ rel="stylesheet"
+ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+/>
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
@@ -21,18 +25,52 @@
   </head>
   <body>
     <div class="header">
+      <div style="z-index: 1000; padding-left: 20px; font-size: 20px;">LULIGLASS</div>
       <div class="header-logo">
-        <a href="index.html"
-          ><img src="images/luli-glass.png" alt="Logo.jpg"
-        /></a>
+        <a href="index.html">
+          
+          <img src="/images/luli-glass.png" alt="Logo.jpg" />
+        </a>
       </div>
       <div class="nav">
         <ul class="nav-list">
-          <li><a href="#">Home</a></li>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="services.html">Services</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
       </div>
+
+      <div class="icons" >
+        <!-- An icon (bi-person-fill) taken from Bootstrap activates a dropdown menu on click, providing options to "Log in" or "Register". -->
+        <div class="dropdown">
+          <i
+            class="bi bi-person-fill dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            role="button"
+            aria-haspopup="true"
+            style="font-size: 1.5rem"
+          ></i>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="login.html">Log in</a></li>
+            <li><a class="dropdown-item" href="register.html">Register</a></li>
+          </ul>
+        </div>
+        <div class="position-relative">
+          <!-- This class represents the shopping cart icon -->
+          <i class="bi bi-cart-fill" style="font-size: 1.5rem"></i>
+          <!-- This span serves as a badge to display the current number of items in the cart -->
+          <span
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            id="itemCount"
+            style="font-size: 0.75rem"
+          >
+            0
+          </span>
+        </div>
+      </div>
+      
     </div>
     <div class="hero">
       <h1>Ski qka </h1>
@@ -74,6 +112,33 @@
       </div>
       </div>
     
+
+      <section class="features">
+        <div class="feature">
+          <div class="icon-container">
+            <img src="/images/window-svgrepo-com.svg" alt="Premium Quality Icon" class="feature-icon" />
+          </div>
+          <h3 class="feature-title">Premium Quality</h3>
+          <p class="feature-description">Industrial-grade glass fiber fabric</p>
+        </div>
+      
+        <div class="feature">
+          <div class="icon-container">
+            <img src="/images/security-svgrepo-com.svg" alt="Guaranteed Icon" class="feature-icon" />
+          </div>
+          <h3 class="feature-title">Guaranteed</h3>
+          <p class="feature-description">100% satisfaction guaranteed</p>
+        </div>
+      
+        <div class="feature">
+          <div class="icon-container">
+            <img src="images/shipping-truck-svgrepo-com.svg" alt="Fast Shipping Icon" class="feature-icon" />
+          </div>
+          <h3 class="feature-title">Fast Shipping</h3>
+          <p class="feature-description">2-3 business days delivery</p>
+        </div>
+      </section>
+      
 
     <!--Slider-->
 
@@ -208,21 +273,42 @@
           <a href="index.html">
             <img src="images/luli-glass.png" alt="Luli Glass Logo" />
           </a>
+          <div class="footer-section contact">
+           
+            <p style="margin: 0px;"> <strong>Phone:</strong> 049 800 800</p>
+            <p style="margin: 0px;">
+              <strong>Mail:</strong>
+              <a href="mailto:contact@support.com" style="color: white;">luliglass@gmail.com</a>
+            </p>
+            <p style="margin: 0px;">
+              <strong>Address:</strong> Prishtinë
+            </p>
+          </div>
         </div>
         <div class="footer-nav">
-          <ul class="footer-nav-list">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
+          <div class="footer-section-links">
+            <div style="font-size: 28px; padding-bottom: 10px" >Other Pages</div>
+            <div class="footer-links">
+              <a href="#">Privacy & Policy</a>
+              <a href="#">Terms of Use</a>
+              <a href="#">Disclaimer</a>
+              <a href="#">FAQ</a>
+            </ul>
+          </div>
+          
         </div>
-        <div class="footer-social">
-          <a href="#"><img src="images/facebook-icon.png" alt="Facebook" /></a>
-          <a href="#"><img src="images/twitter-icon.png" alt="Twitter" /></a>
+        
+      </div>
+      <div class="footer-social">
+        <div class="footer-section-links">
+          <div style="font-size: 28px;">Socials</div>
+          <div class="footer-socials">
+          <a href="#"><img src="images/facebook-svgrepo-com.png" alt="Facebook" /></a>
+
           <a href="#"
-            ><img src="images/instagram-icon.png" alt="Instagram"
+            ><img src="images/instagram.png" alt="Instagram" style="width: 50px; height: 50px;"
           /></a>
+        </div></div>
         </div>
       </div>
       <div class="footer-bottom">
