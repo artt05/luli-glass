@@ -5,9 +5,11 @@ body {
   font-family: "Gotham", bold;
   background-color: #e0ffff;
 }
+
 .container {
   width: 100%;
 }
+
 .row {
   display: flex;
   justify-content: center;
@@ -19,9 +21,11 @@ body {
   margin: 0px 20px;
   margin-top: 100px;
 }
+
 .service-details {
   color: #555555c5;
 }
+
 .image {
   display: flex;
   height: 150px;
@@ -45,10 +49,12 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.2); /* Initially transparent */
+  background-color: rgba(0, 0, 0, 0.2);
+  /* Initially transparent */
   border-radius: 10px;
   transition: background-color 0.3s ease;
 }
+
 .image a {
   display: flex;
   width: 100%;
@@ -63,39 +69,53 @@ body {
 /* Hover Effect */
 .image:hover::after {
   background-color: rgba(0, 0, 0, 0);
-  overflow: hidden; /* Dark semi-transparent overlay */
+  overflow: hidden;
+  /* Dark semi-transparent overlay */
 }
+
 .hero {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
-  background: url("images/lulihero.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  overflow: hidden;
+  height: 100vh;
+  background: url("images/lulihero.jpg") no-repeat center center/cover;
+  position: relative;
+  color: white;
+  text-align: center;
 }
+
 .hero::after {
   content: "";
   position: absolute;
-  top: 80px;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  /* background-color: rgba(0, 0, 0, 0.5); */
+  background-color: rgba(0, 0, 0, 0.5);
+}
 
-  content: "";
-}
 .hero h1,
-h2 {
+.hero h2 {
   margin: 0;
-  color: white;
-  font-weight: bold;
-  z-index: 1000;
+  z-index: 1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-family: 'Aldrich', sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
+
+.hero h1 {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
 .normal {
   font-weight: 400;
 }
@@ -108,6 +128,7 @@ strong {
 .light {
   font-weight: 300;
 }
+
 .header {
   display: flex;
 
@@ -122,6 +143,7 @@ strong {
 
   background-position: center top;
 }
+
 .header::after {
   content: "";
   position: absolute;
@@ -142,16 +164,19 @@ strong {
   justify-content: center;
   z-index: 1001;
 }
+
 .header-logo a img {
   width: 50px;
   height: 50px;
 }
+
 .nav {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
 }
+
 .nav-list {
   display: flex;
   list-style-type: none;
@@ -173,21 +198,27 @@ strong {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -10px; /* Adjust this value to control how low the underline is */
+  bottom: -10px;
+  /* Adjust this value to control how low the underline is */
   width: 0;
-  height: 2px; /* Thickness of the underline */
-  background-color: #007b8a; /* Color of the underline */
+  height: 2px;
+  /* Thickness of the underline */
+  background-color: #007b8a;
+  /* Color of the underline */
   /* transition: width 0.3s ease;  */
 }
+
 .nav-list a.active::after {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%; /* Show the underline only for the active link */
+  width: 100%;
+  /* Show the underline only for the active link */
 }
 
 .footerr {
-  background-color: #00ced1; /* Turquoise */
+  background-color: #00ced1;
+  /* Turquoise */
   color: white;
   padding: 20px 0;
   position: static;
@@ -195,19 +226,23 @@ strong {
   width: 100%;
   margin-top: 50px;
 }
+
 .footer-links a {
   text-decoration: none;
   color: white;
 }
+
 .footer-links a:hover {
   text-decoration: underline;
   color: white;
 }
+
 .footer-section-links,
 .footer-links {
   display: flex;
   flex-direction: column;
 }
+
 .footer-containerr {
   display: flex;
   flex-wrap: wrap;
@@ -247,7 +282,8 @@ strong {
 }
 
 .footer-nav-list a:hover {
-  color: #007b8a; /* Dark Blue */
+  color: #007b8a;
+  /* Dark Blue */
 }
 
 .footer-social {
@@ -322,14 +358,17 @@ strong {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* Prevents overflow */
+  overflow: hidden;
+  /* Prevents overflow */
   position: relative;
 }
 
 .card .image-box img {
   min-width: 100%;
-  max-height: 100%; /* Ensures the image does not exceed the container height */
-  object-fit: cover; /* Ensures the image fills the container without distorting aspect ratio */
+  max-height: 100%;
+  /* Ensures the image does not exceed the container height */
+  object-fit: cover;
+  /* Ensures the image fills the container without distorting aspect ratio */
   position: absolute;
   transition: opacity 0.5s ease-in-out;
 }
@@ -390,13 +429,15 @@ strong {
 }
 
 .container1-about {
-  background-color: #ffffff; /* Clean white for contrast */
+  background-color: #ffffff;
+  /* Clean white for contrast */
   width: 50%;
   padding: 30px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow for depth */
 }
 
 .container2-about {
@@ -419,11 +460,13 @@ strong {
   background-position: center;
   margin-bottom: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 2px solid #00ced1; /* Accent border color */
+  border: 2px solid #00ced1;
+  /* Accent border color */
 }
 
 .container2-1 {
-  background-color: #d4f1f9; /* Light bluish tone for cohesion */
+  background-color: #d4f1f9;
+  /* Light bluish tone for cohesion */
   padding: 20px;
   display: flex;
   justify-content: center;
@@ -437,12 +480,15 @@ strong {
 }
 
 .about-box {
-  width: calc(50% - 10px); /* Two boxes per row */
+  width: calc(50% - 10px);
+  /* Two boxes per row */
   height: calc(50% - 10px);
   border-radius: 10px;
   padding: 20px;
-  background-color: #00ced1; /* Vibrant blue */
-  color: #ffffff; /* White text for contrast */
+  background-color: #00ced1;
+  /* Vibrant blue */
+  color: #ffffff;
+  /* White text for contrast */
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -452,14 +498,17 @@ strong {
 }
 
 .about-box h1 {
-  font-size: 2rem; /* Larger font size for numbers */
+  font-size: 2rem;
+  /* Larger font size for numbers */
   margin: 0;
 }
 
 .about-box p {
   font-size: 1rem;
-  margin: 5px 0 0; /* Small spacing between text */
-  color: #f0f8ff; /* Slightly lighter text for description */
+  margin: 5px 0 0;
+  /* Small spacing between text */
+  color: #f0f8ff;
+  /* Slightly lighter text for description */
 }
 
 .box-container {
@@ -472,7 +521,7 @@ strong {
 
 h1,
 h2 {
-  color: #333; /* Dark text */
+  color: #2c3e50 .hero
 }
 
 .about-image {
@@ -560,13 +609,15 @@ header {
   justify-content: center;
   align-items: center;
 }
+
 .servicesimg {
   width: 50%;
   object-fit: cover;
 }
 
 .imageservices {
-  position: relative; /* Set relative positioning for the container */
+  position: relative;
+  /* Set relative positioning for the container */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -576,24 +627,33 @@ header {
 }
 
 .heroservices {
-  width: 80%; /* Ensure the image takes full width */
-  height: auto; /* Maintain aspect ratio */
+  width: 80%;
+  /* Ensure the image takes full width */
+  height: auto;
+  /* Maintain aspect ratio */
 }
 
 .services-main {
-  position: absolute; /* Allows the text to overlap the image */
-  top: 20px; /* Adjusts the vertical position */
-  right: 20px; /* Adjusts the horizontal position */
-  color: white; /* Text color for better contrast on the image */
+  position: absolute;
+  /* Allows the text to overlap the image */
+  top: 20px;
+  /* Adjusts the vertical position */
+  right: 20px;
+  /* Adjusts the horizontal position */
+  color: white;
+  /* Text color for better contrast on the image */
   text-align: right;
 
-  padding: 20px; /* Optional: Padding inside the text block */
-  border-radius: 8px; /* Optional: Rounded corners */
+  padding: 20px;
+  /* Optional: Padding inside the text block */
+  border-radius: 8px;
+  /* Optional: Rounded corners */
 }
 
 .services-main h1 {
   margin: 0;
-  font-size: 24px; /* Adjust as needed */
+  font-size: 24px;
+  /* Adjust as needed */
   font-weight: bold;
 }
 
@@ -612,7 +672,9 @@ header h1 {
 header p {
   font-size: 16px;
   color: #7f8c8d;
-} /*Services page*/
+}
+
+/*Services page*/
 
 .main-section {
   display: flex;
@@ -714,10 +776,12 @@ header {
   padding: 20px;
   background-color: #ffffff;
 }
+
 .login {
   color: black;
   z-index: 100;
 }
+
 .auth-buttons {
   display: flex;
 }
@@ -728,8 +792,10 @@ header {
   font-size: 16px;
   cursor: pointer;
   z-index: 100;
-  transition: all 0.3s ease; /* Smooth transition for hover effects */
-  border-radius: 5px; /* Added border radius for rounded corners */
+  transition: all 0.3s ease;
+  /* Smooth transition for hover effects */
+  border-radius: 5px;
+  /* Added border radius for rounded corners */
 }
 
 .login-btn {
@@ -746,13 +812,17 @@ header {
 
 /* Hover Effects */
 .login-btn:hover {
-  background-color: #f0f0f0; /* Light gray background on hover */
-  border-color: #bbb; /* Darker border on hover */
+  background-color: #f0f0f0;
+  /* Light gray background on hover */
+  border-color: #bbb;
+  /* Darker border on hover */
 }
 
 .create-account-btn:hover {
-  background-color: #9fe2ff; /* Darker green background on hover */
-  border-color: #9fe2ff; /* Darker green border on hover */
+  background-color: #9fe2ff;
+  /* Darker green background on hover */
+  border-color: #9fe2ff;
+  /* Darker green border on hover */
 }
 
 /* General Styling in home page for the 3 icons section */
@@ -761,7 +831,8 @@ header {
   justify-content: space-around;
   align-items: center;
   padding: 20px;
-  background-color: #f9fbfc; /* Light background */
+  background-color: #f9fbfc;
+  /* Light background */
   text-align: center;
   gap: 20px;
 }
@@ -774,7 +845,8 @@ header {
 .icon-container {
   width: 50px;
   height: 50px;
-  background-color: #e7f0ff; /* Light blue background */
+  background-color: #e7f0ff;
+  /* Light blue background */
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -789,20 +861,25 @@ header {
 
 .feature-title {
   font-size: 18px;
-  font-weight: 600; /* Semi-bold */
+  font-weight: 600;
+  /* Semi-bold */
   margin: 0;
-  color: #2c3e50; /* Dark text */
+  color: #2c3e50;
+  /* Dark text */
 }
 
 .feature-description {
   font-size: 14px;
-  color: #5a6a7a; /* Subtle text color */
+  color: #5a6a7a;
+  /* Subtle text color */
   margin-top: 5px;
 }
 
 .dropdown-menu {
-  left: 0; /* Aligns the dropdown to the left side of the button */
-  transform: translateX(-70%); /* shifts the dropdown left */
+  left: 0;
+  /* Aligns the dropdown to the left side of the button */
+  transform: translateX(-70%);
+  /* shifts the dropdown left */
   right: auto;
   margin-top: 10px;
   border-radius: 8px;
@@ -811,9 +888,11 @@ header {
   padding: 7px;
   text-align: center;
 }
+
 .dropdown-menu.dropdown-item {
   padding: 5px;
 }
+
 .dropdown-item:hover {
   background-color: #9fe2ff;
   border-radius: 5px;
@@ -838,9 +917,9 @@ body {
 }
 
 h1 {
-  font-size: 32px;
+  font-size: 62px;
   font-weight: 600;
-  color: #333;
+  color: #00ced1;
   margin-bottom: 20px;
 }
 
