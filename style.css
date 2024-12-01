@@ -103,7 +103,7 @@ body {
   margin: 0;
   z-index: 1;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  font-family: 'Aldrich', sans-serif;
+  font-family: "Aldrich", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -546,7 +546,7 @@ strong {
 
 h1,
 h2 {
-  color: #2c3e50 .hero
+  color: #2c3e50 .hero;
 }
 
 .about-image {
@@ -942,8 +942,8 @@ body {
 }
 
 h1 {
-  font-size: 62px;
-  font-weight: 600;
+  font-size: 45px;
+  font-weight: 500;
   color: #00ced1;
   margin-bottom: 20px;
 }
@@ -1088,7 +1088,7 @@ h1 {
   text-transform: uppercase;
   font-size: 2.5rem;
   margin-bottom: 25px;
-  font-family: 'Aldrich', serif;
+  font-family: "Aldrich", serif;
   color: #333;
 }
 
@@ -1138,7 +1138,7 @@ h1 {
 .container .services .card .content .title {
   font-size: 1.5rem;
   margin-bottom: 10px;
-  font-family: 'Aldrich', serif;
+  font-family: "Aldrich", serif;
   color: #333;
 }
 
@@ -1149,7 +1149,7 @@ h1 {
 .container .services .card .content p {
   font-size: 1rem;
   color: #555;
-  font-family: 'Aldrich', serif;
+  font-family: "Aldrich", serif;
 }
 
 .container .services .card:hover .content p {
