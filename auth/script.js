@@ -1,4 +1,4 @@
-emailjs.init(proccess.env.USER_ID);
+emailjs.init("PyH29-umGbaGbPpwR");
 function validateLoginForm(event) {
   event.preventDefault(); // Prevent form submission and page reload
   const email = document.getElementById("email").value;
@@ -70,8 +70,9 @@ function resetPassword(event) {
     });
     return false; // Explicitly return false to stop form submission
   }
-  emailjs.send("service_96tvs2k", "template_5huj37a", { email: email }).then(
+  emailjs.send("service_ld7b7zm", "template_5huj37a", { email: email }).then(
     (response) => {
+      console.log("Email sent successfully:", response);
       Swal.fire({
         icon: "success",
         title: "Email Sent",
