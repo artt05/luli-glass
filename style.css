@@ -8,6 +8,8 @@ body {
 
 .container {
   width: 100%;
+  margin-top: 50px;
+  /* Adjust the value as needed */
 }
 
 .row {
@@ -114,6 +116,29 @@ body {
 .hero h2 {
   font-size: 2.5rem;
   margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  z-index: 1;
+}
+
+.hero-button {
+  background-color: #007b8a;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  z-index: 1;
+  transition: background-color 0.3s ease;
+}
+
+.hero-button:hover {
+  background-color: #005f6b;
 }
 
 .normal {
@@ -1056,4 +1081,77 @@ h1 {
     width: 100%;
     margin-bottom: 20px;
   }
+}
+
+.container h2 {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  margin-bottom: 25px;
+  font-family: 'Aldrich', serif;
+  color: #333;
+}
+
+.container .services {
+  justify-content: space-around;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 20px;
+}
+
+.container .services .card {
+  width: 330px;
+  text-align: center;
+  background: #ffffff;
+  padding: 20px 15px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.container .services .card:hover {
+  background: #007b8a;
+  color: #ffffff;
+}
+
+.container .services .card .content {
+  transition: 0.3s;
+}
+
+.container .services .card:hover .content {
+  transform: scale(1.07);
+}
+
+.container .services .card .content .icon {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #007b8a;
+}
+
+.container .services .card:hover .content .icon {
+  color: #ffffff;
+}
+
+.container .services .card .content .title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  font-family: 'Aldrich', serif;
+  color: #333;
+}
+
+.container .services .card:hover .content .title {
+  color: #ffffff;
+}
+
+.container .services .card .content p {
+  font-size: 1rem;
+  color: #555;
+  font-family: 'Aldrich', serif;
+}
+
+.container .services .card:hover .content p {
+  color: #ffffff;
 }
