@@ -571,29 +571,28 @@ header {
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 30px;
+  /* margin-top: 30px; */
   height: auto;
 }
 
 .heroservices {
-  width: 80%; /* Ensure the image takes full width */
-  height: auto; /* Maintain aspect ratio */
+  width: 100%; /* Ensure the image takes full width */
+  height: 80vh; /* Maintain aspect ratio */
 }
-
 .services-main {
-  position: absolute; /* Allows the text to overlap the image */
-  top: 20px; /* Adjusts the vertical position */
-  right: 20px; /* Adjusts the horizontal position */
-  color: white; /* Text color for better contrast on the image */
-  text-align: right;
-
-  padding: 20px; /* Optional: Padding inside the text block */
-  border-radius: 8px; /* Optional: Rounded corners */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  border-radius: 8px;
 }
 
 .services-main h1 {
   margin: 0;
-  font-size: 24px; /* Adjust as needed */
+  font-size: 40px; /* Adjust as needed */
   font-weight: bold;
 }
 
