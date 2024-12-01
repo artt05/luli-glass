@@ -1,4 +1,4 @@
-emailjs.init("PyH29-umGbaGbPpwR");
+// emailjs.init("PyH29-umGbaGbPpwR");
 // Initialize Swiper when DOM is fully loaded
 document.addEventListener("DOMContentLoaded", function () {
   const swiper = new Swiper(".slider-wrapper", {
