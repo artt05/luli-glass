@@ -1,3 +1,4 @@
+emailjs.init("PyH29-umGbaGbPpwR");
 function validateLoginForm(event) {
   event.preventDefault(); // Prevent form submission and page reload
   const email = document.getElementById("email").value;
@@ -100,6 +101,31 @@ function resetPassword(event) {
     });
     return false; // Explicitly return false to stop form submission
   }
+  emailjs.send("service_96tvs2k", "template_5huj37a", { email: email }).then(
+    (response) => {
+      Swal.fire({
+        icon: "success",
+        title: "Email Sent",
+        text: "Password reset link sent to your email.",
+        showConfirmButton: true,
+        timer: 5000,
+        timerProgressBar: true,
+        backdrop: false,
+      });
+    },
+    (error) => {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Failed to send email. Please try again later.",
+        showConfirmButton: true,
+        timer: 5000,
+        timerProgressBar: true,
+        backdrop: false,
+      });
+      console.error("Failed to send email:", error);
+    }
+  );
 
   Swal.fire({
     icon: "success",
