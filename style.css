@@ -250,7 +250,6 @@ strong {
   position: static;
   bottom: 0;
   width: 100%;
-  margin-top: 50px;
 }
 
 .footer-links a {
@@ -342,7 +341,7 @@ strong {
   text-align: center;
   font-size: 35px;
   padding: 50px;
-  background-color: #e0ffff;
+  background-color: #f9fbfc;
   height: 100%;
 }
 
@@ -451,7 +450,8 @@ strong {
   gap: 20px;
   margin-left: auto;
   margin-right: auto;
-  height: 70vh;
+  height: 100vh;
+  margin-bottom: 50px;
 }
 
 .container1-about {
@@ -547,7 +547,7 @@ strong {
 
 h1,
 h2 {
-  color: #2c3e50 .hero;
+  color: #2c3e50;
 }
 
 .about-image {
@@ -687,6 +687,9 @@ header {
   margin: 10px 0 0;
   font-size: 16px;
   line-height: 1.5;
+}
+.services-page {
+  margin-bottom: 50px;
 }
 
 header h1 {
@@ -1164,7 +1167,7 @@ h1 {
   gap: 20px;
   padding: 50px;
 
-  background-color: #ffffff;
+  background-color: #f7f7f7;
 }
 
 /* Testimonial Card */
