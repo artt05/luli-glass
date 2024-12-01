@@ -11,9 +11,12 @@
   <!-- Bootstrap Icons: This link imports a collection of SVG-based icons from the Bootstrap Icons library -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="aldrich-regular">
   <div class="header">
     <div style="z-index: 1000; padding-left: 20px; font-size: 20px">
       LULIGLASS
@@ -24,7 +27,7 @@
       </a>
     </div>
     <div class="nav">
-      <ul class="nav-list">
+      <ul class="nav-list aldrich-regular">
         <li><a href="index.html">Home</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="about.html">About</a></li>
@@ -37,9 +40,9 @@
       <div class="dropdown">
         <i class="bi bi-person-fill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" role="button"
           aria-haspopup="true" style="font-size: 1.5rem"></i>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="login.html">Log in</a></li>
-          <li><a class="dropdown-item" href="register.html">Register</a></li>
+        <ul class="dropdown-menu aldrich-regular">
+          <li><a class="dropdown-item" href="auth/login.html">Log in</a></li>
+          <li><a class="dropdown-item" href="auth/register.html">Register</a></li>
         </ul>
       </div>
       <div class="position-relative">
@@ -54,35 +57,49 @@
     </div>
   </div>
 
+  <div class="hero">
+    <h1>Contact Us</h1>
+    <h2>We're Here to Help</h2>
+    <p>Got any questions about the products? We're here to help. Chat to our friendly team 24/7 and get onboard in less
+      than 5 minutes.</p>
+  </div>
+
   <div class="contact-container">
     <!-- Contact Form Section -->
     <div class="form-section">
       <div class="contact-form">
         <h1>Contact our team</h1>
-        <p>
-          Got any questions about the products? We're here to help. Chat to
-          our friendly team 24/7 and get onboard in less than 5 minutes.
-        </p>
+        
+          <div class="form-group">
+          <form onsubmit="sendContactEmail(event)" method="POST">
+            <label for="first-name">First name</label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              placeholder="First name"
+              required
+            />
 
-        <form action="#" method="POST">
-          <label for="first-name">First name</label>
-          <input type="text" id="first-name" name="first-name" placeholder="First name" required />
-
-          <label for="last-name">Last name</label>
-          <input type="text" id="last-name" name="last-name" placeholder="Last name" required />
+            <label for="last-name">Last name</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              placeholder="Last name"
+              required
+            />
 
           <label for="email">Email</label>
           <input type="email" id="email" name="email" placeholder="Your email" required />
 
-          <label for="phone-number">Phone number</label>
-          <input type="tel" id="phone-number" name="phone-number" required />
+            <label for="phoneNumber">Phone number</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" required />
 
-          <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Leave us a message..." rows="4" required></textarea>
-
-          <label for="services">Services</label>
-
-          <button type="submit">Send message</button>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
     </div>

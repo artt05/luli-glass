@@ -21,7 +21,9 @@ body {
   align-items: stretch;
   height: 100%;
 }
-
+.backToHome a:hover {
+  text-decoration: none;
+}
 @media screen and (max-width: 500px) {
   .container.swiper {
     width: 350px !important;
@@ -69,19 +71,32 @@ form input {
   padding: 10px;
   margin-bottom: 5px;
   border-radius: 10px;
-  border: 1px solid #c9ac8c;
+  border: 1px solid #e8e8e8;
   font-size: 16px;
   background-color: #fff;
 }
+.swal2-popup {
+  border-radius: 20px !important;
+}
+.swal2-confirm {
+  background-color: #9fe2ff;
+  border-radius: 10px;
+  color: black;
+}
 
+.swal2-confirm:hover {
+  background-color: #bee6f7 !important;
+  border-radius: 10px;
+  color: black;
+}
 form input:focus {
   outline: none;
-  box-shadow: 0 0 10px rgb(186, 154, 111);
+  box-shadow: 0 0 10px #9fe2ff;
 }
 
 .noble {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .error {
@@ -93,7 +108,8 @@ button {
   width: 120px;
   padding: 10px;
   font-size: 18px;
-  background-color: rgb(186, 154, 111);
+  background-color: #9fe2ff;
+
   color: black;
   border: none;
   border-radius: 10px;
@@ -101,7 +117,7 @@ button {
 }
 
 button:hover {
-  background-color: rgb(194, 168, 137);
+  background-color: #bee6f7;
 }
 
 .side-container {
@@ -160,7 +176,11 @@ button:hover {
 
 .log-in {
   display: flex;
-  background-color: rgb(238, 216, 187);
+  background-color: white;
+  /* background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%239fe2ff" fill-opacity="1" d="M0,288L48,261.3C96,235,192,181,288,186.7C384,192,480,256,576,272C672,288,768,256,864,229.3C960,203,1056,181,1152,192C1248,203,1344,245,1392,266.7L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>'); */
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
   height: 100%;
   width: 100%;
 }
@@ -168,9 +188,14 @@ button:hover {
 .forgotPass a {
   text-align: right;
   padding-right: 5px;
-  padding-bottom: 30px;
+  padding-bottom: 40px;
   display: block;
   color: black;
+  text-decoration: none;
+}
+
+.forgotPass a:hover {
+  text-decoration: underline;
 }
 .forgot-pass-container {
   max-width: 350px;
@@ -182,7 +207,7 @@ button:hover {
 
 .register {
   display: flex;
-  background-color: rgb(238, 216, 187);
+  background-color: white;
   height: 100%;
   width: 100%;
   justify-content: space-between;
