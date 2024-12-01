@@ -1,4 +1,3 @@
-emailjs.init("PyH29-umGbaGbPpwR");
 function validateLoginForm(event) {
   event.preventDefault(); // Prevent form submission and page reload
   const email = document.getElementById("email").value;
@@ -51,7 +50,7 @@ function validateLoginForm(event) {
 
   return true;
 }
-
+emailjs.init("PyH29-umGbaGbPpwR");
 function resetPassword(event) {
   event.preventDefault(); // Prevent form submission and page reload
 
@@ -97,17 +96,7 @@ function resetPassword(event) {
     }
   );
 
-  Swal.fire({
-    icon: "success",
-    title: "Email Sent",
-    text: "Password reset link sent to your email.",
-    showConfirmButton: true,
-    timer: 5000,
-    timerProgressBar: true,
-    backdrop: false, // Disables the default dark backdrop
-  });
-
-  return false; // Ensure no form submission happens
+  // Ensure no form submission happens
 }
 
 function validateForgotPasswordForm(event) {
