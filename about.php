@@ -38,16 +38,16 @@
         LULIGLASS
       </div>
       <div class="header-logo">
-        <a href="index.html">
+        <a href="index.php">
           <img src="images/luli-glass.png" alt="Logo.jpg"
         /></a>
       </div>
       <div class="nav">
         <ul class="nav-list">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="about.html" class="active">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="index.php">Home</a></li>
+          <li><a href="services.php">Services</a></li>
+          <li><a href="about.php" class="active">About</a></li>
+          <li><a href="contact.php">Contact</a></li>
         </ul>
       </div>
       <div class="icons">
@@ -62,8 +62,8 @@
             style="font-size: 1.5rem"
           ></i>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="auth/login.html">Log in</a></li>
-            <li><a class="dropdown-item" href="auth/register.html">Register</a></li>
+            <li><a class="dropdown-item" href="auth/login.php">Log in</a></li>
+            <li><a class="dropdown-item" href="auth/register.php">Register</a></li>
           </ul>
         </div>
         <div class="position-relative">
@@ -129,7 +129,7 @@
     <footer class="footerr">
       <div class="footer-containerr">
         <div class="footer-logo">
-          <a href="index.html">
+          <a href="index.php">
             <img src="images/luli-glass.png" alt="Luli Glass Logo" />
           </a>
           <div class="footer-section contact">

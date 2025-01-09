@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap" rel="stylesheet">
@@ -25,17 +25,17 @@
       LULIGLASS
     </div>
     <div class="header-logo">
-      <a href="index.html">
+      <a href="index.php">
         <img src="/images/luli-glass.png" alt="Logo.jpg" />
       </a>
     </div>
     <div class="nav">
       <ul class="nav-list aldrich-regular">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="services.html">Products</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="services.php">Services</a></li>
+        <li><a href="services.php">Products</a></li>
+        <li><a href="about.php">About</a></li>
+        <li><a href="contact.php" class="active">Contact</a></li>
       </ul>
     </div>
 
@@ -45,8 +45,8 @@
         <i class="bi bi-person-fill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" role="button"
           aria-haspopup="true" style="font-size: 1.5rem"></i>
         <ul class="dropdown-menu aldrich-regular">
-          <li><a class="dropdown-item" href="auth/login.html">Log in</a></li>
-          <li><a class="dropdown-item" href="auth/register.html">Register</a></li>
+          <li><a class="dropdown-item" href="auth/login.php">Log in</a></li>
+          <li><a class="dropdown-item" href="auth/register.php">Register</a></li>
         </ul>
       </div>
       <div class="position-relative">
@@ -73,8 +73,8 @@
     <div class="form-section">
       <div class="contact-form">
         <h1>Contact our team</h1>
-        
-          <div class="form-group">
+
+        <div class="form-group">
           <form onsubmit="sendContactEmail(event)" method="POST">
             <label for="first-name">First name</label>
             <input
@@ -82,8 +82,7 @@
               id="firstName"
               name="firstName"
               placeholder="First name"
-              required
-            />
+              required />
 
             <label for="last-name">Last name</label>
             <input
@@ -91,19 +90,18 @@
               id="lastName"
               name="lastName"
               placeholder="Last name"
-              required
-            />
+              required />
 
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="Your email" required />
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Your email" required />
 
             <label for="phoneNumber">Phone number</label>
             <input type="tel" id="phoneNumber" name="phoneNumber" required />
 
             <label for="message">Message</label>
             <textarea id="message" name="message" rows="4" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
     </div>
@@ -130,7 +128,7 @@
   <footer class="footerr">
     <div class="footer-containerr">
       <div class="footer-logo">
-        <a href="index.html">
+        <a href="index.php">
           <img src="images/luli-glass.png" alt="Luli Glass Logo" />
         </a>
         <div class="footer-section contact">
@@ -177,10 +175,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
-    <script
-  type="text/javascript"
-  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
-></script>
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../js/script.js"></script>

@@ -5,12 +5,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Luli Glass</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
@@ -35,26 +34,26 @@
   <div class="header">
     <div style="z-index: 1000; padding-left: 20px; font-size: 20px;">LULIGLASS</div>
     <div class="header-logo">
-      <a href="index.html">
+      <a href="index.php">
 
         <img src="/images/luli-glass.png" alt="Logo.jpg" />
       </a>
     </div>
     <div class="nav">
       <ul class="nav-list aldrich-regular">
-        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="index.php" class="active">Home</a></li>
         <li class="dropdown">
-          <a href="services.html">Products <img src="dropdown-icon.png" alt="Dropdown Icon" class="dropdown-icon"></a>
+          <a href="services.php">Products <img src="dropdown-icon.png" alt="Dropdown Icon" class="dropdown-icon"></a>
           <ul class="dropdown-menu">
-            <li><a href="doors.html">Doors</a></li>
-            <li><a href="windows.html">Windows</a></li>
+            <li><a href="doors.php">Doors</a></li>
+            <li><a href="windowsregister.php">Windows</a></li>
           </ul>
         </li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.php">About</a></li>
+        <li><a href="contact.php">Contact</a></li>
       </ul>
     </div>
-    
+
 
     <div class="icons">
       <!-- An icon (bi-person-fill) taken from Bootstrap activates a dropdown menu on click, providing options to "Log in" or "Register". -->
@@ -62,8 +61,8 @@
         <i class="bi bi-person-fill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" role="button"
           aria-haspopup="true" style="font-size: 1.5rem"></i>
         <ul class="dropdown-menu aldrich-regular">
-          <li><a class="dropdown-item" href="auth/login.html">Log in</a></li>
-          <li><a class="dropdown-item" href="auth/register.html">Register</a></li>
+          <li><a class="dropdown-item" href="auth/login.php">Log in</a></li>
+          <li><a class="dropdown-item" href="auth/register.php">Register</a></li>
         </ul>
       </div>
       <div class="position-relative">
@@ -82,42 +81,9 @@
     <h1>Welcome to Luli Glass</h1>
     <h2>Your Trusted Glass Experts</h2>
     <p>Providing high-quality glass solutions for over 20 years.</p>
-    <a href="contact.html" class="btn btn-primary hero-button aldrich-regular">Contact Us</a>
+    <a href="contact.php" class="btn btn-primary hero-button aldrich-regular">Contact Us</a>
   </div>
-  <!-- <div class="container">
-    <div class="section">
-      <div class="row">
 
-        <div class="box">
-          <div class="image">
-            <a href="#">
-              <img src="images/port.webp" alt="" loading="lazy">
-              <h3 class="Service-name">Serviset</h3>
-          </div>
-          </a>
-          <p class="service-details">Description Description Description Description Description </p>
-        </div>
-        <div class="box">
-          <div class="image">
-            <a href="#">
-              <img src="images/port.webp" alt="" loading="lazy">
-              <h3 class="Service-name">Serviset</h3>
-          </div>
-          </a>
-          <p class="service-details">Description Description Description Description Description </p>
-        </div>
-        <div class="box">
-          <div class="image">
-            <a href="#">
-              <img src="images/port.webp" alt="" loading="lazy">
-              <h3 class="Service-name">Serviset</h3>
-            </a>
-          </div>
-          <p class="service-details">Description Description Description Description Description </p>
-        </div>
-
-      </div>
-    </div> -->
 
   <div class="container">
     <h2>Our Services</h2>
@@ -150,31 +116,78 @@
   </section>
   </div>
 
+  <!-- 
+  <div class="chakra-stack">
+    <div>
+        <p class="chakra-text">How It Works</p>
+        <div class="chakra-text">It’s quite simple. Enter your measurements, choose your favorite glass tint, glass thickness, strength, edge style, etc., and check out your custom-designed glass table top.</div>
+    </div>
+
+    <div class="step">
+        <div class="step-number">1</div>
+        <img src="/path/to/design-specs-icon.svg" alt="Custom Design to Your Specs">
+        <h2 class="chakra-heading">Custom Design to Your Specs</h2>
+        <p class="chakra-text">There are no limits. We cut to your exact needs, from simple shapes to very complex projects.</p>
+    </div>
+
+    <div class="step">
+        <div class="step-number">2</div>
+        <img src="/path/to/support-icon.svg" alt="Technical & Design Support">
+        <h2 class="chakra-heading">Technical & Design Support</h2>
+        <p class="chakra-text">Our team is here to support you in all your questions to get you the right product to your exact needs. Live chat with us or email!</p>
+    </div>
+
+    <div class="step">
+        <div class="step-number">3</div>
+        <img src="/path/to/fabrication-icon.svg" alt="Fabrication & Quality Control">
+        <h2 class="chakra-heading">Fabrication & Quality Control</h2>
+        <p class="chakra-text">Our glass table tops are fabricated in our state-of-the-art plant in Manassas, VA. We guarantee 100% premium quality at all times.</p>
+        <a class="button" href="/path/to/video.mp4">
+            <span>Take a Look Behind The Scene</span>
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0z"></path><path d="M15 5l-1.41 1.41L18.17 11H2v2h16.17l-4.59 4.59L15 19l7-7-7-7z"></path></svg>
+        </a>
+    </div>
+
+    <div class="step">
+        <div class="step-number">4</div>
+        <img src="/path/to/delivery-icon.svg" alt="Curbside Delivery">
+        <h2 class="chakra-heading">Curbside, Contactless Delivery</h2>
+        <p class="chakra-text">Your glass table top, hardware, and accessories are packed safely and curbside delivered by a FedEx carrier. All prices include FREE shipping.</p>
+        <a class="button" href="/shipping-handling">
+            <span>View Shipping and Handling</span>
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0z"></path><path d="M15 5l-1.41 1.41L18.17 11H2v2h16.17l-4.59 4.59L15 19l7-7-7-7z"></path></svg>
+        </a>
+    </div>
+</div>
+ -->
+
+
+
   <section class="features">
     <div class="container">
       <h2>Why Choose Us?</h2>
       <div class="features">
-      <div class="feature">
-        <div class="icon-container">
-          <img src="/images/window-svgrepo-com.svg" alt="Premium Quality Icon" class="feature-icon" />
+        <div class="feature">
+          <div class="icon-container">
+            <img src="/images/window-svgrepo-com.svg" alt="Premium Quality Icon" class="feature-icon" />
+          </div>
+          <h3 class="feature-title">Premium Quality</h3>
+          <p class="feature-description">Industrial-grade glass fiber fabric</p>
         </div>
-        <h3 class="feature-title">Premium Quality</h3>
-        <p class="feature-description">Industrial-grade glass fiber fabric</p>
-      </div>
-      <div class="feature">
-        <div class="icon-container">
-          <img src="/images/security-svgrepo-com.svg" alt="Guaranteed Icon" class="feature-icon" />
+        <div class="feature">
+          <div class="icon-container">
+            <img src="/images/security-svgrepo-com.svg" alt="Guaranteed Icon" class="feature-icon" />
+          </div>
+          <h3 class="feature-title">Guaranteed</h3>
+          <p class="feature-description">Lifetime warranty on all products</p>
         </div>
-        <h3 class="feature-title">Guaranteed</h3>
-        <p class="feature-description">Lifetime warranty on all products</p>
-      </div>
-      <div class="feature">
-        <div class="icon-container">
-          <img src="/images/shipping-truck-svgrepo-com.svg" alt="Fast Shipping Icon" class="feature-icon" />
+        <div class="feature">
+          <div class="icon-container">
+            <img src="/images/shipping-truck-svgrepo-com.svg" alt="Fast Shipping Icon" class="feature-icon" />
+          </div>
+          <h3 class="feature-title">Fast Shipping</h3>
+          <p class="feature-description">2-3 business days delivery</p>
         </div>
-        <h3 class="feature-title">Fast Shipping</h3>
-        <p class="feature-description">2-3 business days delivery</p>
-      </div>
       </div>
     </div>
   </section>
@@ -188,7 +201,7 @@
       </div>
       <p>"Luli Glass provided exceptional service and quality products. Highly recommend!"</p>
     </div>
-  
+
     <div class="testimonial-card">
       <div class="card-header">
         <div class="avatar" style="background: linear-gradient(135deg, #f87171, #a855f7);"></div>
@@ -196,7 +209,7 @@
       </div>
       <p>"The best glass products I've ever purchased. Great customer support too!"</p>
     </div>
-  
+
     <div class="testimonial-card">
       <div class="card-header">
         <div class="avatar" style="background: linear-gradient(135deg, #34d399, #14b8a6);"></div>
@@ -205,7 +218,7 @@
       <p>"Amazing craftsmanship and attention to detail. Will definitely buy again."</p>
     </div>
   </section>
-  
+
 
 
   <!--Slider-->
@@ -252,7 +265,7 @@
           </div>
           <div class="card swiper-slide">
             <div class="image-box four">
-              <img src="/images/luli-glass.png" class="default-image" />
+              <img src="/luli-glass/images/luli-glass.png" class="default-image" />
               <img src="/images/black.jpg" class="hover-image" />
             </div>
             <div class="info">
@@ -310,7 +323,7 @@
   <footer class="footerr">
     <div class="footer-containerr">
       <div class="footer-logo">
-        <a href="index.html">
+        <a href="index.php">
           <img src="images/luli-glass.png" alt="Luli Glass Logo" />
         </a>
         <div class="footer-section contact">
@@ -359,12 +372,11 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
-    <script
-  type="text/javascript"
-  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
-></script>
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-   <script src="./js/script.js"></script>
+  <script src="./js/script.js"></script>
 </body>
 
 </html>

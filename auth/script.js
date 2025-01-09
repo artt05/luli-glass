@@ -45,7 +45,7 @@ function validateLoginForm(event) {
     backdrop: false,
   }).then(() => {
     // Redirect to homepage or dashboard
-    window.location.href = "../index.html"; // Change the URL as needed
+    window.location.href = "../index.php"; // Change the URL as needed
   });
 
   return true;
@@ -210,7 +210,7 @@ function validateRegisterForm(event) {
     })
     .then(() => {
       // Redirect to homepage or dashboard
-      window.location.href = "../index.html"; // Change the URL as needed
+      window.location.href = "../index.php"; // Change the URL as needed
     });
 
   // Reset the form after submission
