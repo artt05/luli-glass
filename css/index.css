@@ -1,0 +1,26 @@
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-menu li a {
+  padding: 10px 15px;
+  white-space: nowrap;
+}
+
+.dropdown-icon {
+  width: 12px; /* Adjust as needed */
+  height: 12px; /* Adjust as needed */
+  margin-left: 5px;
+}
+
+.dropdown.open .dropdown-menu {
+  display: block;
+}

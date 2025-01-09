@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="./css/index.css" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,11 +43,18 @@
     <div class="nav">
       <ul class="nav-list aldrich-regular">
         <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="services.html">Services</a></li>
+        <li class="dropdown">
+          <a href="services.html">Products <img src="dropdown-icon.png" alt="Dropdown Icon" class="dropdown-icon"></a>
+          <ul class="dropdown-menu">
+            <li><a href="doors.html">Doors</a></li>
+            <li><a href="windows.html">Windows</a></li>
+          </ul>
+        </li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
+    
 
     <div class="icons">
       <!-- An icon (bi-person-fill) taken from Bootstrap activates a dropdown menu on click, providing options to "Log in" or "Register". -->
@@ -356,7 +364,7 @@
   src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
 ></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="script.js"></script>
+   <script src="./js/script.js"></script>
 </body>
 
 </html>
