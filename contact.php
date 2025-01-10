@@ -26,14 +26,14 @@
     </div>
     <div class="header-logo">
       <a href="index.php">
-        <img src="/images/luli-glass.png" alt="Logo.jpg" />
+        <img src="./images/luli-glass.png" alt="Logo.jpg" />
       </a>
     </div>
     <div class="nav">
       <ul class="nav-list aldrich-regular">
         <li><a href="index.php">Home</a></li>
-        <li><a href="services.php">Services</a></li>
-        <li><a href="services.php">Products</a></li>
+
+        <li><a href="products.php">Products</a></li>
         <li><a href="about.php">About</a></li>
         <li><a href="contact.php" class="active">Contact</a></li>
       </ul>
@@ -129,7 +129,7 @@
     <div class="footer-containerr">
       <div class="footer-logo">
         <a href="index.php">
-          <img src="images/luli-glass.png" alt="Luli Glass Logo" />
+          <img src="./images/luli-glass.png" alt="Luli Glass Logo" />
         </a>
         <div class="footer-section contact">
 

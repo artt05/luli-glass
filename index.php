@@ -36,20 +36,14 @@
     <div class="header-logo">
       <a href="index.php">
 
-        <img src="/images/luli-glass.png" alt="Logo.jpg" />
+        <img src="./images/luli-glass.png" alt="Logo.jpg" />
       </a>
     </div>
     <div class="nav">
       <ul class="nav-list aldrich-regular">
         <li><a href="index.php" class="active">Home</a></li>
-        <li class="dropdown">
-          <a href="services.php">Products <img src="dropdown-icon.png" alt="Dropdown Icon" class="dropdown-icon"></a>
-          <ul class="dropdown-menu">
-            <li><a href="doors.php">Doors</a></li>
-            <li><a href="windowsregister.php">Windows</a></li>
-          </ul>
-        </li>
-        <li><a href="about.php">About</a></li>
+        <li><a href="products.php">Products</a></li>
+        <li><a href="about.php">About us</a></li>
         <li><a href="contact.php">Contact</a></li>
       </ul>
     </div>
@@ -61,7 +55,7 @@
         <i class="bi bi-person-fill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" role="button"
           aria-haspopup="true" style="font-size: 1.5rem"></i>
         <ul class="dropdown-menu aldrich-regular">
-          <li><a class="dropdown-item" href="auth/login.php">Log in</a></li>
+          <li><a class="dropdown-item" href="./auth/login.php">Log in</a></li>
           <li><a class="dropdown-item" href="auth/register.php">Register</a></li>
         </ul>
       </div>
@@ -169,21 +163,21 @@
       <div class="features">
         <div class="feature">
           <div class="icon-container">
-            <img src="/images/window-svgrepo-com.svg" alt="Premium Quality Icon" class="feature-icon" />
+            <img src="./images/window-svgrepo-com.svg" alt="Premium Quality Icon" class="feature-icon" />
           </div>
           <h3 class="feature-title">Premium Quality</h3>
           <p class="feature-description">Industrial-grade glass fiber fabric</p>
         </div>
         <div class="feature">
           <div class="icon-container">
-            <img src="/images/security-svgrepo-com.svg" alt="Guaranteed Icon" class="feature-icon" />
+            <img src="./images/security-svgrepo-com.svg" alt="Guaranteed Icon" class="feature-icon" />
           </div>
           <h3 class="feature-title">Guaranteed</h3>
           <p class="feature-description">Lifetime warranty on all products</p>
         </div>
         <div class="feature">
           <div class="icon-container">
-            <img src="/images/shipping-truck-svgrepo-com.svg" alt="Fast Shipping Icon" class="feature-icon" />
+            <img src="./images/shipping-truck-svgrepo-com.svg" alt="Fast Shipping Icon" class="feature-icon" />
           </div>
           <h3 class="feature-title">Fast Shipping</h3>
           <p class="feature-description">2-3 business days delivery</p>
@@ -229,8 +223,8 @@
         <div class="card-wrapper swiper-wrapper">
           <div class="card swiper-slide">
             <div class="image-box one">
-              <img src="/images/luli-glass.png" class="default-image" />
-              <img src="/images/black.jpg" class="hover-image" />
+              <img src="./images/luli-glass.png" class="default-image" />
+              <img src="./images/black.jpg" class="hover-image" />
             </div>
             <div class="info">
               <div class="name">Text</div>
@@ -241,8 +235,8 @@
           </div>
           <div class="card swiper-slide">
             <div class="image-box two">
-              <img src="/images/luli-glass.png" class="default-image" />
-              <img src="/images/black.jpg" class="hover-image" />
+              <img src="./images/luli-glass.png" class="default-image" />
+              <img src="./images/black.jpg" class="hover-image" />
             </div>
             <div class="info">
               <div class="name">Text</div>
@@ -253,8 +247,8 @@
           </div>
           <div class="card swiper-slide">
             <div class="image-box three">
-              <img src="/images/luli-glass.png" class="default-image" />
-              <img src="/images/black.jpg" class="hover-image" />
+              <img src="/luli-glass/images/luli-glass.png" class="default-image" />
+              <img src="/luli-glass/images/black.jpg" class="hover-image" />
             </div>
             <div class="info">
               <div class="name">Text</div>
@@ -266,7 +260,7 @@
           <div class="card swiper-slide">
             <div class="image-box four">
               <img src="/luli-glass/images/luli-glass.png" class="default-image" />
-              <img src="/images/black.jpg" class="hover-image" />
+              <img src="/luli-glass/images/black.jpg" class="hover-image" />
             </div>
             <div class="info">
               <div class="name">Text</div>
@@ -277,8 +271,8 @@
           </div>
           <div class="card swiper-slide">
             <div class="image-box five">
-              <img src="/images/luli-glass.png" class="default-image" />
-              <img src="/images/black.jpg" class="hover-image" />
+              <img src="./images/luli-glass.png" class="default-image" />
+              <img src="./images/black.jpg" class="hover-image" />
             </div>
             <div class="info">
               <div class="name">Text</div>
@@ -289,8 +283,8 @@
           </div>
           <div class="card swiper-slide">
             <div class="image-box six">
-              <img src="/images/luli-glass.png" class="default-image" />
-              <img src="/images/black.jpg" class="hover-image" />
+              <img src="./images/luli-glass.png" class="default-image" />
+              <img src="./images/black.jpg" class="hover-image" />
             </div>
             <div class="info">
               <div class="name">Text</div>
@@ -301,8 +295,8 @@
           </div>
           <div class="card swiper-slide">
             <div class="image-box seven">
-              <img src="/images/luli-glass.png" class="default-image" />
-              <img src="/images/black.jpg" class="hover-image" />
+              <img src="./images/luli-glass.png" class="default-image" />
+              <img src="./images/black.jpg" class="hover-image" />
             </div>
             <div class="info">
               <div class="name">Text</div>

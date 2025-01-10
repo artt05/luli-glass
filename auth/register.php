@@ -35,7 +35,7 @@
       <!-- Branding header with company name -->
       <div class="noble">
         <img
-          src="/images/luli-glass.png"
+          src="./images/luli-glass.png"
           style="width: 150px; height: 150px" />
       </div>
 

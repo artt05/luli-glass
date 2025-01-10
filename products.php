@@ -42,13 +42,13 @@
       </div>
       <div class="header-logo">
         <a href="index.php">
-          <img src="/images/luli-glass.png" alt="Logo.jpg" />
+          <img src="./images/luli-glass.png" alt="Logo.jpg" />
         </a>
       </div>
       <div class="nav">
         <ul class="nav-list">
           <li><a href="index.php">Home</a></li>
-          <li><a href="services.php" class="active">Services</a></li>
+          <li><a href="products.php" class="active">Products</a></li>
           <li><a href="about.php">About</a></li>
           <li><a href="contact.php">Contact</a></li>
         </ul>
@@ -91,7 +91,7 @@
     <!-- Header Section -->
 
     <div class="imageservices">
-      <!-- <img src="images/lulihero.jpg" class="heroservices" /> -->
+
       <div class="services-main">
         <h1>Our New Collection</h1>
         <p>
@@ -107,32 +107,32 @@
       <aside class="sidebar">
         <button class="tab active" data-type="glass">Glass</button>
         <button class="tab" data-type="mirror">Mirror</button>
-        <button class="tab" data-type="plastic">Plastic</button>
+
       </aside>
     </div>
     <!-- Product Grid -->
     <section class="product-grid">
       <!-- Glass Products -->
       <div class="product-card" data-category="glass">
-        <img src=../images/clearglass.jpg alt="Glass Product" class="glass" />
+        <img src=./images/clearglass.jpg alt="Glass Product" class="glass" />
         <h3>Clear Glass </h3>
         <!-- <p>A high clarity with a minimal greenish tint.</p> -->
         <button class="details-button">Learn more</button>
       </div>
       <div class="product-card" data-category="glass">
-        <img src="../images/GreyGlass.jpg" alt="Glass Product" />
+        <img src="./images/GreyGlass.jpg" alt="Glass Product" />
         <h3>Grey Glass </h3>
         <!-- <p>Gray glass offers the most privacy and a unique smokey look.</p>-->
         <button class="details-button">Learn more</button>
       </div>
       <div class="product-card" data-category="glass">
-        <img src="images/clearglass.jpg" alt="Glass Product" />
+        <img src="./images/reflectiveglass.webp" alt="Glass Product" />
         <h3>Reflective Glass</h3>
         <p></p>
         <button class="details-button">Learn more</button>
       </div>
       <div class="product-card" data-category="glass">
-        <img src="../images/frostedglass.webp" alt="Glass Product" />
+        <img src="./images/frostedglass.webp" alt="Glass Product" />
         <h3>Frosted Glass</h3>
         <p></p>
         <button class="details-button">Learn more</button>
@@ -176,31 +176,6 @@
         <button class="details-button">Learn more</button>
       </div>
 
-      <!-- Plastic Products -->
-      <div class="product-card" data-category="plastic" style="display: none">
-        <img src="https://via.placeholder.com/200" alt="Plastic Product" />
-        <h3>Plastic Product #1</h3>
-        <p>$150.00</p>
-        <button class="details-button">Learn more</button>
-      </div>
-      <div class="product-card" data-category="plastic" style="display: none">
-        <img src="https://via.placeholder.com/200" alt="Plastic Product" />
-        <h3>Plastic Product #2</h3>
-        <p>$180.00</p>
-        <button class="details-button">Learn more</button>
-      </div>
-      <div class="product-card" data-category="plastic" style="display: none">
-        <img src="https://via.placeholder.com/200" alt="Plastic Product" />
-        <h3>Plastic Product #1</h3>
-        <p>$150.00</p>
-        <button class="details-button">Learn more</button>
-      </div>
-      <div class="product-card" data-category="plastic" style="display: none">
-        <img src="https://via.placeholder.com/200" alt="Plastic Product" />
-        <h3>Plastic Product #2</h3>
-        <p>$180.00</p>
-        <button class="details-button">Learn more</button>
-      </div>
     </section>
   </div>
   <footer class="footerr">
