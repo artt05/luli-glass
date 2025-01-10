@@ -1,6 +1,8 @@
 <div class="header">
     <div style="z-index: 1000; padding-left: 20px; font-size: 20px">
-        LULIGLASS
+        <a style="text-decoration: none; color:black;" href="index.php">
+            LULIGLASS
+        </a>
     </div>
     <div class="header-logo">
         <a href="index.php">
