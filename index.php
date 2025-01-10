@@ -16,8 +16,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-  <link rel="stylesheet" href="style.css" />
+
   <link rel="stylesheet" href="./css/index.css" />
+  <link rel="stylesheet" href="style.css" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,46 +32,9 @@
 </head>
 
 <body class="aldrich-regular">
-  <div class="header">
-    <div style="z-index: 1000; padding-left: 20px; font-size: 20px;">LULIGLASS</div>
-    <div class="header-logo">
-      <a href="index.php">
 
-        <img src="./images/luli-glass.png" alt="Logo.jpg" />
-      </a>
-    </div>
-    <div class="nav">
-      <ul class="nav-list aldrich-regular">
-        <li><a href="index.php" class="active">Home</a></li>
-        <li><a href="products.php">Products</a></li>
-        <li><a href="about.php">About us</a></li>
-        <li><a href="contact.php">Contact</a></li>
-      </ul>
-    </div>
-
-
-    <div class="icons">
-      <!-- An icon (bi-person-fill) taken from Bootstrap activates a dropdown menu on click, providing options to "Log in" or "Register". -->
-      <div class="dropdown">
-        <i class="bi bi-person-fill dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" role="button"
-          aria-haspopup="true" style="font-size: 1.5rem"></i>
-        <ul class="dropdown-menu aldrich-regular">
-          <li><a class="dropdown-item" href="./auth/login.php">Log in</a></li>
-          <li><a class="dropdown-item" href="auth/register.php">Register</a></li>
-        </ul>
-      </div>
-      <div class="position-relative">
-        <!-- This class represents the shopping cart icon -->
-        <i class="bi bi-cart-fill" style="font-size: 1.5rem"></i>
-        <!-- This span serves as a badge to display the current number of items in the cart -->
-        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="itemCount"
-          style="font-size: 0.75rem">
-          0
-        </span>
-      </div>
-    </div>
-
-  </div>
+  <?php $activePage = 'home';
+  include __DIR__ . '/components/header.php'; ?>
   <div class="hero">
     <h1>Welcome to Luli Glass</h1>
     <h2>Your Trusted Glass Experts</h2>

@@ -217,3 +217,63 @@ function validateRegisterForm(event) {
   document.getElementById("registrationForm").reset();
   return true;
 }
+
+//  calculating total dimensions in millimeters for width and height in product-details
+function calculateDynamicPrice() {
+  // Base Price
+  let price = 0.0;
+
+  // Height Inputs
+  const heightMeters =
+    parseInt(document.querySelector('input[name="height-meters"]').value || 0) *
+    1000;
+  const heightCentimeters =
+    parseInt(
+      document.querySelector('input[name="height-centimeters"]').value || 0
+    ) * 10;
+  const heightMillimeters = parseInt(
+    document.querySelector('input[name="height-millimeters"]').value || 0
+  );
+
+  // Width Inputs
+  const widthMeters =
+    parseInt(document.querySelector('input[name="width-meters"]').value || 0) *
+    1000;
+  const widthCentimeters =
+    parseInt(
+      document.querySelector('input[name="width-centimeters"]').value || 0
+    ) * 10;
+  const widthMillimeters = parseInt(
+    document.querySelector('input[name="width-millimeters"]').value || 0
+  );
+
+  // Thickness and Border Radius
+  const thickness = parseInt(
+    document.querySelector('input[name="thickness"]').value || 0
+  );
+  const borderRadius = parseInt(
+    document.querySelector('input[name="border_radius"]').value || 0
+  );
+
+  // Calculate total dimensions
+  const totalHeightInCm =
+    (heightMeters + heightCentimeters + heightMillimeters) / 10;
+  const totalWidthInCm =
+    (widthMeters + widthCentimeters + widthMillimeters) / 10;
+
+  // Pricing Logic
+  price += totalHeightInCm * 0.2; // $0.20 per cm of height
+  price += totalWidthInCm * 0.2; // $0.20 per cm of width
+  price += thickness * 1.0; // $1.00 per mm of thickness
+  price += borderRadius * 0.5; // $0.50 per mm of border radius
+
+  // Update the display
+  document.getElementById("price-display").innerText = `Price: $${price.toFixed(
+    2
+  )}`;
+}
+
+// Attach event listeners to all input fields
+document.querySelectorAll("input").forEach((input) => {
+  input.addEventListener("input", calculateDynamicPrice);
+});

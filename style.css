@@ -590,20 +590,6 @@ h2 {
   transform: scale(1.02);
 }
 
-.details-button {
-  background-color: #5ac9e5;
-  color: white;
-  border: none;
-  padding: 7px 10px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.details-button:hover {
-  background-color: #71cce2;
-}
-
 /* Bottom Section */
 .bottom-section {
   text-align: center;
@@ -765,7 +751,8 @@ header p {
 }
 
 .details-button {
-  background-color: #007b8a;
+  display: block;
+  background-color: #00ced1;
   color: white;
   border: none;
   padding: 10px 13px;
@@ -1217,4 +1204,99 @@ h1 {
   font-size: 14px;
   color: #555;
   line-height: 1.5;
+}
+
+/* Product details css */
+.product-container {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 4vh;
+}
+.product-container2 {
+  display: flex;
+
+  padding: 20px;
+
+  gap: 120px;
+
+  margin-left: 15%;
+}
+
+.product-image-section img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  width: 400px !important;
+  height: 400px !important;
+  border-radius: 5px;
+}
+
+.product-details-section {
+  max-width: 500px;
+}
+
+.product-details-section h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+#price-display {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.dimension-selection .dimension-input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.shape-selection,
+.dimension-selection {
+  margin-bottom: 20px;
+}
+
+.add-to-cart-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-to-cart-button:hover {
+  background-color: #0056b3;
+}
+
+.product-image img {
+  height: 70vh;
+}
+
+.price-container {
+  margin: 20px 0;
+}
+
+.price-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f9f9f9;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.current-price {
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;
+  margin-right: 10px;
+}
+
+.original-price {
+  font-size: 18px;
+  font-weight: normal;
+  color: #ff5733;
+  text-decoration: line-through;
 }

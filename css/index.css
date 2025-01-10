@@ -1,4 +1,4 @@
-.dropdown-menu {
+/* .dropdown-menu {
   display: none;
   position: absolute;
   top: 100%;
@@ -16,14 +16,14 @@
 }
 
 .dropdown-icon {
-  width: 12px; /* Adjust as needed */
-  height: 12px; /* Adjust as needed */
+  width: 12px; 
+  height: 12px; 
   margin-left: 5px;
 }
 
 .dropdown.open .dropdown-menu {
   display: block;
-}
+} */
 
 /*
 .chakra-stack {
