@@ -12,12 +12,14 @@ $stmt->bind_param("i", $product_id);
 $stmt->execute();
 $result = $stmt->get_result();
 
+
 // Check if the product exists
 if ($result->num_rows > 0) {
     $product = $result->fetch_assoc();
 } else {
     die('Product not found.');
 }
+?>
 ?>
 
 <!DOCTYPE html>
@@ -143,8 +145,13 @@ if ($result->num_rows > 0) {
                             <!-- Add to Cart Button -->
                             <button type="button"
                                 class="add-to-cart-button"
-                                onclick="addToCart(<?php echo $product['id']; ?>, '<?php echo $product['name']; ?>', '<?php echo $product['image_url']; ?>', document.querySelector('input[name=quantity]').value)">
-                                Add to Cart
+                                onclick="addToCart(
+    <?php echo $product['id']; ?>,
+    '<?php echo $product['name']; ?>',
+    '<?php echo $product['image_url']; ?>',
+    document.querySelector('input[name=quantity]').value,
+    document.getElementById('price-display').innerText.replace('Price: $', '').trim()
+  )"> Add to Cart
                             </button>
                         </div>
                     </form>

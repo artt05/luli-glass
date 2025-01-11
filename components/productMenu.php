@@ -1,7 +1,7 @@
 <?php
-session_start();
 $cartItems = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +40,8 @@ $cartItems = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
                     </div>
                 <?php endforeach; ?>
             <?php else : ?>
-                <p class="empty-cart">Your cart is empty.</p>
+                <p class="empty-cart" style="<?= !empty($cartItems) ? 'display: none;' : '' ?>">Your cart is empty.</p>
+
             <?php endif; ?>
         </div>
 

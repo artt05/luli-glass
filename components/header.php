@@ -1,3 +1,19 @@
+<?php
+// Start session at the top
+session_start();
+
+// Initialize the cart if it doesn't exist
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}
+
+// Calculate total items in the cart
+$totalItems = 0;
+foreach ($_SESSION['cart'] as $item) {
+    $totalItems += $item['quantity'];
+}
+?>
+
 <div class="header">
     <div style="z-index: 1000; padding-left: 20px; font-size: 20px">
         <a style="text-decoration: none; color:black;" href="index.php">
@@ -37,14 +53,13 @@
                 class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
                 id="itemCount"
                 style="font-size: 0.75rem">
-                0
+                <?php echo $totalItems; ?>
             </span>
         </div>
 
         <!-- Product Menu Container -->
         <div id="productMenu" class="product-menu hidden">
             <?php include 'productMenu.php'; ?>
-
         </div>
     </div>
 </div>
