@@ -37,6 +37,7 @@ if ($result->num_rows > 0) {
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./css/product-detail.css" />
+    <link rel="stylesheet" href="./css/productMenu.css" />
 </head>
 
 <body>
@@ -124,7 +125,7 @@ if ($result->num_rows > 0) {
                         <!-- Third Section: Additional Details and Submit -->
                         <div class="additional-details">
                             <h4>Additional Details</h4>
-                            <textarea name="additional_details" rows="4" placeholder="Enter any specific details or instructions"></textarea>
+                            <textarea style="width: 100%;" name="additional_details" rows="4" placeholder="Enter any specific details or instructions"></textarea>
 
                             <div class="file-upload">
                                 <label style="padding-bottom: 10px;">Upload File</label>
@@ -140,7 +141,11 @@ if ($result->num_rows > 0) {
                             </div>
 
                             <!-- Add to Cart Button -->
-                            <button type="submit" class="add-to-cart-button">Add to Cart</button>
+                            <button type="button"
+                                class="add-to-cart-button"
+                                onclick="addToCart(<?php echo $product['id']; ?>, '<?php echo $product['name']; ?>', '<?php echo $product['image_url']; ?>', document.querySelector('input[name=quantity]').value)">
+                                Add to Cart
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -148,10 +153,56 @@ if ($result->num_rows > 0) {
         </div>
     </div>
 
-    <footer>
-        <p>© 2024 Luli Glass. All Rights Reserved.</p>
+
+    <footer class="footerr">
+        <div class="footer-containerr">
+            <div class="footer-logo">
+                <a href="index.php">
+                    <img src="/luli-glass/images/luli-glass.png" alt="Luli Glass Logo" />
+                </a>
+                <div class="footer-section contact">
+
+                    <p style="margin: 0px;"> <strong>Phone:</strong> 049 800 800</p>
+                    <p style="margin: 0px;">
+                        <strong>Mail:</strong>
+                        <a href="mailto:contact@support.com" style="color: white;">luliglass@gmail.com</a>
+                    </p>
+                    <p style="margin: 0px;">
+                        <strong>Address:</strong> Prishtinë
+                    </p>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <div class="footer-section-links">
+                    <div style="font-size: 28px; padding-bottom: 10px">Other Pages</div>
+                    <div class="footer-links">
+                        <a href="#">Privacy & Policy</a>
+                        <a href="#">Terms of Use</a>
+                        <a href="#">Disclaimer</a>
+                        <a href="#">FAQ</a>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="footer-social">
+                <div class="footer-section-links">
+                    <div style="font-size: 28px;">Socials</div>
+                    <div class="footer-socials">
+                        <a href="#"><img src="images/facebook-svgrepo-com.png" alt="Facebook" /></a>
+
+                        <a href="#"><img src="images/instagram.png" alt="Instagram" style="width: 50px; height: 50px;" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Luli Glass. All Rights Reserved.</p>
+        </div>
     </footer>
     <script src="js/calculatePrice.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 
 </html>

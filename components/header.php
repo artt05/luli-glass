@@ -31,7 +31,7 @@
                 <li><a class="dropdown-item" href="auth/register.php">Register</a></li>
             </ul>
         </div>
-        <div class="position-relative">
+        <div class="position-relative" id="cartIcon" style="cursor: pointer;" onclick="toggleCartMenu()">
             <i class="bi bi-cart-fill" style="font-size: 1.5rem"></i>
             <span
                 class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
@@ -39,6 +39,12 @@
                 style="font-size: 0.75rem">
                 0
             </span>
+        </div>
+
+        <!-- Product Menu Container -->
+        <div id="productMenu" class="product-menu hidden">
+            <?php include 'productMenu.php'; ?>
+
         </div>
     </div>
 </div>

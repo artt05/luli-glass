@@ -2,7 +2,9 @@
 .product-container {
   display: flex;
   margin: 0 auto;
-  margin-top: 4vh;
+
+  height: 88vh;
+  align-items: center;
 }
 .product-container2 {
   display: flex;
@@ -95,4 +97,10 @@
 form {
   display: flex;
   gap: 100px;
+}
+@media screen and (max-width: 768px) {
+  product-container2 {
+    display: flex;
+    flex-direction: column;
+  }
 }
