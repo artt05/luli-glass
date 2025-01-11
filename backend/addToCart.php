@@ -22,7 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'id' => $productId,
             'name' => $productName,
             'quantity' => $productQuantity,
-            'price' => $productPrice
+            'price' => $productPrice,
+
         ];
     } else {
         // Update the quantity of an existing product

@@ -10,92 +10,6 @@ function updateCartVisibility() {
   }
 }
 
-// function addToCart(
-//   productId,
-//   productName,
-//   productImage,
-//   productQuantity,
-//   productPrice
-// ) {
-//   console.log(
-//     `Adding product to cart: ${productId}, ${productName}, Quantity: ${productQuantity}, Price: ${productPrice}`
-//   );
-
-//   // Convert productPrice and productQuantity to numbers
-//   productPrice = parseFloat(productPrice) || 0;
-//   productQuantity = parseInt(productQuantity) || 0;
-
-//   // Validate inputs
-//   if (productQuantity <= 0 || productPrice <= 0) {
-//     alert("Please enter valid inputs for quantity and price.");
-//     return;
-//   }
-
-//   // Access the cart menu
-//   const cartList = document.querySelector(".cart-list");
-//   if (!cartList) {
-//     console.error("Cart list not found in the product menu.");
-//     return;
-//   }
-
-//   // Check if the product already exists in the cart
-//   const existingCartItem = cartList.querySelector(
-//     `.cart-item[data-id="${productId}"]`
-//   );
-
-//   if (existingCartItem) {
-//     // Update the quantity and price of the existing item
-//     const quantityElement = existingCartItem.querySelector(".quantity");
-//     const priceElement = existingCartItem.querySelector(".product-price");
-
-//     const currentQuantity = parseInt(quantityElement.innerText) || 0;
-//     const currentPrice =
-//       parseFloat(priceElement.innerText.replace("Price: $", "")) || 0;
-
-//     const newQuantity = currentQuantity + productQuantity;
-
-//     // Calculate the updated price
-//     const addedPrice = productPrice * productQuantity;
-//     const updatedPrice = currentPrice + addedPrice;
-
-//     // Update quantity and price
-//     quantityElement.innerText = newQuantity;
-//     priceElement.innerText = `Price: $${updatedPrice.toFixed(2)}`;
-
-//     // Log the calculations for debugging
-//     console.log(
-//       `Current Price: $${currentPrice.toFixed(
-//         2
-//       )}, Added Price: $${addedPrice.toFixed(
-//         2
-//       )}, Updated Price: $${updatedPrice.toFixed(2)}`
-//     );
-
-//     return;
-//   }
-
-//   // Create a new cart item if it doesn't exist
-//   const cartItem = document.createElement("div");
-//   cartItem.classList.add("cart-item");
-//   cartItem.setAttribute("data-id", productId);
-//   cartItem.innerHTML = `
-//         <img src="${productImage}" alt="${productName}" class="product-image">
-//         <div class="product-details">
-//           <h3 class="product-name">${productName}</h3>
-//           <p class="product-price">Price: $${(
-//             productPrice * productQuantity
-//           ).toFixed(2)}</p>
-//           <p>Quantity: <span class="quantity">${productQuantity}</span></p>
-//         </div>
-//         <button class="remove-item" onclick="removeCartItem(${productId})">Remove</button>
-//       `;
-
-//   // Append the new cart item to the cart list
-//   cartList.appendChild(cartItem);
-//   console.log("New product added to cart successfully.");
-//   updateCartVisibility();
-// }
-
 function addToCart(
   productId,
   productName,
@@ -113,7 +27,7 @@ function addToCart(
   }
 
   // Send the product data to the backend via fetch
-  fetch("components/addToCart.php", {
+  fetch("backend/addToCart.php", {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
@@ -174,9 +88,9 @@ function addToCart(
                         <img src="${productImage}" alt="${productName}" class="product-image">
                         <div class="product-details">
                             <h3 class="product-name">${productName}</h3>
-                            <p class="product-price">Price: $${(
-                              productPrice * productQuantity
-                            ).toFixed(2)}</p>
+                            <p class="product-price">Price: $${productPrice.toFixed(
+                              2
+                            )}</p>
                             <p>Quantity: <span class="quantity">${productQuantity}</span></p>
                         </div>
                         <button class="remove-item" onclick="removeCartItem(${productId})">Remove</button>
@@ -195,19 +109,26 @@ function addToCart(
 }
 
 function removeCartItem(productId) {
-  console.log(`Removing product from cart: ${productId}`);
-
-  const cartItem = document.querySelector(`.cart-item[data-id="${productId}"]`);
-
-  if (cartItem) {
-    cartItem.remove();
-    console.log(`Product removed from cart: ${productId}`);
-
-    // Update the cart summary after removing the item
-    updateCartSummary();
-  } else {
-    console.error(`Cart item with ID ${productId} not found.`);
-  }
+  fetch("backend/removeFromCart.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: new URLSearchParams({
+      id: productId,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        // Update UI after successful removal
+        document.querySelector(`.cart-item[data-id="${productId}"]`).remove();
+        document.getElementById("itemCount").innerText = data.totalItems;
+      } else {
+        console.error("Failed to remove item:", data.message);
+      }
+    })
+    .catch((error) => console.error("Error in removing item:", error));
 }
 
 function updateCartSummary() {
