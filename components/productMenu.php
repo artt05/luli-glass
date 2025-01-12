@@ -1,5 +1,7 @@
 <?php
 $cartItems = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
+$storedTotalItems = isset($_SESSION['totalItems']) ? $_SESSION['totalItems'] : 0;
+$storedTotalPrice = isset($_SESSION['totalPrice']) ? number_format($_SESSION['totalPrice'], 2) : '0.00';
 ?>
 
 
@@ -46,9 +48,10 @@ $cartItems = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
         </div>
 
         <div class="cart-summary">
-            <p id="total-quantity">Total Quantity: 0</p>
-            <p id="total-price">Total Price: $0.00</p>
+            <p id="total-quantity">Total Quantity: <?= $storedTotalItems ?></p>
+            <p id="total-price">Total Price: $<?= $storedTotalPrice ?></p>
         </div>
+
 
         <button class="checkout-button">Checkout</button>
     </div>

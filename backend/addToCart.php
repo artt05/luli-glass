@@ -29,17 +29,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Update the quantity of an existing product
         $_SESSION['cart'][$productId]['quantity'] += $productQuantity;
     }
-
-    // Return the total items in the cart for real-time updates
+    // Calculate the total items and total price in the cart
     $totalItems = 0;
+    $totalPrice = 0.0;
     foreach ($_SESSION['cart'] as $item) {
-        $totalItems += $item['quantity'];
+        $totalItems += $item['quantity']; // Total quantity from all items
+        $totalPrice += $item['price']; // Just add the price, no multiplication
     }
 
+    // Store the calculated totals in the session
+    $_SESSION['totalItems'] = $totalItems;
+    $_SESSION['totalPrice'] = $totalPrice;
+
+    // Return the total items and total price for real-time updates
     echo json_encode([
         'success' => true,
         'message' => 'Product added to cart.',
-        'totalItems' => $totalItems
+        'totalItems' => $totalItems,
+        'totalPrice' => number_format($totalPrice, 2), // Format total price to 2 decimals
     ]);
     exit;
 }

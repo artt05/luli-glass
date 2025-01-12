@@ -25,7 +25,7 @@ function addToCart(
     alert("Please enter valid inputs for quantity and price.");
     return;
   }
-
+  console.log("Sending fetch request to addToCart.php...");
   // Send the product data to the backend via fetch
   fetch("backend/addToCart.php", {
     method: "POST",
@@ -40,10 +40,31 @@ function addToCart(
     }),
   })
     .then((response) => response.json())
+
     .then((data) => {
       if (data.success) {
         // Update the cart badge in real-time
         document.getElementById("itemCount").innerText = data.totalItems;
+        // Update the total price in the cart summary
+
+        const totalPriceElement = document.getElementById("total-price");
+        if (!totalPriceElement) {
+          console.error(
+            "Error: Element with ID 'total-price' not found in the DOM."
+          );
+          return;
+        }
+        totalPriceElement.innerText = `Total Price: $${data.totalPrice}`;
+
+        // Update the total quantity in the cart summary
+        const totalQuantityElement = document.getElementById("total-quantity");
+        if (!totalQuantityElement) {
+          console.error(
+            "Error: Element with ID 'total-quantity' not found in the DOM."
+          );
+          return;
+        }
+        totalQuantityElement.innerText = `Total Quantity: ${data.totalItems}`;
 
         // Update the cart UI in the DOM
         const cartList = document.querySelector(".cart-list");
@@ -121,9 +142,33 @@ function removeCartItem(productId) {
     .then((response) => response.json())
     .then((data) => {
       if (data.success) {
-        // Update UI after successful removal
-        document.querySelector(`.cart-item[data-id="${productId}"]`).remove();
-        document.getElementById("itemCount").innerText = data.totalItems;
+        // Update the UI: Remove the cart item
+        const cartItem = document.querySelector(
+          `.cart-item[data-id="${productId}"]`
+        );
+        if (cartItem) {
+          cartItem.remove();
+        }
+
+        // Update the total quantity in the cart badge
+        const itemCountElement = document.getElementById("itemCount");
+        if (itemCountElement) {
+          itemCountElement.innerText = data.totalItems;
+        }
+
+        // Update the total quantity in the cart summary
+        const totalQuantityElement = document.getElementById("total-quantity");
+        if (totalQuantityElement) {
+          totalQuantityElement.innerText = `Total Quantity: ${data.totalItems}`;
+        }
+
+        // Update the total price in the cart summary
+        const totalPriceElement = document.getElementById("total-price");
+        if (totalPriceElement) {
+          totalPriceElement.innerText = `Total Price: $${data.totalPrice}`;
+        }
+
+        console.log(data.message);
       } else {
         console.error("Failed to remove item:", data.message);
       }
