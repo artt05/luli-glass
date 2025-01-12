@@ -33,9 +33,9 @@ $storedTotalPrice = isset($_SESSION['totalPrice']) ? number_format($_SESSION['to
                             <h3 class="product-name"><?= htmlspecialchars($item['name']) ?></h3>
                             <p class="product-price">$<?= number_format($item['price'], 2) ?></p>
                             <div class="quantity-controls">
-                                <button class="decrease-quantity" onclick="updateCartItem(<?= htmlspecialchars($item['id']) ?>, 'decrease')">-</button>
-                                <span class="quantity"><?= htmlspecialchars($item['quantity']) ?></span>
-                                <button class="increase-quantity" onclick="updateCartItem(<?= htmlspecialchars($item['id']) ?>, 'increase')">+</button>
+                                <!-- <button class="decrease-quantity" onclick="updateCartItem(<?= htmlspecialchars($item['id']) ?>, 'decrease')">-</button> -->
+                                <span class="quantity">Quantity:&nbsp;<?= htmlspecialchars($item['quantity']) ?></span>
+                                <!-- <button class="increase-quantity" onclick="updateCartItem(<?= htmlspecialchars($item['id']) ?>, 'increase')">+</button> -->
                             </div>
                         </div>
                         <button class="remove-item" onclick="removeCartItem(<?= htmlspecialchars($item['id']) ?>)">Remove</button>

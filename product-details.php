@@ -92,34 +92,34 @@ if ($result->num_rows > 0) {
                                 <div class="dimension-input">
                                     <label>Height</label>
                                     <div class="dimension-group">
-                                        <input type="number" class="dimension" name="height-meters" placeholder="m" oninput="sendAjaxRequest()">
-                                        <input type="number" class="dimension" name="height-centimeters" placeholder="cm" oninput="sendAjaxRequest()">
-                                        <input type="number" class="dimension" name="height-millimeters" placeholder="mm" oninput="sendAjaxRequest()">
+                                        <input type="number" min="0" class="dimension" name="height-meters" placeholder="m" oninput="sendAjaxRequest()">
+                                        <input type="number" min="0" class="dimension" name="height-centimeters" placeholder="cm" oninput="sendAjaxRequest()">
+                                        <input type="number" min="0" class="dimension" name="height-millimeters" placeholder="mm" oninput="sendAjaxRequest()">
                                     </div>
                                 </div>
 
                                 <div class="dimension-input">
                                     <label>Width</label>
                                     <div class="dimension-group">
-                                        <input type="number" class="dimension" name="width-meters" placeholder="m" oninput="sendAjaxRequest()">
-                                        <input type="number" class="dimension" name="width-centimeters" placeholder="cm" oninput="sendAjaxRequest()">
-                                        <input type="number" class="dimension" name="width-millimeters" placeholder="mm" oninput="sendAjaxRequest()">
+                                        <input type="number" min="0" class="dimension" name="width-meters" placeholder="m" oninput="sendAjaxRequest()">
+                                        <input type="number" min="0" class="dimension" name="width-centimeters" placeholder="cm" oninput="sendAjaxRequest()">
+                                        <input type="number" min="0" class="dimension" name="width-millimeters" placeholder="mm" oninput="sendAjaxRequest()">
                                     </div>
                                 </div>
 
                                 <div class="dimension-input">
                                     <label>Thickness </label>
-                                    <input type="number" class="dimension" placeholder="mm" name="thickness" oninput="sendAjaxRequest()">
+                                    <input type="number" min="0" class="dimension" placeholder="mm" name="thickness" oninput="sendAjaxRequest()">
                                 </div>
 
                                 <div class="dimension-input">
                                     <label>Border Radius</label>
-                                    <input type="number" class="dimension" placeholder="mm" name="border_radius" oninput="sendAjaxRequest()">
+                                    <input type="number" min="0" class="dimension" placeholder="mm" name="border_radius" oninput="sendAjaxRequest()">
                                 </div>
 
                                 <div class="dimension-input">
                                     <label>Quantity </label>
-                                    <input type="number" class="dimension" placeholder="pcs" name="quantity" placeholder="Enter quantity" oninput="sendAjaxRequest()">
+                                    <input type="number" min="1" class="dimension" placeholder="pcs" name="quantity" placeholder="Enter quantity" oninput="sendAjaxRequest()">
                                 </div>
                             </div>
                         </div>
@@ -138,7 +138,7 @@ if ($result->num_rows > 0) {
                             <div class="price-container">
                                 <label for="price-display">Price</label>
                                 <div class="price-box">
-                                    <span id="price-display" class="current-price">Price: $0.00</span>
+                                    <span id="price-display" class="current-price">$0.00</span>
                                 </div>
                             </div>
 

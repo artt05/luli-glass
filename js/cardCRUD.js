@@ -37,6 +37,7 @@ function addToCart(
       name: productName,
       quantity: productQuantity,
       price: productPrice,
+      image: productImage, // Pass the product image URL
     }),
   })
     .then((response) => response.json())
@@ -79,21 +80,17 @@ function addToCart(
         );
 
         if (existingCartItem) {
-          // Update the quantity and price of the existing item
           const quantityElement = existingCartItem.querySelector(".quantity");
-          const priceElement = existingCartItem.querySelector(".product-price");
 
-          const currentQuantity = parseInt(quantityElement.innerText) || 0;
-          const currentPrice =
-            parseFloat(priceElement.innerText.replace("Price: $", "")) || 0;
-
-          const newQuantity = currentQuantity + productQuantity;
-          const addedPrice = productPrice * productQuantity;
-          const updatedPrice = currentPrice + addedPrice;
-
-          // Update quantity and price
-          quantityElement.innerText = newQuantity;
-          priceElement.innerText = `Price: $${updatedPrice.toFixed(2)}`;
+          // Use the backend's updatedQuantity instead of the DOM's value
+          const newQuantity = data.updatedQuantity;
+          if (newQuantity === undefined) {
+            console.error(
+              "Backend did not return updatedQuantity for the product."
+            );
+            return;
+          }
+          quantityElement.innerText = `Quantity: ${newQuantity}`; // Fix undefined issue
 
           console.log(
             `Updated Item - ID: ${productId}, Quantity: ${newQuantity}, Price: $${updatedPrice.toFixed(
@@ -234,4 +231,10 @@ function resetInputFields() {
   });
 
   document.querySelector('textarea[name="additional_details"]').value = ""; // Clear textarea
+
+  // Reset the price display
+  const priceDisplay = document.getElementById("price-display");
+  if (priceDisplay) {
+    priceDisplay.innerText = "Price: $0.00"; // Reset to default value
+  }
 }

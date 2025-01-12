@@ -1,5 +1,3 @@
-
-
 <?php
 session_start();
 
@@ -9,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $productName = $_POST['name'];
     $productQuantity = $_POST['quantity'];
     $productPrice = $_POST['price'];
+    $productImage = $_POST['image'];
 
     // Initialize the cart if not already set
     if (!isset($_SESSION['cart'])) {
@@ -23,12 +22,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'name' => $productName,
             'quantity' => $productQuantity,
             'price' => $productPrice,
-
+            'image' => $productImage, // Store the image URL
         ];
     } else {
         // Update the quantity of an existing product
         $_SESSION['cart'][$productId]['quantity'] += $productQuantity;
     }
+
+    // Get the updated quantity for the specific product
+    $updatedQuantity = $_SESSION['cart'][$productId]['quantity'];
+
     // Calculate the total items and total price in the cart
     $totalItems = 0;
     $totalPrice = 0.0;
@@ -41,10 +44,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['totalItems'] = $totalItems;
     $_SESSION['totalPrice'] = $totalPrice;
 
-    // Return the total items and total price for real-time updates
+    // Return the total items, total price, and updated quantity for real-time updates
     echo json_encode([
         'success' => true,
         'message' => 'Product added to cart.',
+        'updatedQuantity' => $updatedQuantity, // Include the updated quantity
         'totalItems' => $totalItems,
         'totalPrice' => number_format($totalPrice, 2), // Format total price to 2 decimals
     ]);
