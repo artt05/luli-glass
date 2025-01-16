@@ -21,23 +21,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'id' => $productId,
             'name' => $productName,
             'quantity' => $productQuantity,
-            'price' => $productPrice,
+            'price' => $productPrice, // Store price contribution for this addition
             'image' => $productImage, // Store the image URL
         ];
     } else {
         // Update the quantity of an existing product
         $_SESSION['cart'][$productId]['quantity'] += $productQuantity;
+
+        // Add the new price contribution (based on the current addition)
+        $_SESSION['cart'][$productId]['price'] += $productPrice;
     }
 
-    // Get the updated quantity for the specific product
+    // Get the updated quantity and total price for this specific product
     $updatedQuantity = $_SESSION['cart'][$productId]['quantity'];
+    $updatedPrice = $_SESSION['cart'][$productId]['price']; // This sums up the incremental contributions
 
     // Calculate the total items and total price in the cart
     $totalItems = 0;
     $totalPrice = 0.0;
     foreach ($_SESSION['cart'] as $item) {
         $totalItems += $item['quantity']; // Total quantity from all items
-        $totalPrice += $item['price']; // Just add the price, no multiplication
+        $totalPrice += $item['price']; // Directly sum the stored prices (no multiplication)
     }
 
     // Store the calculated totals in the session
@@ -49,6 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'success' => true,
         'message' => 'Product added to cart.',
         'updatedQuantity' => $updatedQuantity, // Include the updated quantity
+        'updatedPrice' => number_format($updatedPrice, 2), // Include the updated price (formatted)
         'totalItems' => $totalItems,
         'totalPrice' => number_format($totalPrice, 2), // Format total price to 2 decimals
     ]);

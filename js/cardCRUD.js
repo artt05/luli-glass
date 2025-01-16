@@ -21,8 +21,8 @@ function addToCart(
   productPrice = parseFloat(productPrice) || 0;
   productQuantity = parseInt(productQuantity) || 0;
 
-  if (productQuantity <= 0 || productPrice <= 0) {
-    alert("Please enter valid inputs for quantity and price.");
+  if (productQuantity <= 0) {
+    alert("Please enter valid inputs for quantity.");
     return;
   }
   console.log("Sending fetch request to addToCart.php...");
@@ -81,17 +81,21 @@ function addToCart(
 
         if (existingCartItem) {
           const quantityElement = existingCartItem.querySelector(".quantity");
-
+          const priceElement = existingCartItem.querySelector(".product-price");
           // Use the backend's updatedQuantity instead of the DOM's value
           const newQuantity = data.updatedQuantity;
-          if (newQuantity === undefined) {
+
+          // const updatedPrice = data.updatedPrice;
+          const updatedPrice = parseFloat(data.updatedPrice);
+
+          if (newQuantity === undefined || updatedPrice === undefined) {
             console.error(
-              "Backend did not return updatedQuantity for the product."
+              "Backend did not return updatedQuantity or updatedPrice for the product."
             );
             return;
           }
           quantityElement.innerText = `Quantity: ${newQuantity}`; // Fix undefined issue
-
+          priceElement.innerText = `Price: $${updatedPrice.toFixed(2)}`;
           console.log(
             `Updated Item - ID: ${productId}, Quantity: ${newQuantity}, Price: $${updatedPrice.toFixed(
               2
