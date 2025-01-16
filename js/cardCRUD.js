@@ -94,7 +94,7 @@ function addToCart(
             );
             return;
           }
-          quantityElement.innerText = `Quantity: ${newQuantity}`; // Fix undefined issue
+          quantityElement.innerHTML = `Quantity: ${newQuantity}`; // Use innerHTML to replace only the number
           priceElement.innerText = `Price: $${updatedPrice.toFixed(2)}`;
           console.log(
             `Updated Item - ID: ${productId}, Quantity: ${newQuantity}, Price: $${updatedPrice.toFixed(
