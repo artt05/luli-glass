@@ -151,7 +151,7 @@ if ($result->num_rows > 0) {
     '<?php echo $product['image_url']; ?>',
     document.querySelector('input[name=quantity]').value,
     document.getElementById('price-display').innerText.replace('Price: $', '').trim()
-  )"> Add to Cart
+  ); window.location.href = 'checkout.php'; "> Add to Cart
                             </button>
                         </div>
                     </form>
