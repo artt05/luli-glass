@@ -158,8 +158,6 @@ function removeCartItem(productId) {
           cartItem.remove();
         }
 
-        console.log("Total items in cart:", data.totalItems);
-
         // Update the total quantity in the cart badge
         const itemCountElement = document.getElementById("itemCount");
         if (itemCountElement) {
