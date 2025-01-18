@@ -30,7 +30,8 @@
             <div class="form-container">
                 <h2>Order Information</h2>
                 <!-- Pfad für das Formular aktualisiert -->
-                <form action="../PHP/_function_order/process_order.php" method="POST" class="form-section">
+                <form action="backend/process_order.php" method="POST" class="form-section">
+
                     <div class="grid-container" style="width:100%">
                         <div class="input-group">
                             <label for="firstName">First Name*</label>

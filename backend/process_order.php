@@ -1,14 +1,15 @@
-
 <?php
 session_start();
 include '../db_connection/db_conn.php'; // Include your MySQLi connection file
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    error_log(print_r($_POST, true)); // Logs all POST data for debugging
+
     try {
         // Start a transaction
         $conn->begin_transaction();
 
-        // 1. Insert into `order_userinfo` table
+        // 1. Insert form data into `order_userinfo` table
         $stmt = $conn->prepare("
             INSERT INTO order_userinfo (
                 first_name, last_name, country, city, postal_code, address, email, phone_number, total_price, total_quantity
@@ -19,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             throw new Exception("Prepare statement failed: " . $conn->error);
         }
 
-        // Bind parameters
+        // Bind form data to the query
         $stmt->bind_param(
             "ssssssssdi", // Data types: s = string, d = double, i = integer
             $_POST['firstName'],
@@ -34,34 +35,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_POST['total_quantity']
         );
 
-        // Execute the statement
         if (!$stmt->execute()) {
             throw new Exception("Execution failed: " . $stmt->error);
         }
 
-        // Get the last inserted order ID
+        // Get the generated `order_id` from the `order_userinfo` table
         $orderId = $conn->insert_id;
 
-        // 2. Insert into `orders` table
-        $cart = $_SESSION['cart'];
-        $stmt = $conn->prepare("
-            INSERT INTO orders (order_id, product_name, product_price, product_quantity, product_image) 
-            VALUES (?, ?, ?, ?, ?)
-        ");
+        // 2. Update the `userinfo_id` in the `order_details` table
+        if (isset($_SESSION['user_id'])) {
+            $stmt = $conn->prepare("
+                UPDATE order_details 
+                SET userinfo_id = ? 
+                WHERE userinfo_id = ?
+            ");
 
-        if (!$stmt) {
-            throw new Exception("Prepare statement failed: " . $conn->error);
-        }
+            if (!$stmt) {
+                throw new Exception("Prepare statement failed: " . $conn->error);
+            }
 
-        // Loop through the cart and insert each item
-        foreach ($cart as $item) {
+            // Bind the new `order_id` to replace the temporary session ID
             $stmt->bind_param(
-                "isdss", // Data types: i = integer, s = string, d = double
+                "is", // i = integer, s = string
                 $orderId,
-                $item['name'],
-                $item['price'],
-                $item['quantity'],
-                $item['image']
+                $_SESSION['user_id']
             );
 
             if (!$stmt->execute()) {
@@ -71,6 +68,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Commit the transaction
         $conn->commit();
+
+        // Clear the cart session after successful order
+        unset($_SESSION['cart']);
+        unset($_SESSION['user_id']);
 
         // Success response
         echo json_encode(['success' => true, 'message' => 'Order placed successfully.']);
