@@ -146,13 +146,27 @@ if ($result->num_rows > 0) {
                             <button type="button"
                                 class="add-to-cart-button"
                                 onclick="addToCart(
-    <?php echo $product['id']; ?>,
-    '<?php echo $product['name']; ?>',
-    '<?php echo $product['image_url']; ?>',
-    document.querySelector('input[name=quantity]').value,
-    document.getElementById('price-display').innerText.replace('Price: $', '').trim()
-  ); window.location.href = 'checkout.php'; "> Add to Cart
+        <?php echo $product['id']; ?>,
+        '<?php echo $product['name']; ?>',
+        '<?php echo $product['image_url']; ?>',
+        document.querySelector('input[name=quantity]').value,
+        document.getElementById('price-display').innerText.replace('Price: $', '').trim(),
+        document.querySelector('input[name=thickness]').value,
+        (
+            (parseFloat(document.querySelector('input[name=width-meters]').value || 0) * 1000) +
+            (parseFloat(document.querySelector('input[name=width-centimeters]').value || 0) * 10) +
+            (parseFloat(document.querySelector('input[name=width-millimeters]').value || 0))
+        ),
+        (
+            (parseFloat(document.querySelector('input[name=height-meters]').value || 0) * 1000) +
+            (parseFloat(document.querySelector('input[name=height-centimeters]').value || 0) * 10) +
+            (parseFloat(document.querySelector('input[name=height-millimeters]').value || 0))
+        ),
+        document.querySelector('input[name=border_radius]').value
+    );">
+                                Add to Cart
                             </button>
+
                         </div>
                     </form>
                 </div>

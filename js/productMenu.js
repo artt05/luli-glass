@@ -64,3 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+
+function redirectToCheckout() {
+  window.location.href = "checkout.php";
+}

@@ -53,7 +53,7 @@ $storedTotalPrice = isset($_SESSION['totalPrice']) ? number_format($_SESSION['to
         </div>
 
 
-        <button class="checkout-button">Checkout</button>
+        <button class="checkout-button" onclick="redirectToCheckout()">Checkout</button>
     </div>
 
     <script src="./js/productMenu.js"></script>

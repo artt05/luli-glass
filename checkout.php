@@ -85,14 +85,14 @@
                                 <th>Quantity</th>
                             </tr>
                             <?php
-                            // Gesamtpreis und Gesamtmenge initialisieren
                             $totalPrice = 0;
                             $totalQuantity = 0;
 
-                            foreach ($_SESSION['cart'] as $item):
-                                // Gesamtpreis und -menge berechnen
-                                $totalPrice += $item['price'] * $item['quantity'];
-                                $totalQuantity += $item['quantity'];
+                            foreach ($_SESSION['cart'] as $item) {
+
+
+                                $totalQuantity += intval($item['quantity']);
+                                $totalPrice += $item['price'];
                             ?>
                                 <tr>
                                     <td><img src="<?= $item['image'] ?>" alt="<?= $item['name'] ?>" width="50"></td>
@@ -104,7 +104,10 @@
                                 <input type="hidden" name="cart[<?= $item['id'] ?>][price]" value="<?= $item['price'] ?>">
                                 <input type="hidden" name="cart[<?= $item['id'] ?>][quantity]" value="<?= $item['quantity'] ?>">
                                 <input type="hidden" name="cart[<?= $item['id'] ?>][image]" value="<?= $item['image'] ?>">
-                            <?php endforeach; ?>
+                            <?php
+                            } // End of foreach
+                            ?>
+
                         </table>
                 </div>
                 <!-- Gesamtpreis und Gesamtmenge anzeigen -->

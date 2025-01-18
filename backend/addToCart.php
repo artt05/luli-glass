@@ -1,61 +1,117 @@
 <?php
 session_start();
+include '../db_connection/db_conn.php'; // Include the database connection
 
-// Check if the request is a POST request
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $productId = $_POST['id'];
-    $productName = $_POST['name'];
-    $productQuantity = $_POST['quantity'];
-    $productPrice = $_POST['price'];
-    $productImage = $_POST['image'];
+    // Retrieve product data from the request
+    $productId = $_POST['id'] ?? null;
+    $productName = $_POST['name'] ?? null;
+    $productQuantity = $_POST['quantity'] ?? 0;
+    $productPrice = $_POST['price'] ?? 0;
+    $productImage = $_POST['image'] ?? null;
 
-    // Initialize the cart if not already set
+    // Additional attributes
+    $productThickness = $_POST['thickness'] ?? null;
+    $productWidth = $_POST['width'] ?? null;
+    $productHeight = $_POST['height'] ?? null;
+    $productBorderRadius = $_POST['border_radius'] ?? null;
+
+    // Validate required fields
+    if (!$productId || !$productName || !$productQuantity || !$productPrice) {
+        echo json_encode(['success' => false, 'message' => 'Missing required product data.']);
+        exit;
+    }
+
+    // Initialize session cart if not already set
     if (!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = [];
     }
 
+    // Temporary session-based user ID
+    if (!isset($_SESSION['user_id'])) {
+        $_SESSION['user_id'] = session_id(); // Generate session-based ID
+    }
+    $userinfo_id = $_SESSION['user_id']; // Use userinfo_id to match your database column
+
     // Check if the product already exists in the cart
     if (!isset($_SESSION['cart'][$productId])) {
-        // Add a new product
         $_SESSION['cart'][$productId] = [
             'id' => $productId,
             'name' => $productName,
             'quantity' => $productQuantity,
-            'price' => $productPrice, // Store price contribution for this addition
-            'image' => $productImage, // Store the image URL
+            'price' => $productPrice,
+            'image' => $productImage,
+            'thickness' => $productThickness,
+            'width' => $productWidth,
+            'height' => $productHeight,
+            'border_radius' => $productBorderRadius,
         ];
     } else {
-        // Update the quantity of an existing product
+        // Update session cart for an existing product
         $_SESSION['cart'][$productId]['quantity'] += $productQuantity;
-
-        // Add the new price contribution (based on the current addition)
         $_SESSION['cart'][$productId]['price'] += $productPrice;
     }
 
-    // Get the updated quantity and total price for this specific product
-    $updatedQuantity = $_SESSION['cart'][$productId]['quantity'];
-    $updatedPrice = $_SESSION['cart'][$productId]['price']; // This sums up the incremental contributions
+    // Insert the product data into the database
+    $stmt = $conn->prepare("
+        INSERT INTO order_details (userinfo_id, product_id, thickness, width, height, border_radius, quantity, price, created_at)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())
+    ");
+    if (!$stmt) {
+        echo json_encode(['success' => false, 'message' => 'Database error: ' . $conn->error]);
+        exit;
+    }
 
-    // Calculate the total items and total price in the cart
+    $stmt->bind_param(
+        "iisddidi", // Data types: i = integer, s = string, d = double
+        $userinfo_id,
+        $productId,
+        $productThickness,
+        $productWidth,
+        $productHeight,
+        $productBorderRadius,
+        $productQuantity,
+        $productPrice
+    );
+
+    if (!$stmt->execute()) {
+        echo json_encode(['success' => false, 'message' => 'Failed to save product to database.']);
+        exit;
+    }
+
+    $stmt->close();
+
+    // Calculate total items and total price
     $totalItems = 0;
     $totalPrice = 0.0;
     foreach ($_SESSION['cart'] as $item) {
-        $totalItems += $item['quantity']; // Total quantity from all items
-        $totalPrice += $item['price']; // Directly sum the stored prices (no multiplication)
+        $totalItems += $item['quantity'];
+        $totalPrice += $item['price'];
     }
 
-    // Store the calculated totals in the session
-    $_SESSION['totalItems'] = $totalItems;
-    $_SESSION['totalPrice'] = $totalPrice;
-
-    // Return the total items, total price, and updated quantity for real-time updates
-    echo json_encode([
+    // Return the updated cart data
+    // echo json_encode([
+    //     'success' => true,
+    //     'message' => 'Product added to cart.',
+    //     'updatedQuantity' => $_SESSION['cart'][$productId]['quantity'],
+    //     'updatedPrice' => number_format($_SESSION['cart'][$productId]['price'], 2),
+    //     'totalItems' => $totalItems,
+    //     'totalPrice' => number_format($totalPrice, 2),
+    // ]);
+    // exit;
+    $response = [
         'success' => true,
         'message' => 'Product added to cart.',
-        'updatedQuantity' => $updatedQuantity, // Include the updated quantity
-        'updatedPrice' => number_format($updatedPrice, 2), // Include the updated price (formatted)
-        'totalItems' => $totalItems,
-        'totalPrice' => number_format($totalPrice, 2), // Format total price to 2 decimals
-    ]);
+        'updatedQuantity' => $_SESSION['cart'][$productId]['quantity'] ?? 0, // Ensure a value is returned
+        'updatedPrice' => number_format($_SESSION['cart'][$productId]['price'] ?? 0, 2), // Ensure a value is returned
+        'totalItems' => $totalItems ?? 0, // Ensure a value is returned
+        'totalPrice' => number_format($totalPrice ?? 0, 2), // Ensure a value is returned
+    ];
+
+    // Log the response for debugging
+    error_log("Response to frontend: " . json_encode($response));
+
+    // Return the JSON response
+    echo json_encode($response);
     exit;
 }

@@ -15,7 +15,11 @@ function addToCart(
   productName,
   productImage,
   productQuantity,
-  productPrice
+  productPrice,
+  productThickness,
+  productWidth,
+  productHeight,
+  productBorderRadius
 ) {
   // Validate inputs
   productPrice = parseFloat(productPrice) || 0;
@@ -25,9 +29,11 @@ function addToCart(
     alert("Please enter valid inputs for quantity.");
     return;
   }
+
   console.log("Sending fetch request to addToCart.php...");
+
   // Send the product data to the backend via fetch
-  fetch("backend/addToCart.php", {
+  fetch(`backend/addToCart.php?timestamp=${new Date().getTime()}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
@@ -38,16 +44,19 @@ function addToCart(
       quantity: productQuantity,
       price: productPrice,
       image: productImage, // Pass the product image URL
+      thickness: productThickness, // Added
+      width: productWidth, // Added
+      height: productHeight, // Added
+      border_radius: productBorderRadius, // Added
     }),
   })
     .then((response) => response.json())
-
     .then((data) => {
       if (data.success) {
         // Update the cart badge in real-time
         document.getElementById("itemCount").innerText = data.totalItems;
-        // Update the total price in the cart summary
 
+        // Update the total price in the cart summary
         const totalPriceElement = document.getElementById("total-price");
         if (!totalPriceElement) {
           console.error(
@@ -84,8 +93,6 @@ function addToCart(
           const priceElement = existingCartItem.querySelector(".product-price");
           // Use the backend's updatedQuantity instead of the DOM's value
           const newQuantity = data.updatedQuantity;
-
-          // const updatedPrice = data.updatedPrice;
           const updatedPrice = parseFloat(data.updatedPrice);
 
           if (newQuantity === undefined || updatedPrice === undefined) {
@@ -150,6 +157,8 @@ function removeCartItem(productId) {
         if (cartItem) {
           cartItem.remove();
         }
+
+        console.log("Total items in cart:", data.totalItems);
 
         // Update the total quantity in the cart badge
         const itemCountElement = document.getElementById("itemCount");
