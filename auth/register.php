@@ -36,7 +36,9 @@
 
       <!-- Branding header with company name -->
       <div class="noble">
-        <img src="../images/luli-glass.png" style="width: 150px; height: 150px" />
+        <a href="../index.php">
+          <img src="../images/luli-glass.png" style="width: 150px; height: 150px" />
+        </a>
       </div>
 
       <!-- Section for sign-up title and navigation link to log in page -->

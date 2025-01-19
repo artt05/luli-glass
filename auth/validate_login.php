@@ -1,6 +1,6 @@
 <?php
 // Include database connection
-require_once '../db_connection/db_conn.php';
+require '../db_connection/db_conn.php';
 
 // Retrieve and decode JSON data from the POST request
 $data = json_decode(file_get_contents('php://input'), true);
@@ -15,27 +15,34 @@ if ($result->num_rows > 0) {
     // Fetch user data
     $user = $result->fetch_assoc();
 
-    // Debugging: Log the password provided and the hashed password
-    error_log("Password provided: $password");
-    error_log("Password from DB: " . $user['password']);
-
     // Verify password
     if (password_verify($password, $user['password'])) {
-        echo json_encode([
-            "status" => "success",
-        ]);
+        session_start();
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['email'] = $user['email'];
+        $_SESSION['role'] = $user['role'];
+
+        if ($user['role'] === 'admin') {
+            echo json_encode([
+                "status" => "success",
+                "redirect" => "../admin/index.php",
+            ]);
+        } else {
+            echo json_encode([
+                "status" => "success",
+                "redirect" => "../index.php",
+            ]);
+        }
     } else {
         echo json_encode([
             "status" => "error",
-            "title" => "Invalid Password",
-            "message" => "The password you entered is incorrect.",
+            "message" => "Invalid password.",
         ]);
     }
 } else {
     echo json_encode([
         "status" => "error",
-        "title" => "User Not Found",
-        "message" => "No account found with the provided email address.",
+        "message" => "User not found.",
     ]);
 }
 

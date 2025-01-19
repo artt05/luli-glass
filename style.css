@@ -1205,3 +1205,51 @@ h1 {
   color: #555;
   line-height: 1.5;
 }
+
+.header-text {
+  z-index: 1000;
+  padding-left: 20px;
+  font-size: 20px;
+}
+
+.menu-icon {
+  display: none; /* Hidden by default */
+}
+
+@media screen and (max-width: 930px) {
+  .nav-list a {
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .nav-list a {
+    padding: 0 15px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .menu-icon {
+    display: block; /* Show the menu icon */
+    width: 30px;
+    height: auto;
+    margin-left: 8px;
+  }
+
+  .menu-icon img {
+    width: 30px !important;
+  }
+  .nav {
+    display: none !important;
+  }
+  .header-text {
+    /* display: none !important; */
+  }
+  .header-logo {
+    /* display: flex;
+    align-items: center;
+    padding-left: 10px;
+    width: 100px;
+    justify-content: left;
+    z-index: 1001; */
+  }
+}

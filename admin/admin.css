@@ -1,0 +1,72 @@
+/* Allgemeine Körperstile */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f4f9;
+}
+
+/* Überschriftenstile */
+h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Tabellenstile */
+table {
+  width: 100%;
+  margin-top: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-spacing: 0;
+  border: 1px solid #ccc;
+}
+
+/* Tabellenkopf-Stile */
+table th {
+  background-color: #9fe2ff;
+  color: black;
+  padding: 10px;
+  text-align: left;
+  font-weight: normal;
+}
+
+/* Tabellenzellen-Stile */
+table td {
+  padding: 10px;
+  text-align: left;
+}
+
+/* Wechselnde Zeilenfarben */
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Aktionslinks in der Tabelle */
+table td a {
+  padding: 5px 10px;
+  color: #fff;
+  border-radius: 3px;
+  transition: background-color 0.3s;
+}
+
+/* Bearbeitungslink-Stile */
+table td a[href*="edit.php"] {
+  background-color: #f39c12;
+}
+
+/* Hover-Effekt für Bearbeitungslink */
+table td a[href*="edit.php"]:hover {
+  background-color: #e67e22;
+}
+
+/* Löschlink-Stile */
+table td a[href*="delete"] {
+  background-color: #e74c3c;
+  margin-left: 5px;
+}
+
+/* Hover-Effekt für Löschlink */
+table td a[href*="delete"]:hover {
+  background-color: #c0392b;
+}

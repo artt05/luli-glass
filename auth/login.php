@@ -34,9 +34,11 @@
       onsubmit="validateLoginForm(event)">
       <!-- Logo and title -->
       <div class="noble">
-        <img
-          src="../images/luli-glass.png"
-          style="width: 150px; height: 150px" />
+        <a href="../index.php">
+          <img
+            src="../images/luli-glass.png"
+            style="width: 150px; height: 150px" />
+        </a>
       </div>
       <div class="signUp">
         <!-- Log in title and sign up link -->

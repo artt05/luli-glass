@@ -15,7 +15,7 @@ foreach ($_SESSION['cart'] as $item) {
 ?>
 
 <div class="header">
-    <div style="z-index: 1000; padding-left: 20px; font-size: 20px">
+    <div class="header-text" style="z-index: 1000; padding-left: 20px; font-size: 20px">
         <a style="text-decoration: none; color:black;" href="index.php">
             LULIGLASS
         </a>
@@ -55,6 +55,11 @@ foreach ($_SESSION['cart'] as $item) {
                 style="font-size: 0.75rem">
                 <?php echo $totalItems; ?>
             </span>
+        </div>
+
+        <!-- Menu Icon (Visible in Mobile View) -->
+        <div class="menu-icon" id="menuIcon" onclick="toggleMobileMenu()" style="cursor: pointer;">
+            <img src="./images/toggle.svg" alt="Menu" style="width: 1.5rem; height: auto;" />
         </div>
 
         <!-- Product Menu Container -->
