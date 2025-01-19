@@ -1,32 +1,3 @@
-<?php
-// Database connection
-require_once '../db_connection/db_conn.php'; // Include database connection
-// Check if form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  // Collect form data and sanitize inputs
-  $first_name = $conn->real_escape_string($_POST['first_name']);
-  $last_name = $conn->real_escape_string($_POST['last_name']);
-  $email = $conn->real_escape_string($_POST['email']);
-  $username = $conn->real_escape_string($_POST['username']);
-  $password = password_hash($_POST['password'], PASSWORD_BCRYPT); // Hash the password for security
-  $created_at = date("Y-m-d H:i:s"); // Get current timestamp
-
-  // SQL query to insert data into the users table
-  $sql = "INSERT INTO users (first_name, last_name, email, username, password, created_at) 
-            VALUES ('$first_name', '$last_name', '$email', '$username', '$password', '$created_at')";
-
-  if ($conn->query($sql) === TRUE) {
-    echo "<script>
-            alert('Registration successful!');
-            window.location.href = 'login.php'; // Redirect to login page
-            </script>";
-  } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-  }
-}
-
-$conn->close();
-?>
 <html>
 
 <head>
@@ -61,7 +32,8 @@ $conn->close();
       class="register-con"
       style="width: 50%"
       method="POST"
-      action="register.php">
+      onsubmit="validateRegisterForm(event)">
+
       <!-- Branding header with company name -->
       <div class="noble">
         <img src="../images/luli-glass.png" style="width: 150px; height: 150px" />
@@ -154,6 +126,7 @@ $conn->close();
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 
   <!-- Custom JavaScript -->
