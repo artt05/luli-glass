@@ -1,3 +1,32 @@
+<?php
+// Database connection
+require_once '../db_connection/db_conn.php'; // Include database connection
+// Check if form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Collect form data and sanitize inputs
+  $first_name = $conn->real_escape_string($_POST['first_name']);
+  $last_name = $conn->real_escape_string($_POST['last_name']);
+  $email = $conn->real_escape_string($_POST['email']);
+  $username = $conn->real_escape_string($_POST['username']);
+  $password = password_hash($_POST['password'], PASSWORD_BCRYPT); // Hash the password for security
+  $created_at = date("Y-m-d H:i:s"); // Get current timestamp
+
+  // SQL query to insert data into the users table
+  $sql = "INSERT INTO users (first_name, last_name, email, username, password, created_at) 
+            VALUES ('$first_name', '$last_name', '$email', '$username', '$password', '$created_at')";
+
+  if ($conn->query($sql) === TRUE) {
+    echo "<script>
+            alert('Registration successful!');
+            window.location.href = 'login.php'; // Redirect to login page
+            </script>";
+  } else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+  }
+}
+
+$conn->close();
+?>
 <html>
 
 <head>
@@ -31,12 +60,11 @@
       id="registrationForm"
       class="register-con"
       style="width: 50%"
-      onsubmit="validateRegisterForm(event)">
+      method="POST"
+      action="register.php">
       <!-- Branding header with company name -->
       <div class="noble">
-        <img
-          src="../images/luli-glass.png"
-          style="width: 150px; height: 150px" />
+        <img src="../images/luli-glass.png" style="width: 150px; height: 150px" />
       </div>
 
       <!-- Section for sign-up title and navigation link to log in page -->
@@ -48,7 +76,12 @@
       <div class="form-groups">
         <!-- Input field for the user's first name -->
         <div class="form-group">
-          <input type="text" id="name" placeholder="Name*" required />
+          <input
+            type="text"
+            id="name"
+            name="first_name"
+            placeholder="Name*"
+            required />
           <span id="nameError" class="error"></span>
         </div>
 
@@ -57,6 +90,7 @@
           <input
             type="text"
             id="last-name"
+            name="last_name"
             placeholder="Last name*"
             required />
           <span id="lastnameError" class="error"></span>
@@ -67,6 +101,7 @@
           <input
             type="text"
             id="number"
+            name="username"
             placeholder="Phone number*"
             required />
           <span id="numberError" class="error"></span>
@@ -77,6 +112,7 @@
           <input
             type="email"
             id="email"
+            name="email"
             placeholder="Email Address*"
             required />
           <span id="emailError" class="error"></span>
@@ -87,6 +123,7 @@
           <input
             type="password"
             id="password"
+            name="password"
             placeholder="Password*"
             required />
           <span id="passwordError" class="error"></span>
@@ -99,6 +136,7 @@
       <div class="backToHome"><a href="../index.php">Back to Home</a></div>
     </form>
 
+
     <!-- Image slider with background images -->
     <div class="side-container register-image" style="width: 50%">
       <div class="side-wrapper">
@@ -108,6 +146,7 @@
       </div>
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <!-- Bootstrap JavaScript for functionality like dropdowns and modals -->
   <script
@@ -115,8 +154,7 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
 
-  <!-- Swiper JavaScript for slider functionality -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 
   <!-- Custom JavaScript -->
 

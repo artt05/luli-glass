@@ -89,16 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $totalPrice += $item['price'];
     }
 
-    // Return the updated cart data
-    // echo json_encode([
-    //     'success' => true,
-    //     'message' => 'Product added to cart.',
-    //     'updatedQuantity' => $_SESSION['cart'][$productId]['quantity'],
-    //     'updatedPrice' => number_format($_SESSION['cart'][$productId]['price'], 2),
-    //     'totalItems' => $totalItems,
-    //     'totalPrice' => number_format($totalPrice, 2),
-    // ]);
-    // exit;
+
     $response = [
         'success' => true,
         'message' => 'Product added to cart.',

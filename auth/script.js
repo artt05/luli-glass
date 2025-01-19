@@ -2,54 +2,61 @@ function validateLoginForm(event) {
   event.preventDefault(); // Prevent form submission and page reload
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const passwordPattern =
-    /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
 
-  // Validate email format
-  if (!emailPattern.test(email)) {
-    swal.fire({
+  // Validate input fields for empty values
+  if (!email || !password) {
+    Swal.fire({
       icon: "error",
-      title: "Invalid Email",
-      text: "Please enter a valid email address.",
+      title: "Missing Fields",
+      text: "Please fill out all fields.",
       showConfirmButton: true,
-      timer: 5000,
-      timerProgressBar: true,
-      backdrop: false,
     });
     return false;
   }
 
-  // Validate password format
-  if (!passwordPattern.test(password)) {
-    swal.fire({
-      icon: "error",
-      title: "Invalid Password",
-      text: "Password must be at least 8 characters long, include one uppercase letter, one lowercase letter, one number, and one special character.",
-      showConfirmButton: true,
-      timer: 5000,
-      timerProgressBar: true,
-      backdrop: false,
-    });
-    return false;
-  }
+  // Make an AJAX request to the backend
+  fetch("validate_login.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Response from server:", data); // Log the response for debugging
 
-  // Show success pop-up for valid login
-  Swal.fire({
-    icon: "success",
-    title: "Login Successful",
-    text: "You have successfully logged in!",
-    showConfirmButton: true,
-    timer: 5000,
-    timerProgressBar: true,
-    backdrop: false,
-  }).then(() => {
-    // Redirect to homepage or dashboard
-    window.location.href = "../index.php"; // Change the URL as needed
-  });
+      if (data.status === "error") {
+        Swal.fire({
+          icon: "error",
+          title: data.title,
+          text: data.message,
+          showConfirmButton: true,
+        });
+      } else if (data.status === "success") {
+        Swal.fire({
+          icon: "success",
+          title: "Login Successful",
+          text: "You have successfully logged in!",
+          showConfirmButton: true,
+        }).then(() => {
+          window.location.href = "../index.php"; // Redirect on successful login
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Server Error",
+        text: "Something went wrong. Please try again later.",
+        showConfirmButton: true,
+      });
+    });
 
   return true;
 }
+
 emailjs.init("PyH29-umGbaGbPpwR");
 function resetPassword(event) {
   event.preventDefault(); // Prevent form submission and page reload
@@ -198,20 +205,32 @@ function validateRegisterForm(event) {
   }
 
   // If all fields are valid
-  swal
-    .fire({
-      icon: "success",
-      title: "Registration Successful",
-      text: "You have successfully registered!",
-      showConfirmButton: true,
-      timer: 5000,
-      timerProgressBar: true,
-      backdrop: false,
-    })
-    .then(() => {
-      // Redirect to homepage or dashboard
-      window.location.href = "../index.php"; // Change the URL as needed
-    });
+
+  Swal.fire({
+    title: "Success!",
+    text: "Your registration was successful!",
+    icon: "success",
+    confirmButtonText: "OK",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // Optionally redirect or process further
+      window.location.href = "login.php";
+    }
+  });
+  // swal
+  //   .fire({
+  //     icon: "success",
+  //     title: "Registration Successful",
+  //     text: "You have successfully registered!",
+  //     showConfirmButton: true,
+  //     timer: 5000,
+  //     timerProgressBar: true,
+  //     backdrop: false,
+  //   })
+  //   .then(() => {
+  //     // Redirect to homepage or dashboard
+  //     window.location.href = "../index.php";
+  //   });
 
   // Reset the form after submission
   document.getElementById("registrationForm").reset();
