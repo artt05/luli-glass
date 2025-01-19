@@ -3,7 +3,7 @@
   display: flex;
   margin: 0 auto;
 
-  height: 88vh;
+  /* height: 88vh; */
   align-items: center;
 }
 .product-container2 {
@@ -103,6 +103,11 @@ form {
   .product-container2 {
     display: flex;
     flex-direction: column;
+    gap: 50px;
+  }
+  form {
+    flex-direction: column;
+    gap: 20px;
   }
 }
 @media screen and (max-width: 768px) {
