@@ -123,7 +123,9 @@
                     <h5 class="text-end">$<?= number_format($totalPrice, 2) ?></h5>
                     <input type="hidden" name="total_price" value="<?= $totalPrice ?>">
 
-                    <button type="submit" class="btn btn-primary mt-3" style="grid-column: span 2; padding:10px 0px">Go to Payment</button>
+                    <a href="payment.php" class="btn btn-primary mt-3" style="grid-column: span 2; padding:10px 0px">
+                        Go to Payment
+                    </a>
                 </div>
 
             <?php else: ?>

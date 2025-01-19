@@ -1,7 +1,7 @@
 <?php
 // Include the database connection file
-require_once __DIR__ . '/db_connection/db_conn.php';
 
+require_once __DIR__ . '/db_connection/db_conn.php';
 
 // Get the product ID from the URL
 $product_id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
@@ -21,7 +21,7 @@ if ($result->num_rows > 0) {
     die('Product not found.');
 }
 ?>
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
