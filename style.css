@@ -1211,6 +1211,9 @@ h1 {
   padding-left: 20px;
   font-size: 20px;
 }
+.contact-img {
+  width: 100% !important;
+}
 
 .menu-icon {
   display: none; /* Hidden by default */
@@ -1260,5 +1263,8 @@ h1 {
     width: 100px;
     justify-content: left;
     z-index: 1001; */
+  }
+  .footer-containerr {
+    gap: 30px;
   }
 }

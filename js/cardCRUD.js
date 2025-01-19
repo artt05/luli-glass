@@ -25,9 +25,19 @@ function addToCart(
   productPrice = parseFloat(productPrice) || 0;
   productQuantity = parseInt(productQuantity) || 0;
 
+  // if (productQuantity <= 0) {
+  //   alert("Please enter valid inputs for quantity.");
+  //   return;
+  // }
+
   if (productQuantity <= 0) {
-    alert("Please enter valid inputs for quantity.");
-    return;
+    Swal.fire({
+      icon: "error", // SweetAlert error icon
+      title: "Invalid Quantity", // Title of the alert
+      text: "Please enter a valid quantity greater than 0.", // Description message
+      showConfirmButton: true, // Show the "OK" button
+    });
+    return; // Exit the function after showing the alert
   }
 
   console.log("Sending fetch request to addToCart.php...");

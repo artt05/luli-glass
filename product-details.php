@@ -1,6 +1,7 @@
 <?php
 // Include the database connection file
-include __DIR__ . '/db_connection/db_conn.php';
+require_once __DIR__ . '/db_connection/db_conn.php';
+
 
 // Get the product ID from the URL
 $product_id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
@@ -48,9 +49,11 @@ if ($result->num_rows > 0) {
     <div class="product-container">
         <div class="product-container2">
             <!-- Image Section -->
-            <div class="product-image-section">
+            <div style="display: flex; flex-direction: column" class="product-image-section">
                 <img src="<?php echo $product['image_url']; ?>" alt="<?php echo $product['name']; ?>" />
+                <div style="font-size: 16px; padding-top: 10px">Delivery: Ships within 5 business days</div>
             </div>
+
 
             <!-- Details Section -->
             <div class="product-details-section">
@@ -87,7 +90,7 @@ if ($result->num_rows > 0) {
                             <!-- Second Section: Dimensions and Quantity -->
                             <div class="dimension-selection">
                                 <h4>Select Dimensions</h4>
-                                <p>Cutting tolerance is within 1/8"</p>
+
 
                                 <div class="dimension-input">
                                     <label>Height</label>
@@ -128,11 +131,21 @@ if ($result->num_rows > 0) {
                         <div class="additional-details">
                             <h4>Additional Details</h4>
                             <textarea style="width: 100%;" name="additional_details" rows="4" placeholder="Enter any specific details or instructions"></textarea>
-
+                            <!-- 
                             <div class="file-upload">
                                 <label style="padding-bottom: 10px;">Upload File</label>
-                                <input type="file" name="custom_file" />
-                            </div>
+                                <input type="file" name="custom_file[]" id="file-input" multiple />
+                                <ul id="file-list"></ul>
+                            </div> -->
+                            <form id="file-upload-form" method="POST" enctype="multipart/form-data" action="/upload">
+                                <div class="file-upload">
+                                    <label style="padding-bottom: 10px;">Upload File</label>
+                                    <input type="file" name="custom_file[]" id="file-input" multiple />
+                                    <ul id="file-list"></ul>
+                                    <button type="submit">Upload Files</button>
+                                </div>
+                            </form>
+
 
                             <!-- Price Display -->
                             <div class="price-container">
@@ -222,6 +235,8 @@ if ($result->num_rows > 0) {
             <p>© 2024 Luli Glass. All Rights Reserved.</p>
         </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script src="js/calculatePrice.js"></script>
     <script src="./js/script.js"></script>
 </body>

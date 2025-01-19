@@ -35,24 +35,21 @@
     <div class="form-section">
       <div class="contact-form">
         <h1>Contact our team</h1>
+        <div style="padding-bottom: 15px;">Request a quote for installation or ask a question</div>
 
+        <p>Call our team Mon-Fri from 8am to 5pm.</p>
+        <button>049 800 800</button>
         <div class="form-group">
           <form onsubmit="sendContactEmail(event)" method="POST">
-            <label for="first-name">First name</label>
+            <label for="full-name">Full name</label>
             <input
               type="text"
-              id="firstName"
-              name="firstName"
-              placeholder="First name"
+              id="full-name"
+              name="full-name"
+              placeholder="Full name"
               required />
 
-            <label for="last-name">Last name</label>
-            <input
-              type="text"
-              id="lastName"
-              name="lastName"
-              placeholder="Last name"
-              required />
+
 
             <label for="email">Email</label>
             <input type="email" id="email" name="email" placeholder="Your email" required />
@@ -70,22 +67,20 @@
 
     <!-- Contact Info Section -->
     <div class="contact-info">
-      <h3>Chat with us</h3>
-      <p>Speak to our friendly team via live chat.</p>
+
 
       <div class="chat-options">
-        <button>Start a live chat</button>
-        <button>Shoot us an email</button>
+        <img class="contact-img" src="./images/multipleglass.jpg" alt="">
       </div>
 
-      <h3 style="padding-top: 15px">Call us</h3>
-      <p>Call our team Mon-Fri from 8am to 5pm.</p>
-      <button>049 800 800</button>
+
 
       <h3 style="padding-top: 15px">Visit us</h3>
       <p>Chat to us in person at our HQ.</p>
       <button>Prishtinë, Lorem Ipsum</button>
     </div>
+
+
   </div>
   <footer class="footerr">
     <div class="footer-containerr">
