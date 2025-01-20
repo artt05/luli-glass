@@ -16,24 +16,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   if ($stmt) {
     $stmt->bind_param("ssss", $full_name, $email, $phone_number, $message);
-
     if ($stmt->execute()) {
       echo "<script>
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Thank you!',
-                    text: 'Your message has been sent successfully.'
-                });
-            </script>";
+          Swal.fire({
+              icon: 'success',
+              title: 'Thank you!',
+              text: 'Your message has been sent successfully.'
+          }).then(() => {
+              window.location.href = 'index.php';
+          });
+      </script>";
+
+      // Add a fallback PHP redirection in case JavaScript doesn't work
+      header("Location: index.php");
+      exit;
     } else {
       echo "<script>
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops!',
-                    text: 'Something went wrong. Please try again later.'
-                });
-            </script>";
+          Swal.fire({
+              icon: 'error',
+              title: 'Oops!',
+              text: 'Something went wrong. Please try again later.'
+          });
+      </script>";
+
+      // Optional fallback redirection to stay on the same page
+      header("Refresh: 5; url=contact.php"); // Redirect after 5 seconds
+      exit;
     }
+
     $stmt->close();
   } else {
     echo "Error: " . $conn->error;
@@ -169,8 +179,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     type="text/javascript"
     src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="../js/script.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+  <script src="./js/script.js"></script>
 </body>
 
 </html>
