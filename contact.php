@@ -1,3 +1,48 @@
+<?php
+// Include the database connection
+require_once __DIR__ . '/db_connection/db_conn.php';
+
+// Check if the form is submitted
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  // Retrieve and sanitize form inputs
+  $full_name = $conn->real_escape_string($_POST['full-name']);
+  $email = $conn->real_escape_string($_POST['email']);
+  $phone_number = $conn->real_escape_string($_POST['phoneNumber']);
+  $message = $conn->real_escape_string($_POST['message']);
+
+  // Insert the data into the contact_form table
+  $sql = "INSERT INTO contact_form (full_name, email, phone_number, message) VALUES (?, ?, ?, ?)";
+  $stmt = $conn->prepare($sql);
+
+  if ($stmt) {
+    $stmt->bind_param("ssss", $full_name, $email, $phone_number, $message);
+
+    if ($stmt->execute()) {
+      echo "<script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Thank you!',
+                    text: 'Your message has been sent successfully.'
+                });
+            </script>";
+    } else {
+      echo "<script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops!',
+                    text: 'Something went wrong. Please try again later.'
+                });
+            </script>";
+    }
+    $stmt->close();
+  } else {
+    echo "Error: " . $conn->error;
+  }
+
+  // Close the database connection
+
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,18 +53,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-  <!-- Bootstrap Icons: This link imports a collection of SVG-based icons from the Bootstrap Icons library -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap" rel="stylesheet">
 </head>
 
-<body class="aldrich-regular">
+<body>
   <?php $activePage = 'contact';
   include __DIR__ . '/components/header.php'; ?>
 
@@ -31,34 +70,25 @@
   </div>
 
   <div class="contact-container">
-    <!-- Contact Form Section -->
     <div class="form-section">
       <div class="contact-form">
         <h1>Contact our team</h1>
         <div style="padding-bottom: 15px;">Request a quote for installation or ask a question</div>
 
-        <div class="form-group">
-          <form onsubmit="sendContactEmail(event)" method="POST">
-            <label for="full-name">Full name</label>
-            <input
-              type="text"
-              id="full-name"
-              name="full-name"
-              placeholder="Full name"
-              required />
+        <form method="POST">
+          <label for="full-name">Full name</label>
+          <input type="text" id="full-name" name="full-name" placeholder="Full name" required />
 
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Your email" required />
 
+          <label for="phoneNumber">Phone number</label>
+          <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Your phone number" required />
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Your email" required />
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Message" rows="4" required></textarea>
 
-            <label for="phoneNumber">Phone number</label>
-            <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Your phone number" required />
-
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Message" rows="4" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
     </div>
