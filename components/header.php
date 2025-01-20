@@ -1,6 +1,13 @@
 <?php
-// Start session at the top
-session_start();
+
+
+// Start the session
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+
+
 require_once 'db_connection/db_conn.php';
 
 // Initialize the cart if it doesn't exist
@@ -13,6 +20,25 @@ $totalItems = 0;
 foreach ($_SESSION['cart'] as $item) {
     $totalItems += $item['quantity'];
 }
+
+// Initialize user name variable
+$userFullName = null;
+
+// Check if the user is logged in
+if (isset($_SESSION['user_id'])) {
+    $userId = $_SESSION['user_id'];
+    // Fetch user details
+    $stmt = $conn->prepare("SELECT first_name, last_name FROM users WHERE id = ?");
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
+        $userFullName = $user['first_name'] . ' ' . $user['last_name'];
+    }
+    $stmt->close();
+}
+
 ?>
 
 <div class="header">
@@ -36,28 +62,28 @@ foreach ($_SESSION['cart'] as $item) {
     </div>
     <div class="icons">
         <div class="dropdown">
-            <!-- <?php if ($userFullName): ?>
-      
+            <?php if ($userFullName): ?>
+                <!-- Display user's name if logged in -->
                 <a class="dropdown-toggle" style="text-decoration: none; color: black; font-family: 'Inter', sans-serif; font-size: 18px" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                     <?php echo htmlspecialchars($userFullName); ?>
                 </a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="auth/logout.php">Logout</a></li>
                 </ul>
-            <?php else: ?> -->
-            <!-- Default person icon if not logged in -->
-            <i
-                class="bi bi-person-fill dropdown-toggle"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                role="button"
-                aria-haspopup="true"
-                style="font-size: 1.5rem"></i>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="auth/login.php">Log in</a></li>
-                <li><a class="dropdown-item" href="auth/register.php">Register</a></li>
-            </ul>
-        <?php endif; ?>
+            <?php else: ?>
+                <!-- Default person icon if not logged in -->
+                <i
+                    class="bi bi-person-fill dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    role="button"
+                    aria-haspopup="true"
+                    style="font-size: 1.5rem"></i>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="auth/login.php">Log in</a></li>
+                    <li><a class="dropdown-item" href="auth/register.php">Register</a></li>
+                </ul>
+            <?php endif; ?>
         </div>
         <div class="position-relative" id="cartIcon" style="cursor: pointer;" onclick="toggleCartMenu()">
             <i class="bi bi-cart-fill" style="font-size: 1.5rem"></i>

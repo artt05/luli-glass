@@ -1,25 +1,37 @@
 <?php
-// Include the database connection file
+// Start session at the top
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
+// Include the database connection file
 require_once __DIR__ . '/db_connection/db_conn.php';
 
 // Get the product ID from the URL
 $product_id = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
 // Fetch the product details from the database
-$sql = "SELECT * FROM products WHERE id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $product_id);
-$stmt->execute();
-$result = $stmt->get_result();
 
+if ($product_id) {
+    $sql = "SELECT * FROM products WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $product_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-// Check if the product exists
-if ($result->num_rows > 0) {
-    $product = $result->fetch_assoc();
+    if ($result->num_rows > 0) {
+        $product = $result->fetch_assoc();
+    } else {
+        die('Product not found.');
+    }
 } else {
-    die('Product not found.');
+    die('Product ID is missing in the URL.');
 }
+
+
+
+// Pass active page to header
+$activePage = 'product-details';
 ?>
 
 
@@ -29,7 +41,7 @@ if ($result->num_rows > 0) {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><?php echo $product['name']; ?> - Product Details</title>
+    <title><?php echo htmlspecialchars($product['name']); ?> - Product Details</title>
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet"
@@ -49,8 +61,8 @@ if ($result->num_rows > 0) {
     <div class="product-container">
         <div class="product-container2">
             <!-- Image Section -->
-            <div style="display: flex; flex-direction: column" class="product-image-section">
-                <img src="<?php echo $product['image_url']; ?>" alt="<?php echo $product['name']; ?>" />
+            <div class="product-image-section" style="display: flex; flex-direction: column">
+                <img src="<?php echo htmlspecialchars($product['image_url']); ?>" alt="<?php echo htmlspecialchars($product['name']); ?>" />
                 <div style="font-size: 16px; padding-top: 10px">Delivery: Ships within 5 business days</div>
             </div>
 

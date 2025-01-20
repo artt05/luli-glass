@@ -22,6 +22,8 @@ if ($result->num_rows > 0) {
         $_SESSION['email'] = $user['email'];
         $_SESSION['role'] = $user['role'];
 
+
+
         if ($user['role'] === 'admin') {
             echo json_encode([
                 "status" => "success",
