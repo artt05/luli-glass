@@ -37,8 +37,6 @@
         <h1>Contact our team</h1>
         <div style="padding-bottom: 15px;">Request a quote for installation or ask a question</div>
 
-        <p>Call our team Mon-Fri from 8am to 5pm.</p>
-        <button>049 800 800</button>
         <div class="form-group">
           <form onsubmit="sendContactEmail(event)" method="POST">
             <label for="full-name">Full name</label>
@@ -55,10 +53,10 @@
             <input type="email" id="email" name="email" placeholder="Your email" required />
 
             <label for="phoneNumber">Phone number</label>
-            <input type="tel" id="phoneNumber" name="phoneNumber" required />
+            <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Your phone number" required />
 
             <label for="message">Message</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
+            <textarea id="message" name="message" placeholder="Message" rows="4" required></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
         </form>
@@ -75,10 +73,15 @@
 
 
 
-      <h3 style="padding-top: 15px">Visit us</h3>
-      <p>Chat to us in person at our HQ.</p>
-      <button>Prishtinë, Lorem Ipsum</button>
+      <p class="same-color" style="padding-top: 30px;"> Visit Us</p>
+      <p> Address: Bernice, Kosovo near Amc Hall.</p>
+      <!-- <button>Prishtinë, Lorem Ipsum</button> -->
+      <p class="same-color">Call our team</p>
+
+      <div>Tel: 049 800 800</div>
+
     </div>
+
 
 
   </div>
