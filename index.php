@@ -247,7 +247,6 @@ if ($result) {
               <div class="card swiper-slide">
                 <div class="image-box">
                   <img src="<?php echo htmlspecialchars($product['image_url']); ?>" class="default-image" alt="<?php echo htmlspecialchars($product['name']); ?>" />
-                  <!-- <img src="<?php echo htmlspecialchars($product['hover_image_url']); ?>" class="hover-image" alt="Hover image of <?php echo htmlspecialchars($product['name']); ?>" /> -->
                 </div>
                 <div class="info">
                   <div class="name"><?php echo htmlspecialchars($product['name']); ?></div>
@@ -266,6 +265,7 @@ if ($result) {
       </div>
     </div>
   </div>
+
 
 
   <footer class="footerr">

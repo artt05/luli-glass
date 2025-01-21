@@ -42,17 +42,12 @@
           Our Dream is Global Learing Transformation
         </h1>
       </div>
-      <div>
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book. It has survived not only
-        five centuries, but also the leap into electronic typesetting,
-        remaining essentially unchanged. It was popularised in the 1960s with
-        the release of Letraset sheets containing Lorem Ipsum passages, and
-        more recently with desktop publishing software like Aldus PageMaker
-        including versions of Lorem Ipsum.
-      </div>
+      <div style="padding-bottom: 10px;">
+        Luli Glass, founded over 25 years ago, focuses on creating high-quality glass solutions. They combine craftsmanship with innovation to redefine glass as a transformative element in design and functionality. </div>
+      <div style="padding-bottom: 10px;">
+        With over 10,000 projects completed, they have worked on residential spaces and large-scale commercial installations. Their commitment to energy efficiency, sustainability, and unique decorative designs has made them a trusted name in the glass industry. </div>
+      <div style="padding-bottom: 10px;">
+        With over 3,000 loyal clients and 5,000 positive reviews, Luli Glass continues to push the boundaries of glass and inspire spaces through innovative, reliable, and beautifully crafted glass solutions. </div>
     </div>
 
     <div class="container2-about">
@@ -60,20 +55,20 @@
       <div class="container2-1">
         <div class="box-container">
           <div class="about-box">
-            <h1 class="about-box-title">100K</h1>
+            <h1 class="about-box-title">10+</h1>
             <p>Years Experience</p>
           </div>
           <div class="about-box">
-            <h1 class="about-box-title">100K</h1>
-            <p>Project Challenge</p>
+            <h1 class="about-box-title">1000+</h1>
+            <p>Projects</p>
           </div>
           <div class="about-box">
-            <h1 class="about-box-title">100K</h1>
+            <h1 class="about-box-title">500+</h1>
             <p>Positive Reviews</p>
           </div>
           <div class="about-box">
-            <h1 class="about-box-title">100K</h1>
-            <p>Trusted Students</p>
+            <h1 class="about-box-title">700+</h1>
+            <p>Trusted Clients</p>
           </div>
         </div>
       </div>

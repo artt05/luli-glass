@@ -58,3 +58,15 @@ table td a[href*="delete"] {
 table td a[href*="delete"]:hover {
   background-color: #c0392b;
 }
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  text-decoration: none;
+  color: black;
+  background-color: #9fe2ff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+}

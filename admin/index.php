@@ -39,11 +39,10 @@ $users = fetchUsers();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="admin.css"> <!-- Link to the admin CSS -->
-</head>
+    <link rel="stylesheet" href="admin.css">
 
 <body>
-    <a href="../index.php" style="position: absolute; top: 10px; left: 10px; text-decoration: none; color: white; background-color: #007BFF; padding: 10px 15px; border-radius: 5px; font-size: 14px;">Go Back</a>
+    <a href="../index.php" class="back-button">Go Back</a>
     <h1 style="text-align: center;">Welcome to the Admin Dashboard</h1>
     <h2>User List</h2>
 

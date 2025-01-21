@@ -105,30 +105,42 @@ if ($result) {
   <footer class="footerr">
     <div class="footer-containerr">
       <div class="footer-logo">
-        <a href="index.php"><img src="images/luli-glass.png" alt="Luli Glass Logo" /></a>
+        <a href="index.php">
+          <img src="/luli-glass/images/luli-glass.png" alt="Luli Glass Logo" />
+        </a>
         <div class="footer-section contact">
-          <p><strong>Phone:</strong> 049 800 800</p>
-          <p><strong>Mail:</strong> <a href="mailto:contact@support.com">luliglass@gmail.com</a></p>
-          <p><strong>Address:</strong> Prishtinë</p>
+
+          <p style="margin: 0px;"> <strong>Phone:</strong> 049 800 800</p>
+          <p style="margin: 0px;">
+            <strong>Mail:</strong>
+            <a href="mailto:contact@support.com" style="color: white;">luliglass@gmail.com</a>
+          </p>
+          <p style="margin: 0px;">
+            <strong>Address:</strong> Prishtinë
+          </p>
         </div>
       </div>
       <div class="footer-nav">
         <div class="footer-section-links">
-          <div>Other Pages</div>
+          <div style="font-size: 28px; padding-bottom: 10px">Other Pages</div>
           <div class="footer-links">
             <a href="#">Privacy & Policy</a>
             <a href="#">Terms of Use</a>
             <a href="#">Disclaimer</a>
             <a href="#">FAQ</a>
+            </ul>
           </div>
+
         </div>
+
       </div>
       <div class="footer-social">
         <div class="footer-section-links">
-          <div>Socials</div>
+          <div style="font-size: 28px;">Socials</div>
           <div class="footer-socials">
             <a href="#"><img src="images/facebook-svgrepo-com.png" alt="Facebook" /></a>
-            <a href="#"><img src="images/instagram.png" alt="Instagram" /></a>
+
+            <a href="#"><img src="images/instagram.png" alt="Instagram" style="width: 50px; height: 50px;" /></a>
           </div>
         </div>
       </div>

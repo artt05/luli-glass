@@ -122,7 +122,7 @@ $activePage = 'product-details';
                         <!-- Third Section: Additional Details and Submit -->
                         <div class="additional-details">
                             <h4>Additional Details</h4>
-                            <textarea style="width: 100%;" name="additional_details" rows="4" placeholder="Enter any specific details or instructions"></textarea>
+                            <textarea style="width: 70%;" name="additional_details" rows="4" placeholder="Enter any specific details or instructions"></textarea>
                             <!-- 
                             <div class="file-upload">
                                 <label style="padding-bottom: 10px;">Upload File</label>
