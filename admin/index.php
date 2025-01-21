@@ -43,6 +43,7 @@ $users = fetchUsers();
 </head>
 
 <body>
+    <a href="../index.php" style="position: absolute; top: 10px; left: 10px; text-decoration: none; color: white; background-color: #007BFF; padding: 10px 15px; border-radius: 5px; font-size: 14px;">Go Back</a>
     <h1 style="text-align: center;">Welcome to the Admin Dashboard</h1>
     <h2>User List</h2>
 

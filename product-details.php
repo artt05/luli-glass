@@ -75,29 +75,9 @@ $activePage = 'product-details';
                     <form action="submit-order.php" method="POST" enctype="multipart/form-data" oninput="sendAjaxRequest()">
                         <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>" />
 
-                        <!-- First Section: Shape Selection -->
+
                         <div>
-                            <div class="shape-selection">
-                                <h4>Choose Your Shape</h4>
-                                <div class="shape-options">
-                                    <label class="shape-option">
-                                        <input type="radio" name="shape" value="rectangle" checked />
-                                        Rectangle
-                                    </label>
-                                    <label class="shape-option">
-                                        <input type="radio" name="shape" value="round" />
-                                        Round
-                                    </label>
-                                    <label class="shape-option">
-                                        <input type="radio" name="shape" value="oval" />
-                                        Oval
-                                    </label>
-                                    <label class="shape-option">
-                                        <input type="radio" name="shape" value="square" />
-                                        Square
-                                    </label>
-                                </div>
-                            </div>
+
 
                             <!-- Second Section: Dimensions and Quantity -->
                             <div class="dimension-selection">
