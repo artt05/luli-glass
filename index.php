@@ -1,3 +1,59 @@
+<?php
+// Start session at the top of the file
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
+
+// Include the database connection file
+require_once __DIR__ . '/db_connection/db_conn.php';
+
+// Debug database connection
+if (!$conn) {
+  die("Database connection failed: " . mysqli_connect_error());
+} else {
+  echo "<script>console.log('Database connection is active.');</script>";
+}
+
+// Debugging for logged-in user session
+if (isset($_SESSION['user_id'])) {
+  echo "<script>console.log('Logged-in User Data: " . json_encode($_SESSION['user_id']) . "');</script>";
+} else {
+  echo "<script>console.log('No user is logged in.');</script>";
+}
+
+// Fetch products based on the selected category
+$category = 'glass'; // Default to 'glass'
+$sql = "SELECT * FROM products WHERE type = ?";
+echo "<script>console.log('Query: $sql with type = $category');</script>";
+
+$stmt = $conn->prepare($sql);
+
+if (!$stmt) {
+  die("SQL Error: " . $conn->error);
+}
+
+$stmt->bind_param("s", $category);
+$stmt->execute();
+$result = $stmt->get_result();
+
+// Debug the query and result
+$products = [];
+if ($result) {
+  echo "<script>console.log('Query executed successfully.');</script>";
+  if ($result->num_rows > 0) {
+    echo "<script>console.log('Number of Products Found: {$result->num_rows}');</script>";
+    while ($product = $result->fetch_assoc()) {
+      $products[] = $product;
+    }
+    echo "<script>console.log('Products: ', " . json_encode($products) . ");</script>";
+  } else {
+    echo "<script>console.log('No products found for category: {$category}');</script>";
+  }
+} else {
+  echo "<script>console.error('Query execution failed: " . $stmt->error . "');</script>";
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -181,100 +237,34 @@
 
   <!--Slider-->
 
+
   <div class="best-sellers" id="best-sellers">
     <div class="container swiper">
       <div class="slider-wrapper">
         <div class="card-wrapper swiper-wrapper">
-          <div class="card swiper-slide">
-            <div class="image-box one">
-              <img src="./images/luli-glass.png" class="default-image" />
-              <img src="./images/black.jpg" class="hover-image" />
-            </div>
-            <div class="info">
-              <div class="name">Text</div>
-              <button type="button" class="btn btn-light view-button" onclick="view()">
-                View
-              </button>
-            </div>
-          </div>
-          <div class="card swiper-slide">
-            <div class="image-box two">
-              <img src="./images/luli-glass.png" class="default-image" />
-              <img src="./images/black.jpg" class="hover-image" />
-            </div>
-            <div class="info">
-              <div class="name">Text</div>
-              <button type="button" class="btn btn-light view-button" onclick="view()">
-                View
-              </button>
-            </div>
-          </div>
-          <div class="card swiper-slide">
-            <div class="image-box three">
-              <img src="/luli-glass/images/luli-glass.png" class="default-image" />
-              <img src="/luli-glass/images/black.jpg" class="hover-image" />
-            </div>
-            <div class="info">
-              <div class="name">Text</div>
-              <button type="button" class="btn btn-light view-button" onclick="view()">
-                View
-              </button>
-            </div>
-          </div>
-          <div class="card swiper-slide">
-            <div class="image-box four">
-              <img src="/luli-glass/images/luli-glass.png" class="default-image" />
-              <img src="/luli-glass/images/black.jpg" class="hover-image" />
-            </div>
-            <div class="info">
-              <div class="name">Text</div>
-              <button type="button" class="btn btn-light view-button" onclick="view()">
-                View
-              </button>
-            </div>
-          </div>
-          <div class="card swiper-slide">
-            <div class="image-box five">
-              <img src="./images/luli-glass.png" class="default-image" />
-              <img src="./images/black.jpg" class="hover-image" />
-            </div>
-            <div class="info">
-              <div class="name">Text</div>
-              <button type="button" class="btn btn-light view-button" onclick="view()">
-                View
-              </button>
-            </div>
-          </div>
-          <div class="card swiper-slide">
-            <div class="image-box six">
-              <img src="./images/luli-glass.png" class="default-image" />
-              <img src="./images/black.jpg" class="hover-image" />
-            </div>
-            <div class="info">
-              <div class="name">Text</div>
-              <button type="button" class="btn btn-light view-button" onclick="view()">
-                View
-              </button>
-            </div>
-          </div>
-          <div class="card swiper-slide">
-            <div class="image-box seven">
-              <img src="./images/luli-glass.png" class="default-image" />
-              <img src="./images/black.jpg" class="hover-image" />
-            </div>
-            <div class="info">
-              <div class="name">Text</div>
-              <button type="button" class="btn btn-light view-button" onclick="view()">
-                View
-              </button>
-            </div>
-          </div>
+          <?php if (!empty($products)): ?>
+            <?php foreach ($products as $product): ?>
+              <div class="card swiper-slide">
+                <div class="image-box">
+                  <img src="<?php echo htmlspecialchars($product['image_url']); ?>" class="default-image" alt="<?php echo htmlspecialchars($product['name']); ?>" />
+                  <!-- <img src="<?php echo htmlspecialchars($product['hover_image_url']); ?>" class="hover-image" alt="Hover image of <?php echo htmlspecialchars($product['name']); ?>" /> -->
+                </div>
+                <div class="info">
+                  <div class="name"><?php echo htmlspecialchars($product['name']); ?></div>
+                  <button type="button" class="btn btn-light view-button" onclick="location.href='product-details.php?id=<?php echo htmlspecialchars($product['id']); ?>'">
+                    View
+                  </button>
+                </div>
+              </div>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <p>No products available.</p>
+          <?php endif; ?>
         </div>
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
       </div>
     </div>
-  </div>
   </div>
 
 
