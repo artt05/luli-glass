@@ -123,6 +123,7 @@ body {
   font-size: 1.2rem;
   margin-bottom: 20px;
   z-index: 1;
+  width: 90%;
 }
 
 .hero-button {
@@ -187,7 +188,7 @@ strong {
   padding-left: 20px;
   width: 100px;
   justify-content: center;
-  z-index: 1001;
+  z-index: 1000;
 }
 
 .header-logo a img {
@@ -1222,6 +1223,8 @@ h1 {
   display: none; /* Hidden by default */
 }
 
+/* dropdown menu on mobile style */
+
 @media screen and (max-width: 930px) {
   .nav-list a {
     padding: 0 30px;
@@ -1256,18 +1259,18 @@ h1 {
   .nav {
     display: none !important;
   }
-  .header-text {
-    /* display: none !important; */
+  .hero h1 {
+    font-size: 3rem;
   }
-  .header-logo {
-    /* display: flex;
-    align-items: center;
-    padding-left: 10px;
-    width: 100px;
-    justify-content: left;
-    z-index: 1001; */
+  .hero h2 {
+    font-size: 2rem;
   }
   .footer-containerr {
     gap: 30px;
+  }
+
+  .testimonials {
+    display: flex;
+    flex-direction: column;
   }
 }

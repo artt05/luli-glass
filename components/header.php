@@ -40,8 +40,46 @@ if (isset($_SESSION['user_id'])) {
 }
 
 ?>
+<style>
+    @media screen and (max-width: 768px) {
+
+
+        #mobileMenu {
+            position: absolute;
+            top: 12vh;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            z-index: 100;
+            display: none;
+            padding: 10px;
+            border-top: 1px solid;
+        }
+
+        #mobileMenu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #mobileMenu ul li a {
+            text-decoration: none;
+            color: black;
+            display: block;
+            padding: 10px;
+        }
+    }
+</style>
 
 <div class="header">
+    <div id="mobileMenu" class="hidden">
+        <ul>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="products.php">Products</a></li>
+            <li><a href="about.php">About</a></li>
+            <li><a href="contact.php">Contact</a></li>
+        </ul>
+    </div>
     <div class="header-text" style="z-index: 1000; padding-left: 20px; font-size: 20px">
         <a style="text-decoration: none; color:black;" href="index.php">
             LULIGLASS
@@ -52,6 +90,7 @@ if (isset($_SESSION['user_id'])) {
             <img src="./images/luli-glass.png" alt="Logo.jpg" />
         </a>
     </div>
+
     <div class="nav">
         <ul class="nav-list">
             <li><a href="index.php" class="<?php echo $activePage == 'home' ? 'active' : ''; ?>">Home</a></li>
@@ -60,6 +99,7 @@ if (isset($_SESSION['user_id'])) {
             <li><a href="contact.php" class="<?php echo $activePage == 'contact' ? 'active' : ''; ?>">Contact</a></li>
         </ul>
     </div>
+
     <div class="icons">
         <div class="dropdown">
             <?php if ($userFullName): ?>
@@ -95,14 +135,35 @@ if (isset($_SESSION['user_id'])) {
             </span>
         </div>
 
+
+
         <!-- Menu Icon (Visible in Mobile View) -->
         <div class="menu-icon" id="menuIcon" onclick="toggleMobileMenu()" style="cursor: pointer;">
             <img src="./images/toggle.svg" alt="Menu" style="width: 1.5rem; height: auto;" />
         </div>
+
+
 
         <!-- Product Menu Container -->
         <div id="productMenu" class="product-menu hidden">
             <?php include 'productMenu.php'; ?>
         </div>
     </div>
+
 </div>
+
+
+
+<script>
+    function toggleMobileMenu() {
+        console.log('Toggle icon clicked'); // Debugging log
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenu.style.display === 'none' || mobileMenu.style.display === '') {
+            console.log('Show the menu');
+            mobileMenu.style.display = 'block'; // Show the menu
+        } else {
+            console.log('Hide the menu');
+            mobileMenu.style.display = 'none'; // Hide the menu
+        }
+    }
+</script>
