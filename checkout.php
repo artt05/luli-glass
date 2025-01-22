@@ -26,11 +26,11 @@
         <div class="container">
             <div class="form-container">
                 <h2>Order Information</h2>
-                <form action="backend/process_order.php" method="POST" class="form-section">
+                <form id="orderForm" action="backend/process_order.php" method="POST" class="form-section">
                     <div class="grid-container" style="width:100%">
                         <div class="input-group">
                             <label for="firstName">First Name*</label>
-                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
+                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name">
                         </div>
                         <div class="input-group">
                             <label for="lastName">Last Name*</label>
@@ -105,9 +105,9 @@
                     <h5 class="text-end">$<?= number_format($totalPrice, 2) ?></h5>
                     <input type="hidden" name="total_price" value="<?= $totalPrice ?>">
 
-                    <a href="payment.php" class="btn btn-primary mt-3" style="grid-column: span 2; padding:10px 0px">
+                    <button type="button" class="btn btn-primary mt-3" style="grid-column: span 2; padding:10px 0px">
                         Go to Payment
-                    </a>
+                    </button>
                 </div>
 
             <?php else: ?>
@@ -174,12 +174,13 @@
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="../js/script.js"></script>
-    <script src="../js/checkout.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/checkout.js"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const checkoutButton = document.querySelector(".btn-primary");
+            const orderForm = document.getElementById("orderForm");
 
             if (!checkoutButton) {
                 console.error("Checkout button not found! Ensure it has the correct class or ID.");
@@ -188,6 +189,20 @@
 
             checkoutButton.addEventListener("click", (event) => {
                 event.preventDefault();
+
+                const formValid = orderForm.checkValidity();
+                console.log("Form valid state:", formValid);
+
+                if (!formValid) {
+                    Swal.fire({
+                        title: "Please fill out all required fields!",
+                        icon: "warning",
+                        confirmButtonText: "OK",
+                        confirmButtonColor: "rgb(86 204 255)"
+                    });
+                    orderForm.reportValidity();
+                    return;
+                }
 
                 const isLoggedIn = false; // Replace with actual login check logic
 
@@ -199,7 +214,7 @@
                         icon: "warning",
                         showCancelButton: true,
                         confirmButtonText: "Login",
-                        confirmButtonColor: "rgb(86 204 255)", // Set login button background color
+                        confirmButtonColor: "rgb(86 204 255)",
                         cancelButtonText: "Register",
                         reverseButtons: true,
                     }).then((result) => {
