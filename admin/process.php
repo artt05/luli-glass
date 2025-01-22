@@ -1,51 +1,148 @@
 <?php
+// Start the session
+session_start();
 
-// Include the database connection file
-require '../db_connection/db_conn.php';
-
-// Get the action from the URL (update or delete)
-$action = $_GET['action'] ?? null;
-
-if ($action === 'update') {
-    // Update user information
-    $id = intval($_POST['id']); // Sanitize and retrieve user ID from the form
-    $first_name = $conn->real_escape_string($_POST['first_name']); // Sanitize first name
-    $last_name = $conn->real_escape_string($_POST['last_name']); // Sanitize last name
-    $email = $conn->real_escape_string($_POST['email']); // Sanitize email
-
-    // SQL query to update user information in the database
-    $sql = "UPDATE users SET 
-            first_name = '$first_name', 
-            last_name = '$last_name', 
-            email = '$email' 
-            WHERE id = $id";
-
-    // Execute the update query and check for success
-    if ($conn->query($sql) === TRUE) {
-        // Optionally, add logging or notifications for successful update
-    } else {
-        // Log or handle errors during the update
-        error_log("Error updating user: " . $conn->error);
-    }
-} elseif ($action === 'delete') {
-    // Delete user
-    $id = intval($_GET['id']); // Sanitize user ID from the URL
-
-    // SQL query to delete the user from the database
-    $sql = "DELETE FROM users WHERE id = $id";
-
-    // Execute the delete query and check for success
-    if ($conn->query($sql) === TRUE) {
-        // Optionally, add logging or notifications for successful deletion
-    } else {
-        // Log or handle errors during the delete
-        error_log("Error deleting user: " . $conn->error);
-    }
-} else {
-    // Invalid action
-    die("Invalid action specified.");
+// Check if the user is logged in and has an admin role
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+    // Redirect to login page if not an admin
+    header("Location: ../auth/login.php");
+    exit;
 }
 
-// Redirect back to the index page after completing the action
-header("Location: index.php");
-exit; // Ensure no further code is executed
+// Include the database connection
+require '../db_connection/db_conn.php';
+
+// Fetch all users from the database
+function fetchUsers()
+{
+    global $conn; // Use the global database connection variable
+    $sql = "SELECT * FROM users"; // Query to fetch all users
+    $result = $conn->query($sql);
+
+    $data = array(); // Initialize an empty array for storing user data
+    if ($result->num_rows > 0) { // Check if there are any results
+        while ($row = $result->fetch_assoc()) { // Fetch each row as an associative array
+            $data[] = $row; // Add the row to the data array
+        }
+    }
+    return $data; // Return the data array
+}
+
+// Fetch all contact submissions from the database
+function fetchContactSubmissions()
+{
+    global $conn; // Use the global database connection variable
+    $sql = "SELECT * FROM contact_form"; // Query to fetch all contact form submissions
+    $result = $conn->query($sql);
+
+    $data = array(); // Initialize an empty array for storing contact data
+    if ($result->num_rows > 0) { // Check if there are any results
+        while ($row = $result->fetch_assoc()) { // Fetch each row as an associative array
+            $data[] = $row; // Add the row to the data array
+        }
+    }
+    return $data; // Return the data array
+}
+
+if ($_GET['action'] === 'delete_user' && isset($_GET['id'])) {
+    $id = intval($_GET['id']);
+    $sql = "DELETE FROM users WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $id);
+    if ($stmt->execute()) {
+        header("Location: index.php");
+        exit;
+    } else {
+        echo "Error deleting user.";
+    }
+}
+
+if ($_GET['action'] === 'delete_contact' && isset($_GET['id'])) {
+    $id = intval($_GET['id']);
+    $sql = "DELETE FROM contact_form WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $id);
+    if ($stmt->execute()) {
+        header("Location: index.php");
+        exit;
+    } else {
+        echo "Error deleting contact submission.";
+    }
+}
+
+// Fetch user data and contact submissions
+$users = fetchUsers();
+$submissions = fetchContactSubmissions();
+
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+    <a href="../index.php" class="back-button">Go Back</a>
+    <h1 style="text-align: center;">Welcome to the Admin Dashboard</h1>
+
+    <!-- User List Section -->
+    <h2>User List</h2>
+    <table border="1">
+        <tr style="background-color: #9FE2FF;">
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Action</th>
+        </tr>
+        <?php foreach ($users as $user) : ?>
+            <tr>
+                <td><?php echo $user['id']; ?></td>
+                <td><?php echo htmlspecialchars($user['first_name']); ?></td>
+                <td><?php echo htmlspecialchars($user['last_name']); ?></td>
+                <td><?php echo htmlspecialchars($user['email']); ?></td>
+                <td><?php echo htmlspecialchars($user['username']); ?></td>
+                <td>
+                    <a href="edit.php?id=<?php echo $user['id']; ?>">Edit</a>
+                    <a href="process.php?action=delete_user&id=<?php echo $user['id']; ?>" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+
+    <!-- Contact Submissions Section -->
+    <h2 style="padding: 30px 0px;">Contact Submissions</h2>
+    <table border="1">
+        <tr style="background-color: #9FE2FF;">
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Message</th>
+            <th>Submitted At</th>
+            <th>Action</th>
+        </tr>
+        <?php foreach ($submissions as $submission) : ?>
+            <tr>
+                <td><?php echo $submission['id']; ?></td>
+                <td><?php echo htmlspecialchars($submission['full_name']); ?></td>
+                <td><?php echo htmlspecialchars($submission['email']); ?></td>
+                <td><?php echo htmlspecialchars($submission['phone_number']); ?></td>
+                <td><?php echo htmlspecialchars($submission['message']); ?></td>
+                <td><?php echo htmlspecialchars($submission['submitted_at']); ?></td>
+                <td>
+                    <a href="process.php?action=delete_contact&id=<?php echo $submission['id']; ?>" onclick="return confirm('Are you sure you want to delete this submission?');">Delete</a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</body>
+
+</html>

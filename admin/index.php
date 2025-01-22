@@ -28,10 +28,26 @@ function fetchUsers()
     return $data;  // Return the data array
 }
 
-// Fetch user data
-$users = fetchUsers();
-?>
+function fetchContactSubmissions()
+{
+    global $conn; // Use the global database connection variable
+    $sql = "SELECT id, full_name, email, phone_number, message, submitted_at FROM contact_form";
+    $result = $conn->query($sql);
 
+    $data = array(); // Initialize an empty array for storing contact data
+    if ($result->num_rows > 0) { // Check if there are any results
+        while ($row = $result->fetch_assoc()) { // Fetch each row as an associative array
+            $data[] = $row; // Add the row to the data array
+        }
+    }
+    return $data; // Return the data array
+}
+
+
+// Fetch contact submission data
+$users = fetchUsers();
+$submissions = fetchContactSubmissions();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,6 +56,7 @@ $users = fetchUsers();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="admin.css">
+</head>
 
 <body>
     <a href="../index.php" class="back-button">Go Back</a>
@@ -67,6 +84,37 @@ $users = fetchUsers();
                     <!-- Links for editing and deleting a user -->
                     <a href="edit.php?id=<?php echo $user['id']; ?>">Edit</a>
                     <a href="process.php?action=delete&id=<?php echo $user['id']; ?>">Delete</a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+
+
+    <h2>Contact List</h2>
+
+    <!-- Display contact data in a table -->
+    <table border="1">
+        <tr style="background-color: #9FE2FF; ">
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Message</th>
+            <th>Submission Date</th>
+            <th>Action</th>
+        </tr>
+        <?php foreach ($submissions as $submission) : ?>
+            <tr>
+                <td><?php echo $submission['id']; ?></td>
+                <td><?php echo $submission['full_name']; ?></td>
+                <td><?php echo $submission['email']; ?></td>
+                <td><?php echo $submission['phone_number']; ?></td>
+                <td><?php echo $submission['message']; ?></td>
+                <td><?php echo $submission['submitted_at']; ?></td>
+                <td>
+                    <!-- Links for editing and deleting a user -->
+
+                    <a href="process.php?action=delete&id=<?php echo $submission['id']; ?>">Delete</a>
                 </td>
             </tr>
         <?php endforeach; ?>
