@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION['user'])) {
+    // Redirect to the login page
+    header("Location: /luli-glass/auth/login.php");
+
+
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -112,7 +125,7 @@
 
     <!-- Bootstrap JS und benutzerdefiniertes Skript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./js/chechkout_payment.js"></script> <!-- Externe JS-Datei für die Formularvalidierung -->
+    <script src="./js/checkout.js"></script>
 </body>
 
 </html>

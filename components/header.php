@@ -6,8 +6,6 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-
-
 require_once 'db_connection/db_conn.php';
 
 // Initialize the cart if it doesn't exist

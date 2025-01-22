@@ -79,7 +79,7 @@
 .current-price {
   font-size: 24px;
   font-weight: bold;
-  color: #007bff;
+  color: #00ced1;
   margin-right: 10px;
 }
 
@@ -92,6 +92,9 @@
 
 .dimension {
   width: 60px;
+  border-radius: 5px;
+  border: 1px solid grey;
+  padding: 0px 5px;
 }
 
 .product-details-section {
