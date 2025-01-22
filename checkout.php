@@ -1,14 +1,36 @@
 <?php
 session_start();
-// Check if the user is logged in
-$isLoggedIn = isset($_SESSION['user_id']) ? true : false;
+
+// Include database connection
+require_once 'db_connection/db_conn.php'; // Ensure this points to your database connection file
+
+$isLoggedIn = false; // Default value
+
+// Check if the session contains user_id
+if (isset($_SESSION['user_id'])) {
+    $userId = $_SESSION['user_id'];
+
+    // Query to check if the user_id exists in the database
+    $query = "SELECT COUNT(*) FROM users WHERE id = ?";
+    $stmt = $conn->prepare($query); // Use the MySQLi connection variable
+    $stmt->bind_param("i", $userId); // Bind the user_id parameter as an integer
+    $stmt->execute();
+    $stmt->bind_result($userExists);
+    $stmt->fetch();
+    $stmt->close();
+
+    if ($userExists) {
+        $isLoggedIn = true; // User exists in the database
+    } else {
+        unset($_SESSION['user_id']); // Invalid session
+    }
+}
 ?>
 <script>
     // Pass the PHP login status to JavaScript
     const isLoggedIn = <?php echo json_encode($isLoggedIn); ?>;
     console.log("Is user logged in?", isLoggedIn);
 </script>
-
 
 <!DOCTYPE html>
 <html lang="en">
