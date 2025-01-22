@@ -74,6 +74,7 @@ if (isset($_SESSION['user_id'])) {
         <ul>
             <li><a href="index.php">Home</a></li>
             <li><a href="products.php">Products</a></li>
+            <li><a href="projects.php">Projects</a></li>
             <li><a href="about.php">About</a></li>
             <li><a href="contact.php">Contact</a></li>
         </ul>
@@ -93,6 +94,7 @@ if (isset($_SESSION['user_id'])) {
         <ul class="nav-list">
             <li><a href="index.php" class="<?php echo $activePage == 'home' ? 'active' : ''; ?>">Home</a></li>
             <li><a href="products.php" class="<?php echo $activePage == 'products' ? 'active' : ''; ?>">Products</a></li>
+            <li><a href="projects.php" class="<?php echo $activePage == 'projects' ? 'active' : ''; ?>">Projects</a></li>
             <li><a href="about.php" class="<?php echo $activePage == 'about' ? 'active' : ''; ?>">About</a></li>
             <li><a href="contact.php" class="<?php echo $activePage == 'contact' ? 'active' : ''; ?>">Contact</a></li>
         </ul>

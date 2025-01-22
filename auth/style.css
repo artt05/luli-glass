@@ -69,10 +69,11 @@ form input {
   width: 100%;
   margin-top: 15px;
   padding: 10px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   border-radius: 10px;
   border: 1px solid #e8e8e8;
   font-size: 16px;
+  width: 350px;
   background-color: #fff;
 }
 .swal2-popup {

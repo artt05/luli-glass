@@ -56,6 +56,7 @@ $activePage = 'product-details';
 </head>
 
 <body>
+
     <?php include __DIR__ . '/components/header.php'; ?>
 
     <div class="product-container">
@@ -227,6 +228,8 @@ $activePage = 'product-details';
             <p>© 2024 Luli Glass. All Rights Reserved.</p>
         </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="js/calculatePrice.js"></script>

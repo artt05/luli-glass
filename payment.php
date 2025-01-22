@@ -56,8 +56,6 @@ if (isset($_SESSION['user_id'])) {
     exit();
 }
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,38 +65,43 @@ if (isset($_SESSION['user_id'])) {
     <title>Online Payment-Page</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/payment.css"> <!-- Benutzerdefinierte CSS-Datei für das Styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+
+    <link rel="stylesheet" href="./css/payment.css"> <!-- Custom CSS file for styling -->
+    <link rel="stylesheet" href="style.css"> <!-- Custom CSS file for styling -->
 </head>
 
 <body>
-    <div class="container">
-        <!-- Zahlungsformular -->
+    <?php include __DIR__ . '/components/header.php'; ?>
+    <div class="container" style="margin-top: 0;">
+        <!-- Payment Form -->
         <form action="#" id="paymentForm">
 
             <div class="col">
-                <h3 class="title">Payment</h3> <!-- Titel für das Zahlungsformular -->
+                <h3 class="title">Payment</h3> <!-- Title for the payment form -->
 
-                <!-- Abschnitt für akzeptierte Karten mit Bildern -->
+                <!-- Section for accepted cards with images -->
                 <div class="inputBox">
                     <label for="name">Card Accepted:</label>
                     <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240715140014/Online-Payment-Project.webp" alt="credit/debit card image">
                 </div>
 
-                <!-- Eingabefeld für den Namen auf der Karte -->
+                <!-- Input field for the name on the card -->
                 <div class="inputBox">
                     <label for="cardName">Name On Card:</label>
                     <input type="text" id="cardName" placeholder="Enter card name" required>
-                    <span class="error-message" id="cardNameError" style="color: red;"></span> <!-- Fehlermeldung -->
+                    <span class="error-message" id="cardNameError" style="color: red;"></span> <!-- Error message -->
                 </div>
 
-                <!-- Eingabefeld für die Kreditkartennummer -->
+                <!-- Input field for the credit card number -->
                 <div class="inputBox">
                     <label for="cardNum">Credit Card Number:</label>
                     <input type="text" id="cardNum" placeholder="1111-2222-3333-4444" maxlength="19" required>
-                    <span class="error-message" id="cardNumError" style="color: red;"></span> <!-- Fehlermeldung -->
+                    <span class="error-message" id="cardNumError" style="color: red;"></span> <!-- Error message -->
                 </div>
 
-                <!-- Dropdown für den Ablaufmonat -->
+                <!-- Dropdown for the expiration month -->
                 <div class="inputBox">
                     <label for="expMonth">Exp Month:</label>
                     <select id="expMonth" required>
@@ -116,12 +119,11 @@ if (isset($_SESSION['user_id'])) {
                         <option value="November">November</option>
                         <option value="December">December</option>
                     </select>
-                    <span class="error-message" id="expMonthError" style="color: red;"></span> <!-- Fehlermeldung -->
+                    <span class="error-message" id="expMonthError" style="color: red;"></span> <!-- Error message -->
                 </div>
 
-
                 <div class="flex">
-                    <!-- Dropdown für das Ablaufjahr -->
+                    <!-- Dropdown for the expiration year -->
                     <div class="inputBox">
                         <label for="expYear">Exp Year:</label>
                         <select id="expYear" required>
@@ -132,26 +134,25 @@ if (isset($_SESSION['user_id'])) {
                             <option value="2027">2027</option>
                             <option value="2028">2028</option>
                         </select>
-                        <span class="error-message" id="expYearError" style="color: red;"></span> <!-- Fehlermeldung -->
+                        <span class="error-message" id="expYearError" style="color: red;"></span> <!-- Error message -->
                     </div>
 
-                    <!-- Eingabefeld für die CVV -->
+                    <!-- Input field for CVV -->
                     <div class="inputBox">
                         <label for="cvv">CVV</label>
                         <input type="number" id="cvv" placeholder="123" required>
-                        <span class="error-message" id="cvvError" style="color: red;"></span> <!-- Fehlermeldung -->
+                        <span class="error-message" id="cvvError" style="color: red;"></span> <!-- Error message -->
                     </div>
                 </div>
 
             </div>
-
-            <!-- Abschicken-Button -->
+            <!-- Submit button -->
             <input type="submit" value="Finish Payment" class="submit_btn" id="finishPaymentButton">
 
-        </form> <!-- Ende des Zahlungsformulars -->
+        </form> <!-- End of payment form -->
     </div>
 
-    <!-- Zahlungsbestätigungs-Modal -->
+    <!-- Payment Confirmation Modal -->
     <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -170,8 +171,58 @@ if (isset($_SESSION['user_id'])) {
         </div>
     </div>
 
-    <!-- Bootstrap JS und benutzerdefiniertes Skript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <footer class="footerr">
+        <div class="footer-containerr">
+            <div class="footer-logo">
+                <a href="index.php">
+                    <img src="images/luli-glass.png" alt="Luli Glass Logo" />
+                </a>
+                <div class="footer-section contact">
+
+                    <p style="margin: 0px;"> <strong>Phone:</strong> 049 800 800</p>
+                    <p style="margin: 0px;">
+                        <strong>Mail:</strong>
+                        <a href="mailto:contact@support.com" style="color: white;">luliglass@gmail.com</a>
+                    </p>
+                    <p style="margin: 0px;">
+                        <strong>Address:</strong> Prishtinë
+                    </p>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <div class="footer-section-links">
+                    <div style="font-size: 28px; padding-bottom: 10px">Other Pages</div>
+                    <div class="footer-links">
+                        <a href="#">Privacy & Policy</a>
+                        <a href="#">Terms of Use</a>
+                        <a href="#">Disclaimer</a>
+                        <a href="#">FAQ</a>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="footer-social">
+                <div class="footer-section-links">
+                    <div style="font-size: 28px;">Socials</div>
+                    <div class="footer-socials">
+                        <a href="#"><img src="images/facebook-svgrepo-com.png" alt="Facebook" /></a>
+
+                        <a href="#"><img src="images/instagram.png" alt="Instagram" style="width: 50px; height: 50px;" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Luli Glass. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap JS and custom script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
     <script src="./js/checkout.js"></script>
 </body>
 

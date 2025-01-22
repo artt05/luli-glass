@@ -55,7 +55,8 @@
       </div>
 
       <button type="submit">Send</button>
-      <div class="backToHome"><a href="/index.php">Back to Home</a></div>
+
+      <div class="backToHome"><a href="../index.php">Back to Home</a></div>
     </form>
 
     <!-- Image slider for the log-in page -->
