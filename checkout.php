@@ -1,3 +1,15 @@
+<?php
+session_start();
+// Check if the user is logged in
+$isLoggedIn = isset($_SESSION['user_id']) ? true : false;
+?>
+<script>
+    // Pass the PHP login status to JavaScript
+    const isLoggedIn = <?php echo json_encode($isLoggedIn); ?>;
+    console.log("Is user logged in?", isLoggedIn);
+</script>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -204,11 +216,13 @@
                     return;
                 }
 
-                const isLoggedIn = false; // Replace with actual login check logic
-
                 console.log("Checkout button clicked. Is user logged in?", isLoggedIn);
 
-                if (!isLoggedIn) {
+                if (isLoggedIn) {
+                    window.location.href = "/luli-glass/payment.php";
+                } else {
+
+
                     Swal.fire({
                         title: "You must be logged in to proceed with the payment",
                         icon: "warning",
@@ -218,19 +232,13 @@
                         cancelButtonText: "Register",
                         reverseButtons: true,
                     }).then((result) => {
-                        console.log("SweetAlert response:", result);
-
                         if (result.isConfirmed) {
-                            console.log("Redirecting to login page...");
                             window.location.href = "/luli-glass/auth/login.php";
                         } else if (result.dismiss === Swal.DismissReason.cancel) {
-                            console.log("Redirecting to registration page...");
                             window.location.href = "/luli-glass/auth/register.php";
                         }
                     });
-                } else {
-                    console.log("User is logged in. Redirecting to payment page...");
-                    window.location.href = "payment.php";
+
                 }
             });
         });

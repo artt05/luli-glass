@@ -1,15 +1,62 @@
 <?php
 session_start();
 
-// Check if the user is logged in
-if (!isset($_SESSION['user'])) {
-    // Redirect to the login page
-    header("Location: /luli-glass/auth/login.php");
+// Include database connection
+require_once 'db_connection/db_conn.php'; // Ensure this points to your database connection file
 
+// Check if the session contains user_id
+if (isset($_SESSION['user_id'])) {
+    $userId = $_SESSION['user_id'];
 
+    // Query to check if the user_id exists in the database
+    $query = "SELECT COUNT(*) FROM users WHERE id = ?";
+    $stmt = $conn->prepare($query); // Use the MySQLi connection variable
+    $stmt->bind_param("i", $userId); // Bind the user_id parameter as an integer
+    $stmt->execute();
+    $stmt->bind_result($userExists);
+    $stmt->fetch();
+    $stmt->close();
+
+    // If user does not exist in the database, unset the session
+    if (!$userExists) {
+        unset($_SESSION['user_id']);
+
+        // Show SweetAlert for invalid session
+        echo '<script>
+                Swal.fire({
+                    title: "Your session is invalid. Please log in again.",
+                    icon: "warning",
+                    confirmButtonText: "Login",
+                    confirmButtonColor: "rgb(86 204 255)"
+                }).then(() => {
+                    window.location.href = "/luli-glass/auth/login.php";
+                });
+              </script>';
+        exit();
+    }
+} else {
+    // If no user_id in session, show SweetAlert for login
+    echo '<script>
+            Swal.fire({
+                title: "You must be logged in to proceed with the payment",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Login",
+                confirmButtonColor: "rgb(86 204 255)",
+                cancelButtonText: "Register",
+                reverseButtons: true,
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "/luli-glass/auth/login.php";
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    window.location.href = "/luli-glass/auth/register.php";
+                }
+            });
+        </script>';
     exit();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
