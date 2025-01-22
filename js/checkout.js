@@ -98,7 +98,6 @@ document
       paymentModal.show();
     }
   });
-
 document.addEventListener("DOMContentLoaded", () => {
   const checkoutButton = document.querySelector(".btn-primary");
 
@@ -106,14 +105,13 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error(
       "Checkout button not found! Ensure it has the correct class or ID."
     );
-    return; // Stop execution if the button is not found
+    return;
   }
 
   checkoutButton.addEventListener("click", (event) => {
-    event.preventDefault(); // Prevent the default navigation to the payment page
+    event.preventDefault();
 
-    // Simulate checking if the user is logged in
-    const isLoggedIn = false; // Replace with actual login check logic (e.g., session or cookie check)
+    const isLoggedIn = false; // Replace with actual login check logic
 
     console.log("Checkout button clicked. Is user logged in?", isLoggedIn);
 
@@ -129,17 +127,14 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("SweetAlert response:", result);
 
         if (result.isConfirmed) {
-          // Redirect to login page
           console.log("Redirecting to login page...");
           window.location.href = "/luli-glass/auth/login.php";
         } else if (result.dismiss === Swal.DismissReason.cancel) {
-          // Redirect to registration page
           console.log("Redirecting to registration page...");
-          window.location.href = "../auth/register.php";
+          window.location.href = "/luli-glass/auth/register.php";
         }
       });
     } else {
-      // If logged in, allow navigation to payment page
       console.log("User is logged in. Redirecting to payment page...");
       window.location.href = "payment.php";
     }
