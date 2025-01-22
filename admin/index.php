@@ -55,6 +55,7 @@ $submissions = fetchContactSubmissions();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -80,9 +81,8 @@ $submissions = fetchContactSubmissions();
                 <td><?php echo $user['email']; ?></td>
                 <td><?php echo $user['username']; ?></td> <!-- Adjusted field for phone number -->
                 <td>
-                    <!-- Links for editing and deleting a user -->
-                    <a href="edit.php?id=<?php echo $user['id']; ?>">Edit</a>
-                    <a href="process.php?action=delete_user&id=<?php echo $user['id']; ?>" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+
+                    <a href="javascript:void(0);" onclick="confirmDeletion('user', <?php echo $user['id']; ?>)">Delete</a>
                 </td>
             </tr>
         <?php endforeach; ?>
@@ -111,11 +111,29 @@ $submissions = fetchContactSubmissions();
                 <td><?php echo $submission['submitted_at']; ?></td>
                 <td>
                     <!-- Links for deleting a contact submission -->
-                    <a href="process.php?action=delete_contact&id=<?php echo $submission['id']; ?>" onclick="return confirm('Are you sure you want to delete this submission?');">Delete</a>
+                    <a href="javascript:void(0);" onclick="confirmDeletion('contact', <?php echo $submission['id']; ?>)">Delete</a>
                 </td>
             </tr>
         <?php endforeach; ?>
     </table>
+
+    <script>
+        function confirmDeletion(type, id) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: 'rgb(98 197 240)',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = `process.php?action=delete_${type}&id=${id}`;
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>
