@@ -44,7 +44,8 @@ function fetchContactSubmissions()
     return $data; // Return the data array
 }
 
-if ($_GET['action'] === 'delete_user' && isset($_GET['id'])) {
+// Delete user action
+if (isset($_GET['action']) && $_GET['action'] === 'delete_user' && isset($_GET['id'])) {
     $id = intval($_GET['id']);
     $sql = "DELETE FROM users WHERE id = ?";
     $stmt = $conn->prepare($sql);
@@ -57,7 +58,8 @@ if ($_GET['action'] === 'delete_user' && isset($_GET['id'])) {
     }
 }
 
-if ($_GET['action'] === 'delete_contact' && isset($_GET['id'])) {
+// Delete contact submission action
+if (isset($_GET['action']) && $_GET['action'] === 'delete_contact' && isset($_GET['id'])) {
     $id = intval($_GET['id']);
     $sql = "DELETE FROM contact_form WHERE id = ?";
     $stmt = $conn->prepare($sql);
@@ -74,9 +76,7 @@ if ($_GET['action'] === 'delete_contact' && isset($_GET['id'])) {
 $users = fetchUsers();
 $submissions = fetchContactSubmissions();
 
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 

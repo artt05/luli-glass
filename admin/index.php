@@ -43,7 +43,6 @@ function fetchContactSubmissions()
     return $data; // Return the data array
 }
 
-
 // Fetch contact submission data
 $users = fetchUsers();
 $submissions = fetchContactSubmissions();
@@ -83,12 +82,11 @@ $submissions = fetchContactSubmissions();
                 <td>
                     <!-- Links for editing and deleting a user -->
                     <a href="edit.php?id=<?php echo $user['id']; ?>">Edit</a>
-                    <a href="process.php?action=delete&id=<?php echo $user['id']; ?>">Delete</a>
+                    <a href="process.php?action=delete_user&id=<?php echo $user['id']; ?>" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
                 </td>
             </tr>
         <?php endforeach; ?>
     </table>
-
 
     <h2>Contact List</h2>
 
@@ -112,9 +110,8 @@ $submissions = fetchContactSubmissions();
                 <td><?php echo $submission['message']; ?></td>
                 <td><?php echo $submission['submitted_at']; ?></td>
                 <td>
-                    <!-- Links for editing and deleting a user -->
-
-                    <a href="process.php?action=delete&id=<?php echo $submission['id']; ?>">Delete</a>
+                    <!-- Links for deleting a contact submission -->
+                    <a href="process.php?action=delete_contact&id=<?php echo $submission['id']; ?>" onclick="return confirm('Are you sure you want to delete this submission?');">Delete</a>
                 </td>
             </tr>
         <?php endforeach; ?>
