@@ -63,35 +63,31 @@
                         <strong>Address:</strong> Prishtinë
                     </p>
                 </div>
-            </div>
-            <div class="footer-nav">
-                <div class="footer-section-links">
-                    <div style="font-size: 28px; padding-bottom: 10px">Other Pages</div>
-                    <div class="footer-links">
-                        <a href="#">Privacy & Policy</a>
-                        <a href="#">Terms of Use</a>
-                        <a href="#">Disclaimer</a>
-                        <a href="#">FAQ</a>
-                        </ul>
-                    </div>
+                <div class="footer-nav">
+                    <div class="footer-section-links">
+                        <div style="font-size: 28px; padding-bottom: 10px">Other Pages</div>
+                        <div class="footer-links">
+                            <a href="#">Privacy & Policy</a>
+                            <a href="#">Terms of Use</a>
+                            <a href="#">Disclaimer</a>
+                            <a href="#">FAQ</a>
+                            </ul>
 
-                </div>
+                        </div>
 
-            </div>
-            <div class="footer-social">
-                <div class="footer-section-links">
-                    <div style="font-size: 28px;">Socials</div>
-                    <div class="footer-socials">
-                        <a href="#"><img src="images/facebook-svgrepo-com.png" alt="Facebook" /></a>
+                        <div class="footer-social">
+                            <div class="footer-section-links">
+                                <div style="font-size: 28px;">Socials</div>
+                                <div class="footer-socials">
+                                    <a href="#"><img src="images/facebook-svgrepo-com.png" alt="Facebook" /></a>
 
-                        <a href="#"><img src="images/instagram.png" alt="Instagram" style="width: 50px; height: 50px;" /></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2024 Luli Glass. All Rights Reserved.</p>
-        </div>
+                                    <a href="#"><img src="images/instagram.png" alt="Instagram" style="width: 50px; height: 50px;" /></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-bottom">
+                            <p>© 2024 Luli Glass. All Rights Reserved.</p>
+                        </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
