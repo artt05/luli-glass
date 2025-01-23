@@ -41,10 +41,9 @@
         exit;
     }
     ?>
-
     <div class="project-container" style="width:40%; margin: auto; padding-top: 50px;">
         <div class="project-card">
-            <img src="<?php echo htmlspecialchars($project['image_url']); ?>" alt="" class="project-image" id="project-image">
+            <img src="<?php echo BASE_URL . htmlspecialchars($project['image_url']); ?>" alt="" class="project-image" id="project-image">
             <div class="project-info">
                 <form action="../backend/edit_project_handler.php" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="id" value="<?php echo htmlspecialchars($project['id']); ?>">
@@ -52,12 +51,12 @@
                     <textarea name="description" placeholder="Description" style="width:100%; min-height: 100px; margin-bottom: 30px;" required><?php echo htmlspecialchars($project['description']); ?></textarea>
                     <label for="file" class="upload-btn">Upload New Image</label>
                     <input type="file" id="file" name="file" style="display: none;">
-                    <button type="submit" class="add-product-btn" style="background-color: #00ced1; border: none;">Update Project</button>
+                    <button type="submit" class="add-product-btn" style="background-color: #00ced1; border: none; ">Update Project</button>
                 </form>
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
         document.getElementById("file").addEventListener("change", function() {
             var reader = new FileReader();
@@ -65,6 +64,18 @@
                 document.getElementById("project-image").src = e.target.result;
             }
             reader.readAsDataURL(this.files[0]);
+        });
+
+        document.querySelector(".add-product-btn").addEventListener("click", function(event) {
+            event.preventDefault();
+            Swal.fire({
+                icon: "success",
+                title: "Project Updated Successfully",
+                confirmButtonText: "Okay",
+                confirmButtonColor: "#00ced1"
+            }).then(() => {
+                document.querySelector("form").submit();
+            });
         });
     </script>
 </body>

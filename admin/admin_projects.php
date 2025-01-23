@@ -38,7 +38,8 @@
                             Swal.fire({
                                 icon: "success",
                                 title: "Product Added Successfully",
-                                confirmButtonText: "Okay"
+                                confirmButtonText: "Okay",
+                                  confirmButtonColor: "#00ced1"
                             }).then((result) => {
                                 if (result.isConfirmed) {
                                     window.location.href = "projects.php";

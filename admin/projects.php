@@ -25,7 +25,7 @@
         <div style="display: flex; justify-content: center; width: 100%;">
             <div class="titlemain">
                 <span class="page-title">Our Projects</span>
-                <a href="<?php echo BASE_URL; ?>/admin/admin_projects.php" class="btn btn-primary" style="background-color: #00ced1; border:none; ">Add New Project</a>
+                <a href="<?php echo BASE_URL; ?>/admin/admin_projects.php" class="btn btn-primary" style="background-color: #00ced1; border:none;">Add New Project</a>
             </div>
         </div>
         <div class="project-container">
@@ -111,30 +111,41 @@
                     showCancelButton: true,
                     confirmButtonColor: '#00ced1',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
+                    confirmButtonText: 'Yes, delete it!',
+                    allowOutsideClick: false,
+                    allowEscapeKey: false
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        fetch('../backend/delete_project_handler.php', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json'
-                                },
-                                body: JSON.stringify({
-                                    id: projectId
+                        setTimeout(() => {
+                            fetch('../backend/delete_project_handler.php', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({
+                                        id: projectId
+                                    })
                                 })
-                            })
-                            .then(response => response.json())
-                            .then(data => {
-                                if (data.success) {
-                                    Swal.fire('Deleted!', 'Your project has been deleted.', 'success');
-                                    location.reload();
-                                } else {
-                                    Swal.fire('Error!', 'Failed to delete the project.', 'error');
-                                }
-                            })
-                            .catch(() => {
-                                Swal.fire('Error!', 'An error occurred while deleting the project.', 'error');
-                            });
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.success) {
+                                        Swal.fire({
+                                            title: 'Deleted!',
+                                            text: 'Your project has been deleted.',
+                                            icon: 'success',
+                                            confirmButtonText: 'Okay',
+                                            confirmButtonColor: '#00ced1'
+                                        }).then(() => {
+                                            location.reload();
+                                        });
+                                    } else {
+                                        Swal.fire('Error!', 'Failed to delete the project.', 'error');
+                                    }
+                                })
+                                .catch(() => {
+                                    Swal.fire('Error!', 'An error occurred while deleting the project.', 'error');
+                                });
+                        }, 500); // Add latency of 1000ms before executing the deletion
                     }
                 });
             });
