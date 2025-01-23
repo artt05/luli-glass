@@ -14,13 +14,11 @@
 </head>
 
 <body>
-    <!-- Header -->
-    <?php $activePage = 'projects';
-    // include __DIR__ . '/../components/header.php';
-
-
-
+    <?php
+    $activePage = 'projects';
+    include $_SERVER['DOCUMENT_ROOT'] . '/luli-glass/components/header.php';
     ?>
+
 
     <!-- Main Section -->
     <main class="project-page">
@@ -33,8 +31,7 @@
         <div class="project-container">
             <?php
             // Fetch projects from the database
-            require_once '../db_connection/db_conn.php'; // This path assumes 'db_conn.php' is in
-
+            require_once(__DIR__ . '/../db_connection/db_conn.php');
 
             $sql = "SELECT * FROM projects ORDER BY created_at DESC";
             $result = $conn->query($sql);
@@ -60,7 +57,7 @@
         <div class="footer-containerr">
             <div class="footer-logo">
                 <a href="index.php">
-                    <img src="images/luli-glass.png" alt="Luli Glass Logo" />
+                    <img src="../images/luli-glass.png" alt="Luli Glass Logo" />
                 </a>
                 <div class="footer-section contact">
 
@@ -88,9 +85,9 @@
                         <div class="footer-section-links">
                             <div style="font-size: 28px;">Socials</div>
                             <div class="footer-socials">
-                                <a href="#"><img src="images/facebook-svgrepo-com.png" alt="Facebook" /></a>
+                                <a href="#"><img src="../images/facebook-svgrepo-com.png" alt="Facebook" /></a>
 
-                                <a href="#"><img src="images/instagram.png" alt="Instagram" style="width: 50px; height: 50px;" /></a>
+                                <a href="#"><img src="../images/instagram.png" alt="Instagram" style="width: 50px; height: 50px;" /></a>
                             </div>
                         </div>
                     </div>

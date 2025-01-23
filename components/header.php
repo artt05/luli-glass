@@ -6,7 +6,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once 'db_connection/db_conn.php';
+require_once __DIR__ . '/../db_connection/db_conn.php';
 
 // Initialize the cart if it doesn't exist
 if (!isset($_SESSION['cart'])) {
@@ -36,6 +36,9 @@ if (isset($_SESSION['user_id'])) {
     }
     $stmt->close();
 }
+
+define('ROOT_PATH', str_replace('\\', '/', dirname(__DIR__))); // Path to your project's root directory
+define('BASE_URL', '/luli-glass'); // Update this if the project is hosted in a subdirectory
 
 ?>
 <style>
@@ -86,19 +89,25 @@ if (isset($_SESSION['user_id'])) {
     </div>
     <div class="header-logo">
         <a href="index.php">
-            <img src="./images/luli-glass.png" alt="Logo.jpg" />
+            <img src="<?php echo BASE_URL; ?>/images/luli-glass.png" alt="Logo.jpg" />
         </a>
     </div>
 
     <div class="nav">
         <ul class="nav-list">
-            <li><a href="index.php" class="<?php echo $activePage == 'home' ? 'active' : ''; ?>">Home</a></li>
-            <li><a href="products.php" class="<?php echo $activePage == 'products' ? 'active' : ''; ?>">Products</a></li>
-            <li><a href="projects.php" class="<?php echo $activePage == 'projects' ? 'active' : ''; ?>">Projects</a></li>
-            <li><a href="about.php" class="<?php echo $activePage == 'about' ? 'active' : ''; ?>">About</a></li>
-            <li><a href="contact.php" class="<?php echo $activePage == 'contact' ? 'active' : ''; ?>">Contact</a></li>
+            <li><a href="<?php echo BASE_URL; ?>/index.php" class="<?php echo $activePage == 'home' ? 'active' : ''; ?>">Home</a></li>
+            <li><a href="<?php echo BASE_URL; ?>/products.php" class="<?php echo $activePage == 'products' ? 'active' : ''; ?>">Products</a></li>
+            <li>
+                <a href="<?php echo (isset($_SESSION['user_id']) && $_SESSION['role'] === 'admin') ? BASE_URL . '/admin/projects.php' : BASE_URL . '/projects.php'; ?>"
+                    class="<?php echo $activePage == 'projects' ? 'active' : ''; ?>">
+                    Projects
+                </a>
+            </li>
+            <li><a href="<?php echo BASE_URL; ?>/about.php" class="<?php echo $activePage == 'about' ? 'active' : ''; ?>">About</a></li>
+            <li><a href="<?php echo BASE_URL; ?>/contact.php" class="<?php echo $activePage == 'contact' ? 'active' : ''; ?>">Contact</a></li>
         </ul>
     </div>
+
 
     <div class="icons">
         <div class="dropdown">
@@ -125,15 +134,21 @@ if (isset($_SESSION['user_id'])) {
                 </ul>
             <?php endif; ?>
         </div>
-        <div class="position-relative" id="cartIcon" style="cursor: pointer;" onclick="toggleCartMenu()">
-            <i class="bi bi-cart-fill" style="font-size: 1.5rem"></i>
-            <span
-                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                id="itemCount"
-                style="font-size: 0.75rem">
-                <?php echo $totalItems; ?>
-            </span>
-        </div>
+        <?php if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin'): ?>
+            <!-- Display cart icon only if the user is NOT an admin -->
+            <div class="position-relative" id="cartIcon" style="cursor: pointer;" onclick="toggleCartMenu()">
+                <i class="bi bi-cart-fill" style="font-size: 1.5rem"></i>
+                <span
+                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                    id="itemCount"
+                    style="font-size: 0.75rem">
+                    <?php echo $totalItems; ?>
+                </span>
+            </div>
+        <?php endif; ?>
+
+
+
 
 
 
@@ -145,9 +160,12 @@ if (isset($_SESSION['user_id'])) {
 
 
         <!-- Product Menu Container -->
-        <div id="productMenu" class="product-menu hidden">
-            <?php include 'productMenu.php'; ?>
-        </div>
+        <?php if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin'): ?>
+            <div id="productMenu" class="product-menu hidden">
+                <?php include 'productMenu.php'; ?>
+            </div>
+        <?php endif; ?>
+
     </div>
 
 </div>

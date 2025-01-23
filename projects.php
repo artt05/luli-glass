@@ -21,7 +21,7 @@
 
     <!-- Main Section -->
     <main class="project-page">
-        <h1 class="page-title">Our Projects</h1>
+        <h1 class="page-title" style="margin-top: 40px;">Our Projects</h1>
         <div class="project-container">
             <?php
             // Fetch projects from the database
