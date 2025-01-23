@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Move uploaded file to the target directory
         if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadFile)) {
-            $image_url = './images/' . $fileName; // Save relative file path to the database
+            $image_url = '/luli-glass/images/' . $fileName;
         } else {
             die('Error uploading file.');
         }

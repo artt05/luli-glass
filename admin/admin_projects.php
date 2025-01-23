@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en ?">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Upload</title>
     <link rel="stylesheet" href="admin_projects.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -21,6 +22,32 @@
                     <button type="submit" class="add-product-btn">Add Product</button>
                 </form>
 
+                <?php
+                if (isset($_GET['status'])) {
+                    if ($_GET['status'] == 'success') {
+                        echo '<script>
+                            Swal.fire({
+                                icon: "success",
+                                title: "Product Added Successfully",
+                                confirmButtonText: "Okay"
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = "../projects.php";
+                                }
+                            });
+                        </script>';
+                    } else {
+                        echo '<script>
+                            Swal.fire({
+                                icon: "error",
+                                title: "Error Adding Product",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        </script>';
+                    }
+                }
+                ?>
 
             </div>
         </div>
