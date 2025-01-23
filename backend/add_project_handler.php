@@ -3,16 +3,21 @@
 session_start();
 require_once '../db_connection/db_conn.php'; // Adjust path if needed
 
+// Define BASE_URL for the project if not already defined
+if (!defined('BASE_URL')) {
+    define('BASE_URL', '/luli-glass'); // Adjust this to your project's base URL
+}
+
 // Check if form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Get form data
     $title = $_POST['title'];
     $description = $_POST['description'];
-    $image_url = '';
+    $image_url = ''; // Initialize the image URL
 
     // Handle file upload
     if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
-        $uploadDir = '../images/'; // Directory where images will be saved
+        $uploadDir = realpath(__DIR__ . '/../images/') . '/'; // Absolute path to save images
         $fileName = basename($_FILES['file']['name']);
         $uploadFile = $uploadDir . $fileName;
 
@@ -23,7 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Move uploaded file to the target directory
         if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadFile)) {
-            $image_url = '/luli-glass/images/' . $fileName;
+            $image_url = './images/' . $fileName; // Use relative path
+
+
         } else {
             die('Error uploading file.');
         }

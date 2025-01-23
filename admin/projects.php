@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <link rel="stylesheet" href="../css/projects.css"> <!-- Link to your CSS -->
-    <link rel="stylesheet" href="../style.css"> <!-- Link to your CSS -->
+    <link rel="stylesheet" href="../css/projects.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
@@ -20,13 +20,12 @@
     include $_SERVER['DOCUMENT_ROOT'] . '/luli-glass/components/header.php';
     ?>
 
-
     <!-- Main Section -->
     <main class="project-page">
         <div style="display: flex; justify-content: center; width: 100%;">
             <div class="titlemain">
                 <span class="page-title">Our Projects</span>
-                <a href="admin_projects.php" class="btn btn-primary" style="background-color: #00ced1; border:none;">Add New Project</a>
+                <a href="<?php echo BASE_URL; ?>/admin/admin_projects.php" class="btn btn-primary" style="background-color: #00ced1; border:none; ">Add New Project</a>
             </div>
         </div>
         <div class="project-container">
@@ -39,11 +38,13 @@
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     echo '<div class="project-card">';
-                    echo '<img src="' . htmlspecialchars($row['image_url']) . '" alt="' . htmlspecialchars($row['title']) . '" class="project-image">';
+                    echo '<img src="' . BASE_URL . htmlspecialchars($row['image_url']) . '" alt="' . htmlspecialchars($row['title']) . '" class="project-image">';
+
                     echo '<div class="project-info">';
                     echo '<h3>' . htmlspecialchars($row['title']) . '</h3>';
                     echo '<p>' . htmlspecialchars($row['description']) . '</p>';
-                    echo '<button class="btn btn-danger delete-project" data-id="' . $row['id'] . '">Delete</button>'; // Add delete button
+                    echo '<button class="btn btn-danger delete-project" data-id="' . $row['id'] . '" style="margin-right: 5px;border:none;">Delete</button>';
+                    echo '<a href="edit_project.php?id=' . $row['id'] . '" style="background-color: #edb56a; border:none;" class="btn btn-secondary">Edit</a>';
                     echo '</div>';
                     echo '</div>';
                 }
@@ -61,7 +62,6 @@
                     <img src="../images/luli-glass.png" alt="Luli Glass Logo" />
                 </a>
                 <div class="footer-section contact">
-
                     <p style="margin: 0px;"> <strong>Phone:</strong> 049 800 800</p>
                     <p style="margin: 0px;">
                         <strong>Mail:</strong>
@@ -127,7 +127,7 @@
                             .then(data => {
                                 if (data.success) {
                                     Swal.fire('Deleted!', 'Your project has been deleted.', 'success');
-                                    location.reload(); // Reload the page to reflect changes
+                                    location.reload();
                                 } else {
                                     Swal.fire('Error!', 'Failed to delete the project.', 'error');
                                 }
