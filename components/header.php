@@ -129,9 +129,10 @@ define('BASE_URL', '/luli-glass'); // Update this if the project is hosted in a 
                     aria-haspopup="true"
                     style="font-size: 1.5rem"></i>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="auth/login.php">Log in</a></li>
-                    <li><a class="dropdown-item" href="auth/register.php">Register</a></li>
+                    <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>/auth/login.php">Log in</a></li>
+                    <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>/auth/register.php">Register</a></li>
                 </ul>
+
             <?php endif; ?>
         </div>
         <?php if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin'): ?>
@@ -154,7 +155,8 @@ define('BASE_URL', '/luli-glass'); // Update this if the project is hosted in a 
 
         <!-- Menu Icon (Visible in Mobile View) -->
         <div class="menu-icon" id="menuIcon" onclick="toggleMobileMenu()" style="cursor: pointer;">
-            <img src="./images/toggle.svg" alt="Menu" style="width: 1.5rem; height: auto;" />
+
+            <img src="<?php echo BASE_URL; ?>/images/toggle.svg" alt="Menu" style="width: 1.5rem; height: auto;" />
         </div>
 
 

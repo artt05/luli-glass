@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <link rel="stylesheet" href="../css/projects.css"> <!-- Link to your CSS -->
     <link rel="stylesheet" href="../style.css"> <!-- Link to your CSS -->
@@ -25,12 +26,11 @@
         <div style="display: flex; justify-content: center; width: 100%;">
             <div class="titlemain">
                 <span class="page-title">Our Projects</span>
-                <a href="admin_projects.php" class="btn btn-primary">Add New Project</a>
+                <a href="admin_projects.php" class="btn btn-primary" style="background-color: #00ced1; border:none;">Add New Project</a>
             </div>
         </div>
         <div class="project-container">
             <?php
-            // Fetch projects from the database
             require_once(__DIR__ . '/../db_connection/db_conn.php');
 
             $sql = "SELECT * FROM projects ORDER BY created_at DESC";
@@ -43,6 +43,7 @@
                     echo '<div class="project-info">';
                     echo '<h3>' . htmlspecialchars($row['title']) . '</h3>';
                     echo '<p>' . htmlspecialchars($row['description']) . '</p>';
+                    echo '<button class="btn btn-danger delete-project" data-id="' . $row['id'] . '">Delete</button>'; // Add delete button
                     echo '</div>';
                     echo '</div>';
                 }
@@ -99,7 +100,46 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script>
+        document.querySelectorAll('.delete-project').forEach(button => {
+            button.addEventListener('click', function() {
+                const projectId = this.getAttribute('data-id');
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#00ced1',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        fetch('../backend/delete_project_handler.php', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    id: projectId
+                                })
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    Swal.fire('Deleted!', 'Your project has been deleted.', 'success');
+                                    location.reload(); // Reload the page to reflect changes
+                                } else {
+                                    Swal.fire('Error!', 'Failed to delete the project.', 'error');
+                                }
+                            })
+                            .catch(() => {
+                                Swal.fire('Error!', 'An error occurred while deleting the project.', 'error');
+                            });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
