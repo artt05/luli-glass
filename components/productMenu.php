@@ -1,9 +1,48 @@
 <?php
-// session_start(); 
-
+// Existing logic to retrieve cart data from session
 $cartItems = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
 $storedTotalItems = isset($_SESSION['totalItems']) ? $_SESSION['totalItems'] : 0;
 $storedTotalPrice = isset($_SESSION['totalPrice']) ? number_format($_SESSION['totalPrice'], 2) : '0.00';
+
+// Include database connection (adjust path as needed)
+require_once(__DIR__ . '/../db_connection/db_conn.php');
+
+// Get the logged-in user ID
+$userId = $_SESSION['user_id'] ?? null;
+
+if ($userId) {
+    // Fetch data from the database and merge with session-based cart items
+    $query = "
+        SELECT 
+            od.product_id AS id,
+            od.quantity,
+            od.price,
+            p.name AS name,
+            p.image_url AS image
+        FROM 
+            order_details od
+        JOIN 
+            products p
+        ON 
+            od.product_id = p.id
+        WHERE 
+            od.userinfo_id = ?
+    ";
+
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // Fetch cart items into an array
+    while ($row = $result->fetch_assoc()) {
+        $cartItems[$row['id']] = $row;
+    }
+
+    // Calculate total items and price
+    $storedTotalItems = array_sum(array_column($cartItems, 'quantity'));
+    $storedTotalPrice = number_format(array_sum(array_column($cartItems, 'price')), 2);
+}
 ?>
 
 <!DOCTYPE html>
@@ -29,13 +68,13 @@ $storedTotalPrice = isset($_SESSION['totalPrice']) ? number_format($_SESSION['to
                 <?php foreach ($cartItems as $item) : ?>
                     <div class="cart-item" data-id="<?= htmlspecialchars($item['id'] ?? '') ?>">
                         <!-- Handle missing image -->
-                        <img src="<?= isset($item['image']) ? htmlspecialchars($item['image']) : 'default-image.jpg' ?>"
-                            alt="<?= isset($item['name']) ? htmlspecialchars($item['name']) : 'Unnamed Product' ?>"
+                        <img src="<?= htmlspecialchars($item['image'] ?? 'images/default-image.jpg') ?>"
+                            alt="<?= htmlspecialchars($item['name'] ?? 'Unnamed Product') ?>"
                             class="product-image">
 
                         <div class="product-details">
                             <!-- Handle missing name -->
-                            <h3 class="product-name"><?= isset($item['name']) ? htmlspecialchars($item['name']) : 'Unnamed Product' ?></h3>
+                            <h3 class="product-name"><?= htmlspecialchars($item['name'] ?? 'Unnamed Product') ?></h3>
 
                             <!-- Handle price -->
                             <p class="product-price">$<?= number_format($item['price'] ?? 0, 2) ?></p>
