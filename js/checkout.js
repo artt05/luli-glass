@@ -98,3 +98,20 @@ document
       paymentModal.show();
     }
   });
+
+fetch("backend/resetCart.php", { method: "POST" })
+  .then((response) => response.json())
+  .then((data) => {
+    if (data.success) {
+      clearCartUI(); // Clear the UI
+    } else {
+      console.error("Failed to reset the cart");
+    }
+  })
+  .catch((error) => console.error("Error resetting cart:", error));
+function clearCartUI() {
+  document.querySelector(".cart-list").innerHTML =
+    '<p class="empty-cart">Your cart is empty.</p>';
+  document.getElementById("total-quantity").textContent = "Total Quantity: 0";
+  document.getElementById("total-price").textContent = "Total Price: $0.00";
+}
