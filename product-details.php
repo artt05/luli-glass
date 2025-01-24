@@ -125,14 +125,6 @@ $activePage = 'product-details';
                             <h4>Additional Details</h4>
                             <textarea style="width: 100%;" name="additional_details" rows="4" placeholder="Enter any specific details or instructions"></textarea>
 
-                            <!-- <form id="file-upload-form" method="POST" enctype="multipart/form-data" action="/upload">
-                                <div class="file-upload">
-                                    <label style="padding-bottom: 10px;">Upload File</label>
-                                    <input type="file" name="custom_file[]" id="file-input" multiple />
-                                    <ul id="file-list"></ul>
-                                    <button type="submit">Upload Files</button>
-                                </div>
-                            </form> -->
 
 
                             <!-- Price Display -->

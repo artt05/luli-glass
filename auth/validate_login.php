@@ -22,8 +22,29 @@ if ($result->num_rows > 0) {
         $_SESSION['email'] = $user['email'];
         $_SESSION['role'] = $user['role'];
 
+        // Retrieve cart data for the user from the database
+        $query = "
+            SELECT product_id, thickness, width, height, border_radius, quantity, price 
+            FROM order_details 
+            WHERE userinfo_id = ?
+        ";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param('i', $user['id']);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $cartItems = $result->fetch_all(MYSQLI_ASSOC);
 
+        // Save cart data to the session
+        $_SESSION['cart'] = [];
+        foreach ($cartItems as $item) {
+            $_SESSION['cart'][$item['product_id']] = $item;
+        }
 
+        // Update session totals
+        $_SESSION['totalItems'] = array_sum(array_column($cartItems, 'quantity'));
+        $_SESSION['totalPrice'] = array_sum(array_column($cartItems, 'price'));
+
+        // Redirect based on user role
         if ($user['role'] === 'admin') {
             echo json_encode([
                 "status" => "success",
