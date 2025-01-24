@@ -99,81 +99,10 @@ if ($result) {
   </div>
 
 
-  <div class="container">
-    <h2>Our Services</h2>
-    <section class="services">
-      <div class="card">
-        <div class="content">
-          <div class="icon"><i class="fa fa-code"></i></div>
-          <div class="title">Glass</div>
-          <p>Premium glass solutions for homes and businesses, combining style and durability.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="content">
-          <div class="icon"><i class="fa fa-mobile"></i></div>
-          <div class="title">Mirror</div>
-          <p>Custom mirrors crafted to enhance spaces with elegance and functionality.</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="content">
-          <div class="icon"><i class="fa fa-paint-brush"></i></div>
-          <div class="title">Plastic </div>
-          <p>High-quality plastic products tailored for versatile and reliable use.</p>
-        </div>
-      </div>
 
-  </div>
 
-  </div>
-  </section>
-  </div>
 
-  <!-- 
-  <div class="chakra-stack">
-    <div>
-        <p class="chakra-text">How It Works</p>
-        <div class="chakra-text">It’s quite simple. Enter your measurements, choose your favorite glass tint, glass thickness, strength, edge style, etc., and check out your custom-designed glass table top.</div>
-    </div>
 
-    <div class="step">
-        <div class="step-number">1</div>
-        <img src="/path/to/design-specs-icon.svg" alt="Custom Design to Your Specs">
-        <h2 class="chakra-heading">Custom Design to Your Specs</h2>
-        <p class="chakra-text">There are no limits. We cut to your exact needs, from simple shapes to very complex projects.</p>
-    </div>
-
-    <div class="step">
-        <div class="step-number">2</div>
-        <img src="/path/to/support-icon.svg" alt="Technical & Design Support">
-        <h2 class="chakra-heading">Technical & Design Support</h2>
-        <p class="chakra-text">Our team is here to support you in all your questions to get you the right product to your exact needs. Live chat with us or email!</p>
-    </div>
-
-    <div class="step">
-        <div class="step-number">3</div>
-        <img src="/path/to/fabrication-icon.svg" alt="Fabrication & Quality Control">
-        <h2 class="chakra-heading">Fabrication & Quality Control</h2>
-        <p class="chakra-text">Our glass table tops are fabricated in our state-of-the-art plant in Manassas, VA. We guarantee 100% premium quality at all times.</p>
-        <a class="button" href="/path/to/video.mp4">
-            <span>Take a Look Behind The Scene</span>
-            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0z"></path><path d="M15 5l-1.41 1.41L18.17 11H2v2h16.17l-4.59 4.59L15 19l7-7-7-7z"></path></svg>
-        </a>
-    </div>
-
-    <div class="step">
-        <div class="step-number">4</div>
-        <img src="/path/to/delivery-icon.svg" alt="Curbside Delivery">
-        <h2 class="chakra-heading">Curbside, Contactless Delivery</h2>
-        <p class="chakra-text">Your glass table top, hardware, and accessories are packed safely and curbside delivered by a FedEx carrier. All prices include FREE shipping.</p>
-        <a class="button" href="/shipping-handling">
-            <span>View Shipping and Handling</span>
-            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0z"></path><path d="M15 5l-1.41 1.41L18.17 11H2v2h16.17l-4.59 4.59L15 19l7-7-7-7z"></path></svg>
-        </a>
-    </div>
-</div>
- -->
 
 
 
