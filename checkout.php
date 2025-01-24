@@ -25,6 +25,44 @@ if (isset($_SESSION['user_id'])) {
         unset($_SESSION['user_id']); // Invalid session
     }
 }
+if ($userId) {
+    $query = "
+        SELECT 
+            od.product_id AS id,
+            od.quantity,
+            od.price,
+            p.name AS name,
+            p.image_url AS image
+        FROM 
+            order_details od
+        JOIN 
+            products p
+        ON 
+            od.product_id = p.id
+        WHERE 
+            od.userinfo_id = ?
+    ";
+
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // Fetch items and populate session cart
+    while ($row = $result->fetch_assoc()) {
+        // Ensure all fields are stored in the session cart
+        $_SESSION['cart'][$row['id']] = [
+            'id' => $row['id'],
+            'name' => $row['name'],
+            'image' => $row['image'],
+            'quantity' => $row['quantity'],
+            'price' => $row['price'],
+        ];
+    }
+    $stmt->close();
+}
+
+
 ?>
 <script>
     // Pass the PHP login status to JavaScript
@@ -118,8 +156,10 @@ if (isset($_SESSION['user_id'])) {
                                 $totalPrice += $item['price'];
                             ?>
                                 <tr>
-                                    <td><img src="<?= $item['image'] ?>" alt="<?= $item['name'] ?>" width="50"></td>
-                                    <td><?= $item['name'] ?></td>
+                                    <td><img src="<?= htmlspecialchars($item['image'] ?? 'images/default-image.jpg') ?>" alt="<?= htmlspecialchars($item['name'] ?? 'Unnamed Product') ?>" width="50"></td>
+
+                                    <td><?= htmlspecialchars($item['name'] ?? 'Unnamed Product') ?></td>
+
                                     <td>$<?= $item['price'] ?></td>
                                     <td><?= $item['quantity'] ?></td>
                                 </tr>
