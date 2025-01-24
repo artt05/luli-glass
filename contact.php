@@ -18,27 +18,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("ssss", $full_name, $email, $phone_number, $message);
     if ($stmt->execute()) {
       echo "<script>
-          Swal.fire({
-              icon: 'success',
-              title: 'Thank you!',
-              text: 'Your message has been sent successfully.'
-          }).then(() => {
-              window.location.href = 'index.php';
-          });
+        Swal.fire({
+          icon: 'success',
+          title: 'Thank you!',
+          text: 'Your message has been sent successfully.',
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#0d6efd',
+        }).then(() => {
+          window.location.href = 'index.php';
+        });
       </script>";
-
       // Add a fallback PHP redirection in case JavaScript doesn't work
       header("Location: index.php");
       exit;
     } else {
       echo "<script>
-          Swal.fire({
-              icon: 'error',
-              title: 'Oops!',
-              text: 'Something went wrong. Please try again later.'
-          });
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops!',
+          text: 'Something went wrong. Please try again later.',
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#0d6efd',
+        });
       </script>";
-
       // Optional fallback redirection to stay on the same page
       header("Refresh: 5; url=contact.php"); // Redirect after 5 seconds
       exit;
@@ -48,9 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   } else {
     echo "Error: " . $conn->error;
   }
-
-  // Close the database connection
-
 }
 ?>
 <!DOCTYPE html>
@@ -106,12 +105,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Contact Info Section -->
     <div class="contact-info">
 
-
       <div class="chat-options">
         <img class="contact-img" src="./images/multipleglass.jpg" alt="">
       </div>
-
-
 
       <p class="same-color" style="padding-top: 30px;"> Visit Us</p>
       <p> Address: Bernice, Kosovo near Amc Hall.</p>
@@ -121,8 +117,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <div>Tel: 049 800 800</div>
 
     </div>
-
-
 
   </div>
   <footer class="footerr">
@@ -178,8 +172,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <script
     type="text/javascript"
     src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> -->
   <script src="./js/script.js"></script>
 </body>
 

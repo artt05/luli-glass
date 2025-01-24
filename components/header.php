@@ -98,10 +98,15 @@ define('BASE_URL', '/luli-glass'); // Update this if the project is hosted in a 
             <li><a href="<?php echo BASE_URL; ?>/index.php" class="<?php echo $activePage == 'home' ? 'active' : ''; ?>">Home</a></li>
             <li><a href="<?php echo BASE_URL; ?>/products.php" class="<?php echo $activePage == 'products' ? 'active' : ''; ?>">Products</a></li>
             <li>
-                <a href="<?php echo (isset($_SESSION['user_id']) && $_SESSION['role'] === 'admin') ? BASE_URL . '/admin/projects.php' : BASE_URL . '/projects.php'; ?>"
+            <li>
+                <a href="<?php echo isset($_SESSION['user_id']) && $_SESSION['role'] === 'admin'
+                                ? BASE_URL . '/admin/projects.php'
+                                : BASE_URL . '/projects.php'; ?>"
                     class="<?php echo $activePage == 'projects' ? 'active' : ''; ?>">
                     Projects
                 </a>
+            </li>
+
             </li>
             <li><a href="<?php echo BASE_URL; ?>/about.php" class="<?php echo $activePage == 'about' ? 'active' : ''; ?>">About</a></li>
             <li><a href="<?php echo BASE_URL; ?>/contact.php" class="<?php echo $activePage == 'contact' ? 'active' : ''; ?>">Contact</a></li>
