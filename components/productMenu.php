@@ -40,7 +40,8 @@ $storedTotalPrice = isset($_SESSION['totalPrice']) ? number_format($_SESSION['to
                     </div>
                 <?php endforeach; ?>
             <?php else : ?>
-                <p class="empty-cart" style="display: block;">Your cart is empty.</p>
+                <p class="empty-cart" style="<?= empty($cartItems) ? 'display: block;' : 'display: none;' ?>">Your cart is empty.</p>
+
             <?php endif; ?>
 
         </div>
