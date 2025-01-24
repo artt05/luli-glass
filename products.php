@@ -83,7 +83,7 @@ if ($result) {
     </div>
 
     <div class="main-section">
-      <h2 style="text-align: center; margin-bottom: 20px;">Glass</h2>
+      <h2 style="color:#4d6d8d; text-align: center; margin-bottom: 20px;">Glass</h2>
     </div>
     <section class="product-grid">
       <?php if (!empty($products)): ?>
