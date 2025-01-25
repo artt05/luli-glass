@@ -91,7 +91,7 @@ if ($userId) {
                     </div>
                 <?php endforeach; ?>
             <?php else : ?>
-                <p class="empty-cart" style="<?= empty($cartItems) ? 'display: block;' : 'display: none;' ?>">Your cart is empty.</p>
+                <!-- <p class="empty-cart" style="<?= empty($cartItems) ? 'display: block;' : 'display: none;' ?>">Your cart is empty.</p> -->
             <?php endif; ?>
         </div>
 

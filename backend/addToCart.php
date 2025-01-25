@@ -16,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $productHeight = $_POST['height'] ?? null;
     $productBorderRadius = $_POST['border_radius'] ?? null;
 
+
     // Validate required fields
     if (!$productId || !$productName || !$productQuantity || !$productPrice) {
         echo json_encode(['success' => false, 'message' => 'Missing required product data.']);
@@ -45,6 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'width' => $productWidth,
             'height' => $productHeight,
             'border_radius' => $productBorderRadius,
+
         ];
     } else {
         // Update session cart for an existing product
@@ -55,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Insert the product data into the database
     $stmt = $conn->prepare("
         INSERT INTO order_details (userinfo_id, product_id, thickness, width, height, border_radius, quantity, price, created_at)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())
+        VALUES (?, ?, ?, ?, ?, ?,  ?, ?, NOW())
     ");
     if (!$stmt) {
         echo json_encode(['success' => false, 'message' => 'Database error: ' . $conn->error]);
@@ -71,7 +73,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $productHeight,
         $productBorderRadius,
         $productQuantity,
-        $productPrice
+        $productPrice,
+
     );
 
     if (!$stmt->execute()) {

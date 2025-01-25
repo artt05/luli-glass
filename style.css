@@ -1227,6 +1227,16 @@ form input {
   }
 }
 
+@media screen and (max-width: 980px) {
+  .nav-list a {
+    padding: 0 16px;
+    font-size: 18px;
+  }
+  .dropdown-toggle {
+    font-size: 16px;
+  }
+}
+
 @media screen and (max-width: 860px) {
   .nav-list a {
     padding: 0 15px;
@@ -1241,6 +1251,7 @@ form input {
     display: none;
   }
 }
+
 @media screen and (max-width: 768px) {
   .menu-icon {
     display: block; /* Show the menu icon */
