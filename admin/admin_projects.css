@@ -1,0 +1,102 @@
+/* Page Title */
+.page-title {
+  text-align: center;
+  margin: 40px 0 20px;
+  font-size: 2rem;
+  color: #00ced1;
+}
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: sp;
+}
+/* Project Container */
+.project-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+/* Project Card */
+.project-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Project Image */
+.project-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Project Info */
+.project-info {
+  padding: 15px;
+}
+
+.project-info h3 {
+  margin-bottom: 10px;
+  font-size: 1.25rem;
+  color: #00ced1;
+}
+
+.project-info p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* No Projects Message */
+.no-projects {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #888;
+  margin: 40px 0;
+}
+
+/* Upload Button */
+.upload-btn {
+  background-color: #00ced1;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.upload-btn:hover {
+  background-color: #007b8a;
+}
+
+/* Add Product Button */
+.add-product-btn {
+  background-color: #007b8a;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.add-product-btn:hover {
+  background-color: #006b7d;
+}
